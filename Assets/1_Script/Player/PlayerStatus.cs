@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     // Current Stats
-    private float curHP;
-    private float curStemina;
-    private float curMoveSpeed;
-    private float curAtkDamage;
-    private float curJumpPower;
+    public float curHP { get; private set; }
+    public float curStemina { get; private set; }
+    public float curMoveSpeed { get; private set; }
+    public float curAtkDamage { get; private set; }
+    public float curJumpPower { get; private set; }
 
-    private PlayerData data;
+    [SerializeField] private PlayerData data;
 
     private void Awake()
     {
