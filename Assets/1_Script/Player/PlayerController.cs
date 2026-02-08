@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     // [점프]
     public void Jump()
     {
-        if (_isRolling) return;
+        if (_isRolling || _isAttacking) return;
 
         if (_characterController.isGrounded)
         {
@@ -88,15 +88,21 @@ public class PlayerController : MonoBehaviour
 
         if (!_isAttacking)
         {
-            StartAttack(1);
+            if (_playerStatus.UseStamina(_playerStatus.attackCost))
+            {
+                StartAttack(1);
+            }        
         }
         else if (_canCombo && _comboStep < 2)
         {
-            _canCombo = false;
-            _comboStep = 2;
+            if (_playerStatus.UseStamina(_playerStatus.attackCost))
+            {
+                _canCombo = false;
+                _comboStep = 2;
 
-            _animator.SetInteger("ComboStep", _comboStep);
-            _animator.SetTrigger("Attack");
+                _animator.SetInteger("ComboStep", _comboStep);
+                _animator.SetTrigger("Attack");
+            }
         }
     }
 
@@ -127,9 +133,12 @@ public class PlayerController : MonoBehaviour
     // [구르기]
     public void Roll(Vector3 direction)
     {
-        if (_isRolling || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
-
-        StartCoroutine(RollRoutine(direction));
+        if (_isRolling || _isAttacking || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
+        
+        if (_playerStatus.UseStamina(_playerStatus.rollCost))
+        {
+            StartCoroutine(RollRoutine(direction));
+        }         
     }
 
     private IEnumerator RollRoutine(Vector3 direction)
