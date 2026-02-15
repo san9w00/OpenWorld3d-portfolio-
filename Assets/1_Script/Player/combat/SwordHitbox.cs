@@ -19,7 +19,7 @@ public class SwordHitbox : MonoBehaviour
 
         if (target == null) return;
 
-        float damage = GetComponentInParent<PlayerStatus>().curAtkDamage;
+        float damage = GetComponentInParent<PlayerStatus>().AtkDamage;
         target.TakeDamage(damage);
     }
 

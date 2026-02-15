@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             // 이동 로직
-            speed = _playerStatus.curMoveSpeed;
+            speed = _playerStatus.MoveSpeed;
             _characterController.Move(direction * speed * Time.deltaTime);
 
             // 회전 로직
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         if (_characterController.isGrounded)
         {
-            float jumpPower = _playerStatus.curJumpPower;
+            float jumpPower = _playerStatus.JumpPower;
             _velocity.y = Mathf.Sqrt(jumpPower * -2f * Physics.gravity.y);
 
             if(_animator != null)
@@ -88,14 +88,14 @@ public class PlayerController : MonoBehaviour
 
         if (!_isAttacking)
         {
-            if (_playerStatus.UseStamina(_playerStatus.attackCost))
+            if (_playerStatus.UseStamina(_playerStatus.AttackCost))
             {
                 StartAttack(1);
             }        
         }
         else if (_canCombo && _comboStep < 2)
         {
-            if (_playerStatus.UseStamina(_playerStatus.attackCost))
+            if (_playerStatus.UseStamina(_playerStatus.AttackCost))
             {
                 _canCombo = false;
                 _comboStep = 2;
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isRolling || _isAttacking || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
         
-        if (_playerStatus.UseStamina(_playerStatus.rollCost))
+        if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {
             StartCoroutine(RollRoutine(direction));
         }         

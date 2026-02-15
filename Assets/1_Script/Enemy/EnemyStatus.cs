@@ -5,26 +5,26 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     public EnemyData Data;
     private Animator animator;
 
-    private float curHP;
+    private float CurHP;
     private float curAtkDamage => Data.atkDamage;
-    private float defense => Data.defense;
+    private float Defense => Data.defense;
 
     private void Awake()
     {
-        curHP = Data.maxHP;
+        CurHP = Data.maxHP;
 
         animator = GetComponent<Animator>();
     }
     public void TakeDamage(float damage)
     {
-        float finalAttack = Mathf.Max(1, damage - defense);
+        float finalAttack = Mathf.Max(1, damage - Defense);
 
-        curHP -= finalAttack;
+        CurHP -= finalAttack;
         animator.SetTrigger("Hit");
 
-        Debug.Log($"°õ ³²ÀºÃ¼·Â: {curHP}");
+        Debug.Log($"°õ ³²ÀºÃ¼·Â: {CurHP}");
 
-        if (curHP <= 0)
+        if (CurHP <= 0)
         {
             Die();
         }

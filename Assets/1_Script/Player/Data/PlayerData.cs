@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
     public float moveSpeed;
     public float atkDamage;
     public float jumpPower;
+    public float defense;
 
     [Header("Stamina Costs")]
     public float attackStaminaCost = 10f; // 공격 소모량

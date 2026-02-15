@@ -17,6 +17,7 @@ MonoBehaviour:
   moveSpeed: 4
   atkDamage: 10
   jumpPower: 4
-  attackStaminaCost: 10
+  defense: 0
+  attackStaminaCost: 20
   rollStaminaCost: 20
-  staminaRegenRate: 5
+  staminaRegenRate: 10
