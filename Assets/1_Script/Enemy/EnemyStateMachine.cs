@@ -5,9 +5,13 @@ public enum State
     Idle,
     Attack,
     Pursue,
+    Hit,
     Avoid
 }
 
+[RequireComponent(typeof(EnemyIdleState))]
+[RequireComponent(typeof(EnemyPursueState))]
+[RequireComponent(typeof(EnemyAttackState))]
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyState currentState { get; set; }
@@ -16,6 +20,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void AttachStateToObject()
     {
+        _IdleState = gameObject.GetComponent<EnemyIdleState>();
+        _PursueState = gameObject.GetComponent<EnemyPursueState>(); 
+        _AttackState = gameObject.GetComponent<EnemyAttackState>();
     }
 
     private void Start()
