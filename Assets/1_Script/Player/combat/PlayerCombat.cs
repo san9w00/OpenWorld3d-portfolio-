@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private SwordHitbox hitbox;
+    private SwordHitbox currentHitbox;
+
+    public void SetWeapon(SwordHitbox newHitbox)
+    {
+        currentHitbox = newHitbox;
+    }
 
     public void OnHitbox()
     {
-        hitbox.EnableHitbox();
+        if (currentHitbox != null)
+            currentHitbox.EnableHitbox();
     }
 
     public void OffHitbox()
     {
-        hitbox.DisableHitbox();
+        if (currentHitbox != null)
+            currentHitbox.DisableHitbox();
     }
 }

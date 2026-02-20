@@ -13,6 +13,12 @@ public class PlayerEquipment : MonoBehaviour
     [SerializeField] private List<WeaponSlot> weaponSlots;
 
     private GameObject currentWeapon;
+    private PlayerCombat playerCombat;
+
+    private void Awake()
+    {
+        playerCombat = GetComponent<PlayerCombat>();
+    }
 
     public void EquipWeapon(WeaponItemSO weaponData)
     {
@@ -28,6 +34,13 @@ public class PlayerEquipment : MonoBehaviour
             {
                 slot.weaponObject.SetActive(true);
                 currentWeapon = slot.weaponObject;
+
+                SwordHitbox hitbox = currentWeapon.GetComponent<SwordHitbox>();
+                if (hitbox != null)
+                {
+                    playerCombat.SetWeapon(hitbox);
+                }
+
                 Debug.Log("¹«±â ÀåÂø" + weaponData.itemName);
                 return;
             }

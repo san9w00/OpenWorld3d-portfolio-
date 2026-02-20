@@ -48,6 +48,14 @@ public class InventoryUI : MonoBehaviour
                 slots[i].SetItem(null);
             }
         }
+
+        if (selectedItem != null)
+        {
+            if (!playerInventory.items.Contains(selectedItem) || selectedItem.quantity <= 0)
+            {
+                selectedItem = null;
+            }
+        }
     }
 
     public void SelectItem(InventoryItem item)
@@ -63,6 +71,13 @@ public class InventoryUI : MonoBehaviour
         if (selectedItem == null)
         {
             Debug.Log("선택된 아이템이 없다.");
+            return;
+        }
+
+        if (selectedItem.quantity <= 0)
+        {
+            Debug.Log("아이템 수량이 없다!");
+            selectedItem = null;
             return;
         }
 
