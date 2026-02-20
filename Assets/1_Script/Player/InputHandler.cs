@@ -15,6 +15,9 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private float minVerticalAngle = -30f;
     [SerializeField] private float maxVerticalAngle = 70f;
 
+    [Header("UI State")]
+    private bool _isInventoryOpen = false;
+
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
@@ -27,7 +30,10 @@ public class InputHandler : MonoBehaviour
 
     private void Update()
     {
-        LookAround();
+        if(!_isInventoryOpen)
+        {
+            LookAround();
+        }
 
         HandleInput();
         ProcessCommands();
@@ -47,10 +53,13 @@ public class InputHandler : MonoBehaviour
         // (카메라 기준) 이동 방향
         Vector3 direction = (forward * v + right * h).normalized;
 
-        // [공격] 입력
-        if (Input.GetMouseButtonDown(0))
+        if(!_isInventoryOpen)
         {
-            _commandQueue.Enqueue(new AttackCommand(_playerController));
+            // [공격] 입력
+            if (Input.GetMouseButtonDown(0))
+            {
+                _commandQueue.Enqueue(new AttackCommand(_playerController));
+            }
         }
 
         // [구르기] 입력
@@ -100,5 +109,21 @@ public class InputHandler : MonoBehaviour
         }
 
         cameraArm.rotation = Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
+    }
+
+    public void SetInventoryState(bool isOpen)
+    {
+        _isInventoryOpen = isOpen;
+
+        if (isOpen)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

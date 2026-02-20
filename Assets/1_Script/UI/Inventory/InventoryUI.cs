@@ -1,16 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// <Controller>
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private PlayerInventory playerInventory;
     [SerializeField] private List<SlotUI> slots;
 
-    private bool isOpen = false;
+    private InputHandler _inputHandler;
+    private InventoryItem selectedItem;
 
     void Start()
     {
+        _inputHandler = FindAnyObjectByType<InputHandler>();
+        inventoryPanel.SetActive(false);
         playerInventory.OnInventoryChanged += RefreshUI;
         RefreshUI();
     }
@@ -25,8 +29,10 @@ public class InventoryUI : MonoBehaviour
 
     void ToggleInventory()
     {
-        isOpen = !isOpen;
+        bool isOpen = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isOpen);
+
+        _inputHandler.SetInventoryState(isOpen);
     }
 
     void RefreshUI()
@@ -41,6 +47,31 @@ public class InventoryUI : MonoBehaviour
             {
                 slots[i].SetItem(null);
             }
+        }
+    }
+
+    public void SelectItem(InventoryItem item)
+    {
+        selectedItem = item;
+        Debug.Log("선택됨: " + item.itemData.itemName);
+    }
+
+
+    // 버튼용 메서드
+    public void OnUseButton()
+    {
+        if (selectedItem == null)
+        {
+            Debug.Log("선택된 아이템이 없다.");
+            return;
+        }
+
+        selectedItem.itemData.Use(playerInventory.gameObject);
+
+        // 포션 -> 소비
+        if (selectedItem.itemData.itemType == ItemType.potion)
+        {
+            playerInventory.RemoveItem(selectedItem.itemData, 1);
         }
     }
 }

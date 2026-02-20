@@ -87,6 +87,16 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         }
     }
 
+    public void Heal(int amount)
+    {
+        curHP += amount;
+        curHP = Mathf.Clamp(curHP, 0, MaxHP);
+
+        OnStatChanged?.Invoke(StatType.HP, curHP, MaxHP);
+
+        Debug.Log("플레이어 회복! / 현재 체력" + curHP);
+    }
+
     private void Die()
     {
         Debug.Log("플레이어 사망!");
