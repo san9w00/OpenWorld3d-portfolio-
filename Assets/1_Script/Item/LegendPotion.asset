@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ec9fa1a1b5a6a45956ee2f288afc02, type: 3}
+  m_Name: LegendPotion
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemId: 0
+  itemName: LegendPotionkk
+  itemExplain: ang
+  itemIcon: {fileID: 486038512444524558, guid: a3b683ec7ef0dbd478e51c774a97101a, type: 3}
+  itemType: 1
+  maxStack: 2
