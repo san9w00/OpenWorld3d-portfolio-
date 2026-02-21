@@ -4,6 +4,7 @@ public class SwordHitbox : MonoBehaviour
 {
     private PlayerStatus playerStatus;
     private Collider hitbox;
+    private WeaponItemSO currentWeapon;
 
     private void Awake()
     {
@@ -13,14 +14,29 @@ public class SwordHitbox : MonoBehaviour
         hitbox.enabled = false;
     }
 
+    public void SetWeaponData(WeaponItemSO weaponData)
+    {
+        currentWeapon = weaponData;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        IDamageable target = other.GetComponent<IDamageable>();
+        if (currentWeapon == null) return;
 
+        IDamageable target = other.GetComponent<IDamageable>();
         if (target == null) return;
 
-        float damage = GetComponentInParent<PlayerStatus>().AtkDamage;
+        float damage = playerStatus.AtkDamage + currentWeapon.damage;
         target.TakeDamage(damage);
+
+        Vector3 hitPoint = other.ClosestPoint(transform.position);
+
+        DamageEventData data = new DamageEventData(
+            hitPoint,
+            currentWeapon.hitEffectVFX
+        );
+
+        GameEvents.OnUnitDamaged?.Invoke(data);
     }
 
     // 애니메이션이벤트로 한단계 건너서 호출될예정

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BearData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 0
-  maxHP: 50
+  maxHP: 100
   atkDamage: 10
   atkCooldown: 3
   defense: 0

@@ -38,6 +38,7 @@ public class PlayerEquipment : MonoBehaviour
                 SwordHitbox hitbox = currentWeapon.GetComponent<SwordHitbox>();
                 if (hitbox != null)
                 {
+                    hitbox.SetWeaponData(weaponData);
                     playerCombat.SetWeapon(hitbox);
                 }
 
