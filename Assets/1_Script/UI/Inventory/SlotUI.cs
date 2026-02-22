@@ -7,6 +7,7 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI quantityText;
+    [SerializeField] private GameObject equipMark; // 무기 장착 표시
 
     private InventoryItem currentItem;
     private InventoryUI inventoryUI;
@@ -36,6 +37,12 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
         icon.sprite = item.itemData.itemIcon;
 
         quantityText.text = item.quantity > 1 ? item.quantity.ToString() : "";
+
+        // 무기 장착 표시 업데이트
+        if (inventoryUI.IsEquipped(item.itemData))
+            equipMark.SetActive(true);
+        else
+            equipMark.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)

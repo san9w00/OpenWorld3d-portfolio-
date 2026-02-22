@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
   m_Name: FireSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
-  itemName: FireSword
-  itemExplain: FireSkill Unlocked
+  itemName: Fire X
+  itemExplain: SWORD / + '25' Damage, Can use "Fire Skill" With 'RightClick'
   itemIcon: {fileID: 21300000, guid: 7a2181c228f80644b8029357fb1209fe, type: 3}
   maxStack: 1
   itemType: 0
