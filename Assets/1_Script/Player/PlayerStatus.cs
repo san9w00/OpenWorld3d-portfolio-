@@ -5,6 +5,8 @@ public enum StatType
 {
     HP,
     Stamina,
+    Level,
+    Exp
 }
 
 public class PlayerStatus : MonoBehaviour, IDamageable
@@ -100,5 +102,23 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log("플레이어 사망!");
+    }
+
+    // -- 업그레이드 증가 메서드 --
+    public void IncreaseMaxHP(float amount)
+    {
+        bonusMaxHP += amount;
+        curHP = MaxHP;
+        OnStatChanged?.Invoke(StatType.HP, curHP, MaxHP);
+    }
+
+    public void IncreaseAttack(float amount)
+    {
+        bonusAtkDamage += amount;
+    }
+
+    public void IncreaseDefense(float amount)
+    {
+        bonusDefense += amount;
     }
 }

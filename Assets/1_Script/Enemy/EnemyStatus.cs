@@ -17,7 +17,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
         CurHP -= finalAttack;       
 
-        Debug.Log($"곰 남은체력: {CurHP}");
+        Debug.Log($"남은체력: {CurHP}");
 
         if (CurHP <= 0)
         {
@@ -27,6 +27,9 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
+        levelSystem.AddExp((int)Data.rewardExp);
+
         Destroy(gameObject);
     }
 }
