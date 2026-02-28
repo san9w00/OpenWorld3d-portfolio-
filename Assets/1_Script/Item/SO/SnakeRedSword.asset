@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SnakeRedSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemName: Snake
+  price: 20
   itemExplain: SWORD / + '12' Damage, "Feel good"
   itemIcon: {fileID: 21300000, guid: 0e1ab67eb67874542b1606233616c377, type: 3}
   maxStack: 1

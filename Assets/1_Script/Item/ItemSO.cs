@@ -9,6 +9,7 @@ public enum ItemType
 public abstract class ItemSO : ScriptableObject
 {
     public string itemName;
+    public int price;
     public string itemExplain;
     public Sprite itemIcon;
     public int maxStack = 1;

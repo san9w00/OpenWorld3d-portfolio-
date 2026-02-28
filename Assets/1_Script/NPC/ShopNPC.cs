@@ -2,18 +2,15 @@ using UnityEngine;
 
 public class ShopNPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject shopUI;
+    [SerializeField] private ShopData shopData;
 
     public void Interact()
     {
-        shopUI.SetActive(true);
+        ShopUI.Instance.Open(shopData);
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public bool CanInteract()
-    {
-        return true;
-    }
+    public bool CanInteract() => true;
 
     public string GetPrompt()
     {
