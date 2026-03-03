@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemName: Icer
-  price: 300
+  price: 1000
   itemExplain: SWORD / + '20' Damage, Can use "Ice Skill" with 'RightClick'
   itemIcon: {fileID: 21300000, guid: faeec5264147ca34c974c196252007a4, type: 3}
   maxStack: 1

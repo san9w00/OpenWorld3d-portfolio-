@@ -9,9 +9,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        CurHP = Data.maxHP;
-
-        
+        CurHP = Data.maxHP;       
     }
     public void TakeDamage(float damage)
     {

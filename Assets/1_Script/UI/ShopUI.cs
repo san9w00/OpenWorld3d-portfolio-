@@ -56,5 +56,6 @@ public class ShopUI : MonoBehaviour
     public void Close()
     {
         shopPanel.SetActive(false);
+        _inputHandler.SetInventoryState(false);
     }
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   atkCooldown: 2
   defense: 0
   rewardExp: 7
+  rewardGold: 6
