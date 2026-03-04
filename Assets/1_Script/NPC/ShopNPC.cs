@@ -12,8 +12,8 @@ public class ShopNPC : MonoBehaviour, IInteractable
 
     public bool CanInteract() => true;
 
-    public string GetPrompt()
+    public string GetInteractText()
     {
-        return "F - Open Shop";
+        return "Open/Close Shop";
     }
 }

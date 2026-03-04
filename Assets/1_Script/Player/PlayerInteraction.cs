@@ -34,10 +34,20 @@ public class PlayerInteraction : MonoBehaviour
                 closestDistance = distance;
                 closest = interactable;
             }
+        }
 
+        if (closest != currentTarget)
+        {
             currentTarget = closest;
 
-            // ui 안내 표시
+            if (currentTarget != null)
+            {
+                InteractionUI.instance.Show(currentTarget.GetInteractText());
+            }
+            else
+            {
+                InteractionUI.instance.Hide();
+            }
         }
     }
 
