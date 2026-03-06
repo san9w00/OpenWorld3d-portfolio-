@@ -18,6 +18,13 @@ public class InputHandler : MonoBehaviour
     [Header("UI State")]
     private bool _isInventoryOpen = false;
 
+    private bool isCanInput = true;
+
+    public void SetInputEnabled(bool value)
+    {
+        isCanInput = value;
+    }
+
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
@@ -34,6 +41,9 @@ public class InputHandler : MonoBehaviour
         {
             LookAround();
         }
+
+        if (!isCanInput)
+            return;
 
         HandleInput();
         ProcessCommands();

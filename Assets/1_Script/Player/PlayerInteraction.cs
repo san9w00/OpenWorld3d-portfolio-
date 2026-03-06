@@ -59,6 +59,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentTarget.Interact();
         }
+
+        // UI 즉시 업데이트
+        InteractionUI.instance.Show(currentTarget.GetInteractText());
     }
 
     private void OnDrawGizmosSelected()

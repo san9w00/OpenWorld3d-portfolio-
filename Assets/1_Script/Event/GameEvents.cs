@@ -15,5 +15,14 @@ public struct DamageEventData
 
 public static class GameEvents
 {
+    // 데미지 이벤트
     public static Action<DamageEventData> OnUnitDamaged;
+
+    // 적 리셋 이벤트
+    public static Action OnReset;
+
+    public static void Reset()
+    {
+        OnReset?.Invoke();
+    }
 }

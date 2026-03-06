@@ -89,7 +89,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         }
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         curHP += amount;
         curHP = Mathf.Clamp(curHP, 0, MaxHP);

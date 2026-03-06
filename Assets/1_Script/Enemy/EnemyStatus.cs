@@ -7,10 +7,18 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     private float CurHP;
     private float Defense => Data.defense;
 
+    private EnemySpawner spawner;
+
     private void Awake()
     {
         CurHP = Data.maxHP;       
     }
+
+    public void SetSpawner(EnemySpawner spawner)
+    {
+        this.spawner = spawner;
+    }
+
     public void TakeDamage(float damage)
     {
         float finalAttack = Mathf.Max(1, damage - Defense);
@@ -30,6 +38,11 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
         levelSystem.AddExp((int)Data.rewardExp);
 
-        Destroy(gameObject);
+        spawner.ReturnToPool(this);
+    }
+
+    public void ResetEnemy()
+    {
+        CurHP = Data.maxHP;
     }
 }
