@@ -22,6 +22,7 @@ public class SwordHitbox : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (currentWeapon == null) return;
+        if (other.CompareTag("Player")) return;
 
         IDamageable target = other.GetComponent<IDamageable>();
         if (target == null) return;
