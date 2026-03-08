@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
     public List<InventoryItem> items = new List<InventoryItem>();
 
     public Action OnInventoryChanged; // 인벤토리가 변경될 때 호출되는 이벤트
+    public Action<ItemSO, int> OnItemAdded; // 아이템 흭득 이벤트
 
     public void AddItem(ItemSO item, int amount = 1)
     {
@@ -31,6 +32,7 @@ public class PlayerInventory : MonoBehaviour
 
         Debug.Log($"{item.itemName} 획득 / 현재 개수: {GetItemCount(item)}");
 
+        OnItemAdded?.Invoke(item, amount);
         OnInventoryChanged?.Invoke();
     }
 
