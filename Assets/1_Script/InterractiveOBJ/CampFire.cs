@@ -5,9 +5,6 @@ public class CampFire : MonoBehaviour, IInteractable
     [SerializeField] private GameObject fireVFX;
     [SerializeField] private float healPerSecond = 10f;
 
-    [SerializeField] private string campFireID;
-    [SerializeField] private Transform warpPoint;
-
     private PlayerStatus playerStatus;
     private InputHandler inputHandler;
 

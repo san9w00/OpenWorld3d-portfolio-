@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - FxTemporaire
-  - Pushable
-  - Collision
   layers:
   - Default
   - TransparentFX
