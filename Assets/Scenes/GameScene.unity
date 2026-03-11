@@ -7487,6 +7487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CampFire
   fireVFX: {fileID: 1000835267}
   healPerSecond: 10
+  campFireID: 1
+  warpPoint: {fileID: 1204889301}
 --- !u!54 &552022525
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10801,15 +10803,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4846999885953369041, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.66
+      value: 139.07
       objectReference: {fileID: 0}
     - target: {fileID: 4846999885953369041, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.021
+      value: 33.65
       objectReference: {fileID: 0}
     - target: {fileID: 4846999885953369041, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 110.56
+      value: 226.3
       objectReference: {fileID: 0}
     - target: {fileID: 4846999885953369041, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16451,6 +16453,37 @@ MonoBehaviour:
   icon: {fileID: 1145262308}
   quantityText: {fileID: 107177750}
   equipMark: {fileID: 1805401439}
+--- !u!1 &1204889300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1204889301}
+  m_Layer: 7
+  m_Name: SP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204889301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204889300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.063, y: 0, z: 1.382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 552022523}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1208755968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23335,7 +23368,7 @@ Transform:
   m_GameObject: {fileID: 1653153758}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.5036941, z: -0, w: 0.8638821}
-  m_LocalPosition: {x: 104.66, y: 7.021, z: 110.56}
+  m_LocalPosition: {x: 139.07, y: 33.65, z: 226.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24767,7 +24800,7 @@ Transform:
   m_GameObject: {fileID: 1737673203}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15001154, y: 0.4960419, z: -0.08746556, w: 0.85075784}
-  m_LocalPosition: {x: 101.62034, y: 10.169617, z: 108.8395}
+  m_LocalPosition: {x: 136.03035, y: 36.79862, z: 224.5795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29707,6 +29740,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7879238690498536592, guid: 971c3e3e3ebb1c74489ee8322556d6bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1000835271}
+    - targetCorrespondingSourceObject: {fileID: 7879238690498536592, guid: 971c3e3e3ebb1c74489ee8322556d6bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1204889301}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8507322090642068218, guid: 971c3e3e3ebb1c74489ee8322556d6bf, type: 3}
       insertIndex: -1
@@ -29982,6 +30018,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4132312772176831909, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4176553025200046990, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -30084,15 +30124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.419998
+      value: -21.39
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.012380123
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.3695755
+      value: -11.3
       objectReference: {fileID: 0}
     - target: {fileID: 8073086772555192299, guid: 64b182395c0b6744a920c74bce3ece13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31456,6 +31496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CampFire
   fireVFX: {fileID: 1386879593}
   healPerSecond: 10
+  campFireID: 
+  warpPoint: {fileID: 0}
 --- !u!54 &2102793192
 Rigidbody:
   m_ObjectHideFlags: 0
