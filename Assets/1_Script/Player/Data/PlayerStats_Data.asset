@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   maxHP: 100
   maxStamina: 100
-  moveSpeed: 4
+  moveSpeed: 3
   atkDamage: 10
   jumpPower: 4
   defense: 0
   attackStaminaCost: 20
   rollStaminaCost: 20
+  runStaminaCost: 10
   staminaRegenRate: 10

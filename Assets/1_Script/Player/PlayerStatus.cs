@@ -33,8 +33,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float StaminaRegenRate => data.staminaRegenRate;
     public float RollCost => data.rollStaminaCost;
     public float AttackCost => data.attackStaminaCost;
+    public float RunCostPerSecond => data.runStaminaCost;
 
     public event Action<StatType, float, float> OnStatChanged;
+
+    public bool IsUsingStamina { get; set; }
 
 
     private void Awake()
@@ -52,7 +55,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private void Update()
     {
         // 자동 스테미나 회복
-        if (curStamina < MaxStamina)
+        if (!IsUsingStamina && curStamina < MaxStamina)
         {
             curStamina += StaminaRegenRate * Time.deltaTime;
             curStamina = Mathf.Min(curStamina, MaxStamina);

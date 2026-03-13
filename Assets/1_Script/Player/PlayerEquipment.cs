@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
@@ -23,14 +24,14 @@ public class PlayerEquipment : MonoBehaviour
     public void EquipWeapon(WeaponItemSO weaponData)
     {
         // 전부 비활성화
-        foreach(var slot in weaponSlots)
+        foreach (var slot in weaponSlots)
         {
             slot.weaponObject.SetActive(false);
         }
 
-        foreach(var slot in weaponSlots)
+        foreach (var slot in weaponSlots)
         {
-            if(slot.weaponData == weaponData)
+            if (slot.weaponData == weaponData)
             {
                 slot.weaponObject.SetActive(true);
                 currentWeapon = slot.weaponObject;

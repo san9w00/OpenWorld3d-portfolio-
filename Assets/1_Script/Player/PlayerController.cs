@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
         if (_isRolling || _isAttacking) return;
 
         float speed = 0f;
+        _playerStatus.IsUsingStamina = false;
+
 
         if (direction.magnitude >= 0.1f)
         {
@@ -60,7 +62,38 @@ public class PlayerController : MonoBehaviour
         }
         if (_animator != null)
         {
-            _animator.SetFloat("Speed", direction.magnitude * speed);
+            _animator.SetFloat("Speed", direction.magnitude);
+        }
+    }
+
+    // 달리기
+    public void Run(Vector3 direction)
+    {
+        if (_isRolling || _isAttacking) return;
+
+        float speed = 0f;
+        _playerStatus.IsUsingStamina = true;
+
+        float staminaCost = _playerStatus.RunCostPerSecond * Time.deltaTime;
+        if(!_playerStatus.UseStamina(staminaCost))
+        {
+            Move(direction);
+            return;
+        }
+
+        if (direction.magnitude >= 0.1f)
+        {
+            speed = _playerStatus.MoveSpeed * 2.3f; // 달리기 배율
+
+            _characterController.Move(direction * speed * Time.deltaTime);
+
+            Vector3 targetDirection = Vector3.Slerp(transform.forward, direction, 0.15f);
+            transform.rotation = Quaternion.LookRotation(targetDirection);
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", direction.magnitude * 3);
         }
     }
 

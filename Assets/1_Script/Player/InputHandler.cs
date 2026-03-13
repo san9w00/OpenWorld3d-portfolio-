@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -19,6 +20,7 @@ public class InputHandler : MonoBehaviour
     private bool _isInventoryOpen = false;
 
     private bool isCanInput = true;
+    private bool isRunning;
 
     public void SetInputEnabled(bool value)
     {
@@ -51,6 +53,8 @@ public class InputHandler : MonoBehaviour
 
     private void HandleInput()
     {
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         Vector3 forward = cameraArm.forward;
@@ -73,7 +77,7 @@ public class InputHandler : MonoBehaviour
         }
 
         // [구르기] 입력
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             _commandQueue.Enqueue(new RollCommand(_playerController, direction));
         }
@@ -84,8 +88,16 @@ public class InputHandler : MonoBehaviour
             _commandQueue.Enqueue(new JumpCommand(_playerController));
         }
 
-        // [이동] 입력   
-        _commandQueue.Enqueue(new MoveCommand(_playerController, direction)); // 이동입력을 커맨드데이터로 캡슐화하여 큐에 삽입
+        // [이동 (걷기 / 달리기)] 입력   
+        if (isRunning)
+        {
+            _commandQueue.Enqueue(new RunCommand(_playerController, direction));
+        }
+        else
+        {
+            _commandQueue.Enqueue(new MoveCommand(_playerController, direction)); // 이동입력을 커맨드데이터로 캡슐화하여 큐에 삽입
+
+        }
     }
 
     private void ProcessCommands()
