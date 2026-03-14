@@ -34,6 +34,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float RollCost => data.rollStaminaCost;
     public float AttackCost => data.attackStaminaCost;
     public float RunCostPerSecond => data.runStaminaCost;
+    public float ShieldCost => data.shieldStaminaCost;
 
     public event Action<StatType, float, float> OnStatChanged;
 
@@ -79,6 +80,15 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        PlayerController controller = GetComponent<PlayerController>();
+
+        // 방어중이면 피해 무효
+        if (controller != null && controller.IsGuarding())
+        {
+            Debug.Log("방어 성공!");
+            return;
+        }
+
         float finalDamage = Mathf.Max(1, damage - Defense);
         curHP = Mathf.Clamp(curHP - finalDamage, 0, MaxHP);
 

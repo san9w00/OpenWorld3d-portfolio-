@@ -16,5 +16,6 @@ public class PlayerData : ScriptableObject
     public float attackStaminaCost = 10f; // 공격 소모량
     public float rollStaminaCost = 20f;   // 구르기 소모량
     public float runStaminaCost = 10f;    // 달리기 소모량
+    public float shieldStaminaCost = 15f; // 방패 사용 소모량
     public float staminaRegenRate = 5f;   // 초당 스테미나 회복량
 }

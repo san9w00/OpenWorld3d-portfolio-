@@ -98,6 +98,16 @@ public class InputHandler : MonoBehaviour
             _commandQueue.Enqueue(new MoveCommand(_playerController, direction)); // 이동입력을 커맨드데이터로 캡슐화하여 큐에 삽입
 
         }
+
+        // [방패] 입력
+        if (Input.GetMouseButtonDown(1))
+        {
+            _commandQueue.Enqueue(new GuardStartCommand(_playerController));
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            _commandQueue.Enqueue(new GuardStopCommand(_playerController));
+        }
     }
 
     private void ProcessCommands()

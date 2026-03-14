@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private bool _canCombo = false;
     private bool _isAttacking = false;
 
+    [Header("Shield Settings")]
+    private bool _isGuarding = false;
+
     private void Awake()
     {
         _playerStatus = GetComponent<PlayerStatus>();
@@ -39,12 +42,23 @@ public class PlayerController : MonoBehaviour
 
         _velocity.y += Physics.gravity.y * gravityMultiplier *Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
+
+        // 방어중 스태미나 소모
+        if (_isGuarding)
+        {
+            float staminaCost = _playerStatus.ShieldCost * Time.deltaTime;
+
+            if (!_playerStatus.UseStamina(staminaCost))
+            {
+                StopGuard();
+            }
+        }
     }
 
     // [이동]
     public void Move(Vector3 direction)
     {
-        if (_isRolling || _isAttacking) return;
+        if (_isRolling || _isAttacking || _isGuarding) return;
 
         float speed = 0f;
         _playerStatus.IsUsingStamina = false;
@@ -69,7 +83,7 @@ public class PlayerController : MonoBehaviour
     // 달리기
     public void Run(Vector3 direction)
     {
-        if (_isRolling || _isAttacking) return;
+        if (_isRolling || _isAttacking || _isGuarding) return;
 
         float speed = 0f;
         _playerStatus.IsUsingStamina = true;
@@ -100,7 +114,7 @@ public class PlayerController : MonoBehaviour
     // [점프]
     public void Jump()
     {
-        if (_isRolling || _isAttacking) return;
+        if (_isRolling || _isAttacking || _isGuarding) return;
 
         if (_characterController.isGrounded)
         {
@@ -117,7 +131,7 @@ public class PlayerController : MonoBehaviour
     // [공격]
     public void Attack()
     {
-        if (_isRolling) return;
+        if (_isRolling || _isGuarding) return;
 
         if (!_isAttacking)
         {
@@ -166,7 +180,7 @@ public class PlayerController : MonoBehaviour
     // [구르기]
     public void Roll(Vector3 direction)
     {
-        if (_isRolling || _isAttacking || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
+        if (_isRolling || _isAttacking || _isGuarding || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
         
         if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {
@@ -189,6 +203,37 @@ public class PlayerController : MonoBehaviour
         }
 
         _isRolling = false;
+    }
+
+    public void StartGuard()
+    {
+        if(_isRolling || _isAttacking) return;
+
+        _isGuarding = true;
+
+        _playerStatus.IsUsingStamina = true;
+
+        // 방어 Animation
+        if (_animator != null)
+        {
+            _animator.SetBool("Guard", true);
+        }
+    }
+
+    public void StopGuard()
+    {
+        _isGuarding = false;
+        _playerStatus.IsUsingStamina = false;
+
+        if (_animator != null)
+        {
+            _animator.SetBool("Guard", false);
+        }
+    }
+
+    public bool IsGuarding()
+    {
+        return _isGuarding;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
