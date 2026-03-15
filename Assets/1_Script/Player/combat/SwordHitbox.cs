@@ -6,6 +6,8 @@ public class SwordHitbox : MonoBehaviour
     private Collider hitbox;
     private WeaponItemSO currentWeapon;
 
+    public WeaponItemSO WeaponData => currentWeapon;
+
     private void Awake()
     {
         playerStatus = GetComponentInParent<PlayerStatus>();

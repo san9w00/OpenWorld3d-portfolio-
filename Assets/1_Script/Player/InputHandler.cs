@@ -108,6 +108,21 @@ public class InputHandler : MonoBehaviour
         {
             _commandQueue.Enqueue(new GuardStopCommand(_playerController));
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerEquipment equipment = _playerController.GetComponent<PlayerEquipment>();
+
+            if (equipment != null && equipment.CurrentWeapon != null)
+            {
+                SwordHitbox hitbox = equipment.CurrentWeapon.GetComponent<SwordHitbox>();
+
+                if (hitbox != null && hitbox.WeaponData != null && hitbox.WeaponData.skill != null)
+                {
+                    hitbox.WeaponData.skill.TryUse(gameObject);
+                }
+            }
+        }
     }
 
     private void ProcessCommands()

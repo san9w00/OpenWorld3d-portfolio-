@@ -16,6 +16,8 @@ public class PlayerEquipment : MonoBehaviour
     private GameObject currentWeapon;
     private PlayerCombat playerCombat;
 
+    public GameObject CurrentWeapon => currentWeapon;
+
     private void Awake()
     {
         playerCombat = GetComponent<PlayerCombat>();

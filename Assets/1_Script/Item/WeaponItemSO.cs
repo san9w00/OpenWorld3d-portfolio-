@@ -3,8 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Weapon")]
 public class WeaponItemSO : ItemSO
 {
+    [Header("Weapon Settings")]
     public float damage;
     public GameObject hitEffectVFX;
+
+    [Header("Skills")]
+    public WeaponSkillSO skill;
 
     public override void Use(GameObject player)
     {
@@ -14,5 +18,10 @@ public class WeaponItemSO : ItemSO
         {
             equipment.EquipWeapon(this);
         }
+    }
+
+    public void UseSkill(GameObject player)
+    {
+        skill?.UseSkill(player);
     }
 }
