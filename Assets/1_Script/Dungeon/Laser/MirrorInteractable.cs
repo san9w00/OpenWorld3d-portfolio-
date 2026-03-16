@@ -45,6 +45,6 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "Rotate Mirror 45'";
+        return "Rotate Crystal 45'";
     }  
 }
