@@ -13377,7 +13377,7 @@ MonoBehaviour:
   interactionRadius: 3.6
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 704
+    m_Bits: 2752
 --- !u!114 &980223096
 MonoBehaviour:
   m_ObjectHideFlags: 0
