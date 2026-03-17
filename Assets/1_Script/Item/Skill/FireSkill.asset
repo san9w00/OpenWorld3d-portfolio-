@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e49931566d3cb2d4db7b25a3a91e85f4, type: 3}
   m_Name: FireSkill
   m_EditorClassIdentifier: Assembly-CSharp::FireSkillSO
+  skillIcon: {fileID: 21300000, guid: 11cab13548c67f14e88bd4ab018c6ab6, type: 3}
   cooldown: 15
   radius: 4
   tickDamage: 7

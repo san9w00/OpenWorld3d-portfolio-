@@ -46,10 +46,23 @@ public class PlayerEquipment : MonoBehaviour
                 }
 
                 Debug.Log("무기 장착" + weaponData.itemName);
+
+                FindAnyObjectByType<WeaponUI>()?.Refresh();
+
                 return;
             }
         }
 
         Debug.LogWarning("해당 무기 오브젝트가 연결되지 않음");
+    }
+
+    public WeaponItemSO GetCurrentWeaponData()
+    {
+        foreach(var slot in weaponSlots)
+        {
+            if (slot.weaponObject.activeSelf)
+                return slot.weaponData;
+        }
+        return null;
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class WeaponSkillSO : ScriptableObject
 {
+    [Header("Skill Icon")]
+    public Sprite skillIcon;
+
     [Header("Cooldown")]
     public float cooldown = 10f;
 
@@ -31,6 +34,15 @@ public abstract class WeaponSkillSO : ScriptableObject
         Debug.Log($"{name} 스킬 사용!");
 
         UseSkill(user);
+    }
+
+    public float GetRemainingCooldown(GameObject user)
+    {
+        if (!_lastUsedTime.ContainsKey(user))
+            return 0f;
+
+        float remain = (_lastUsedTime[user] + cooldown) - Time.time;
+        return Mathf.Max(0, remain);
     }
 
     public abstract void UseSkill(GameObject user);
