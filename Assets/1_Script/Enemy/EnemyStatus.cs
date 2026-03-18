@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour, IDamageable
@@ -8,6 +9,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     private float Defense => Data.defense;
 
     private EnemySpawner spawner;
+
+    public Action<float, float> OnHPChanged;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
         Debug.Log($"남은체력: {CurHP}");
 
+        OnHPChanged?.Invoke(CurHP, Data.maxHP);
+
         if (CurHP <= 0)
         {
             Die();
@@ -44,5 +49,6 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     public void ResetEnemy()
     {
         CurHP = Data.maxHP;
+        OnHPChanged?.Invoke(CurHP, Data.maxHP);
     }
 }
