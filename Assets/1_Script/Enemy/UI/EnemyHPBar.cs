@@ -7,7 +7,7 @@ public class EnemyHPBar : MonoBehaviour
 
     private EnemyStatus enemy;
 
-    private float visibleTime = 2f;
+    private float visibleTime = 10f;
     private float timer;
 
     private void Start()
