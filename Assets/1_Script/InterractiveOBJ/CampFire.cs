@@ -57,7 +57,7 @@ public class CampFire : MonoBehaviour, IInteractable
     {
         isResting = true;
         inputHandler.SetInputEnabled(false);
-        GameEvents.Reset();
+        EventBus.Publish(new ResetEvent(transform.position));
 
         Debug.Log("ÈŞ½Ä ½ÃÀÛ");        
     }

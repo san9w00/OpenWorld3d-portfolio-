@@ -13,13 +13,16 @@ public class EnemySpawner : MonoBehaviour
     {
         CreatePool();
         SpawnAll();
-
-        GameEvents.OnReset += ResetEnemies;
     }
 
-    private void OnDestroy()
+    private void OnEnable()
     {
-        GameEvents.OnReset -= ResetEnemies;
+        EventBus.Subscribe<ResetEvent>(OnResetEvent);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<ResetEvent>(OnResetEvent);
     }
 
     void CreatePool()
@@ -64,6 +67,11 @@ public class EnemySpawner : MonoBehaviour
 
         enemy.gameObject.SetActive(false);
         poolList.Enqueue(enemy);
+    }
+
+    private void OnResetEvent(ResetEvent e)
+    {
+        ResetEnemies();
     }
 
     public void ResetEnemies()

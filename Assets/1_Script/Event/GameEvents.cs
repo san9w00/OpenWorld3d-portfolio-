@@ -1,28 +1,34 @@
 using System;
 using UnityEngine;
 
-public struct DamageEventData
+public struct VFXEvent
 {
-    public Vector3 hitPosition;
-    public GameObject hitEffectPrefab;
+    public Vector3 Position;
+    public GameObject VFXPrefab;
 
-    public DamageEventData(Vector3 position, GameObject effect)
+    public VFXEvent(Vector3 position, GameObject vfxPrefab)
     {
-        hitPosition = position;
-        hitEffectPrefab = effect;
+        Position = position;
+        VFXPrefab = vfxPrefab;
     }
 }
 
-public static class GameEvents
+public struct LevelUpEvent
 {
-    // 데미지 이벤트
-    public static Action<DamageEventData> OnUnitDamaged;
+    public Vector3 Position;
 
-    // 적 리셋 이벤트
-    public static Action OnReset;
-
-    public static void Reset()
+    public LevelUpEvent(Vector3 position)
     {
-        OnReset?.Invoke();
+        Position = position;
+    }
+}
+
+public struct ResetEvent
+{
+    public Vector3 Position;
+
+    public ResetEvent(Vector3 positon)
+    {
+        Position = positon;
     }
 }

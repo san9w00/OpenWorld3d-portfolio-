@@ -26,7 +26,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     {
         float finalAttack = Mathf.Max(1, damage - Defense);
 
-        CurHP -= finalAttack;       
+        CurHP -= finalAttack;
 
         Debug.Log($"남은체력: {CurHP}");
 
