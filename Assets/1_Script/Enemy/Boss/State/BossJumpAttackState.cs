@@ -7,7 +7,12 @@ public class BossJumpAttackState : IBossState
     private BossStateMachine stateMachine;
 
     private float timer;
-    private float duration = 2f;
+    private float duration = 1f;
+
+    private Vector3 startPos;
+    private Vector3 targetPos;
+
+    private float jumpHeight = 3f;
 
     public BossJumpAttackState(BossController boss, BossStateMachine stateMachine)
     {
@@ -18,7 +23,12 @@ public class BossJumpAttackState : IBossState
 
     public void Enter()
     {
+        boss.agent.isStopped = true;
         boss.agent.enabled = false;
+
+        startPos = boss.transform.position;
+        targetPos = boss.player.position;
+
         boss.animator.Play("JumpAttack");
         timer = 0f;
     }
@@ -30,7 +40,7 @@ public class BossJumpAttackState : IBossState
         boss.transform.position = Vector3.Lerp(
             boss.transform.position,
             boss.player.position,
-            Time.deltaTime * 5f
+            Time.deltaTime * 2.2f
         );
 
         if (timer >= duration)
@@ -42,5 +52,8 @@ public class BossJumpAttackState : IBossState
 
     public void Exit()
     {
+        boss.agent.enabled = true;
+        boss.agent.Warp(boss.transform.position);
+        boss.agent.isStopped = false;
     }
 }

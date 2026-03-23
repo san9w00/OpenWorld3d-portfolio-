@@ -10844,6 +10844,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140364668753125396, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2271190449730220865, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
       propertyPath: m_Layer
       value: 3

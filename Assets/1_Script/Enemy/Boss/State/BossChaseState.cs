@@ -24,9 +24,12 @@ public class BossChaseState : IBossState
 
         if (dist <= boss.attackRange)
         {
+            boss.agent.isStopped = true;
+            boss.agent.ResetPath();
+
             stateMachine.ChangeState(boss.attackState);
         }
-        else if (dist <= boss.jumpAttackRange)
+        else if (dist >= boss.jumpAttackRange)
         {
             stateMachine.ChangeState(boss.jumpAttackState);
         }
