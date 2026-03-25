@@ -16,6 +16,6 @@ MonoBehaviour:
   maxHP: 20
   atkDamage: 8
   atkCooldown: 2
-  defense: 0
+  defense: 3
   rewardExp: 7
-  rewardGold: 6
+  rewardGold: 10

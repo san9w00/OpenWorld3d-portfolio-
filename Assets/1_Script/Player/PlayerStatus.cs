@@ -5,6 +5,7 @@ public enum StatType
 {
     HP,
     Stamina,
+    Gold,
     Level,
     Exp
 }
@@ -14,6 +15,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [SerializeField] private PlayerData data;
     public float curHP { get; private set; } 
     public float curStamina { get; private set; }
+    public int Gold { get; private set; } = 200;
 
     // Base Stats
     public float MaxHP => data.maxHP + bonusMaxHP;
@@ -37,6 +39,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float ShieldCost => data.shieldStaminaCost;
 
     public event Action<StatType, float, float> OnStatChanged;
+    public Action OnGoldChanged;
 
     public bool IsUsingStamina { get; set; }
 
@@ -45,6 +48,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         curHP = MaxHP;
         curStamina = MaxStamina;
+    }
+
+    private void OnEnable()
+    {
+        EventBus.Subscribe<GoldRewardEvent>(OnGoldReward);
     }
 
     private void Start()
@@ -100,6 +108,29 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+
+    private void OnGoldReward(GoldRewardEvent evt)
+    {
+        AddGold(evt.Amount);
+
+        Debug.Log($"+{evt.Amount} °ñµå È¹µæ!");
+    }
+
+    public void AddGold(int amount)
+    {
+        Gold += amount;
+        OnGoldChanged?.Invoke();
+    }
+
+    public bool TrySpendGold(int amount)
+    {
+        if (Gold < amount)
+            return false;
+
+        Gold -= amount;
+        OnGoldChanged?.Invoke();
+        return true;
     }
 
     public void Heal(float amount)

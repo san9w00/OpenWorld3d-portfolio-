@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   maxHP: 100
   maxStamina: 100
+  gold: 200
   moveSpeed: 3.6
   atkDamage: 10
   jumpPower: 4

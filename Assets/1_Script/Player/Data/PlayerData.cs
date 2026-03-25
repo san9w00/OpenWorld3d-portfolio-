@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
     [Header("Base Stats")]
     public float maxHP;
     public float maxStamina;
+    public float gold;
     public float moveSpeed;
     public float atkDamage;
     public float jumpPower;

@@ -12,6 +12,12 @@ public class BossController : MonoBehaviour
     public float jumpAttackRange = 20f;
     public float attackRange = 6f;
 
+    [Header("Attack HitBox")]
+    [SerializeField] private Vector3 hitBoxPos;
+    [SerializeField] private Vector3 hitBoxSize = new Vector3(2, 2, 2);
+    [SerializeField] private LayerMask targetLayer;
+
+    private BossStatus status;
     private BossStateMachine stateMachine;
 
     // ป๓ลย
@@ -22,6 +28,8 @@ public class BossController : MonoBehaviour
 
     private void Awake()
     {
+        status = GetComponent<BossStatus>();
+
         stateMachine = new BossStateMachine();
 
         idleState = new BossIdleState(this, stateMachine);
@@ -58,5 +66,41 @@ public class BossController : MonoBehaviour
     public float DistanceToPlayer()
     {
         return Vector3.Distance(transform.position, player.position);
+    }
+
+    // Animation Event
+    public void ApplyDamage()
+    {
+        Vector3 center = transform.position + transform.forward * hitBoxPos.z
+                     + transform.right * hitBoxPos.x
+                     + transform.up * hitBoxPos.y;
+
+        Collider[] hits = Physics.OverlapBox(
+        center,
+        hitBoxSize * 0.5f,
+        transform.rotation,
+        targetLayer
+        );
+
+        foreach (var hit in hits)
+        {
+            IDamageable damageable = hit.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(status.attackDamage);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+
+        Vector3 center = transform.position + transform.forward * hitBoxPos.z
+                         + transform.right * hitBoxPos.x
+                         + transform.up * hitBoxPos.y;
+
+        Gizmos.matrix = Matrix4x4.TRS(center, transform.rotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, hitBoxSize);
     }
 }

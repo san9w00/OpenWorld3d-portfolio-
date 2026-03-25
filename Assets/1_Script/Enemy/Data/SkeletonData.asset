@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SkeletonData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 0
-  maxHP: 50
+  maxHP: 30
   atkDamage: 15
-  atkCooldown: 2.3
+  atkCooldown: 2.7
   defense: 0
   rewardExp: 15
-  rewardGold: 18
+  rewardGold: 20

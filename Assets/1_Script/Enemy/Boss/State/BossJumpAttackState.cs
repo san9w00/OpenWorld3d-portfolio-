@@ -7,12 +7,12 @@ public class BossJumpAttackState : IBossState
     private BossStateMachine stateMachine;
 
     private float timer;
-    private float duration = 1f;
+    private float duration = 1.6f;
 
     private Vector3 startPos;
     private Vector3 targetPos;
 
-    private float jumpHeight = 3f;
+    private float jumpHeight = 3.5f;
 
     public BossJumpAttackState(BossController boss, BossStateMachine stateMachine)
     {
@@ -37,15 +37,18 @@ public class BossJumpAttackState : IBossState
     {
         timer += Time.deltaTime;
 
-        boss.transform.position = Vector3.Lerp(
-            boss.transform.position,
-            boss.player.position,
-            Time.deltaTime * 2.2f
-        );
+        float t = timer / duration;
+
+        Vector3 currentPos = Vector3.Lerp(startPos, targetPos, t);
+
+        float height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
+
+        currentPos.y += height;
+
+        boss.transform.position = currentPos;
 
         if (timer >= duration)
         {
-            boss.agent.enabled = true;
             stateMachine.ChangeState(boss.chaseState);
         }
     }

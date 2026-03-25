@@ -43,6 +43,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
         levelSystem.AddExp((int)Data.rewardExp);
 
+        EventBus.Publish(new GoldRewardEvent(Data.rewardGold, transform.position));
+
         spawner.ReturnToPool(this);
     }
 

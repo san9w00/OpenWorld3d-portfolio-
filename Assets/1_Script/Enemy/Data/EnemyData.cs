@@ -10,5 +10,5 @@ public class EnemyData : ScriptableObject
     public float atkCooldown;
     public float defense;
     public float rewardExp;
-    public float rewardGold;
+    public int rewardGold;
 }

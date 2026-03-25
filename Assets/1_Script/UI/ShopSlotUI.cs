@@ -10,6 +10,8 @@ public class ShopSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI explainText;
 
     private ItemSO currentItem;
+    private PlayerStatus playerStatus;
+    private PlayerInventory inventory;
 
     public void SetItem(ItemSO item)
     {
@@ -20,17 +22,19 @@ public class ShopSlotUI : MonoBehaviour
         explainText.text = item.itemExplain;
     }
 
+    public void Init(PlayerStatus player, PlayerInventory inven)
+    {
+        playerStatus = player;
+        inventory = inven;
+    }
+
+
     public void OnClickBuy()
     {
         if (currentItem == null) return;
 
-        PlayerInventory inventory = FindAnyObjectByType<PlayerInventory>();
-        PlayerGold gold = FindAnyObjectByType<PlayerGold>();
-
-        if (gold == null || inventory == null) return;
-
         // 골드 검사, 차감
-        if (!gold.TrySpendGold(currentItem.price))
+        if (!playerStatus.TrySpendGold(currentItem.price))
         {
             Debug.Log("골드가 부족하다!");
             return;

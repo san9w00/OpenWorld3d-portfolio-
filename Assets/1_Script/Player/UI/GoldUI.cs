@@ -4,21 +4,21 @@ using UnityEngine;
 public class GoldUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI goldText;
-    [SerializeField] private PlayerGold playerGold;
+    [SerializeField] private PlayerStatus playerStatus;
 
     private void Start()
     {
         UpdateGoldUI();
-        playerGold.OnGoldChanged += UpdateGoldUI;
+        playerStatus.OnGoldChanged += UpdateGoldUI;
     }
 
     private void OnDestroy()
     {
-        playerGold.OnGoldChanged -= UpdateGoldUI;
+        playerStatus.OnGoldChanged -= UpdateGoldUI;
     }
 
     private void UpdateGoldUI()
     {
-        goldText.text = playerGold.Gold.ToString();
+        goldText.text = playerStatus.Gold.ToString();
     }
 }

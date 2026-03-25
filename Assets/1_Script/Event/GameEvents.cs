@@ -13,6 +13,18 @@ public struct VFXEvent
     }
 }
 
+public struct GoldRewardEvent
+{
+    public int Amount;
+    public Vector3 Position;
+
+    public GoldRewardEvent(int amount, Vector3 position)
+    {
+        Amount = amount;
+        Position = position;
+    }
+}
+
 public struct LevelUpEvent
 {
     public Vector3 Position;
