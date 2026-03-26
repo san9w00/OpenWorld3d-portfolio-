@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CampFire : MonoBehaviour, IInteractable
 {
+    [SerializeField] private string campFireID;
     [SerializeField] private GameObject fireVFX;
     [SerializeField] private float healPerSecond = 10f;
 
@@ -10,6 +11,10 @@ public class CampFire : MonoBehaviour, IInteractable
 
     private bool isActivated = false;
     private bool isResting = false;
+
+    public string ID => campFireID;
+    public Vector3 Position => transform.position;
+    public bool IsActivated => isActivated;
 
     private void Start()
     {
@@ -49,6 +54,8 @@ public class CampFire : MonoBehaviour, IInteractable
     {
         isActivated = true;
         fireVFX?.SetActive(true);
+
+        CampFireManager.Instance.Register(this);
 
         Debug.Log("캠프파이어 활성화!");
     }

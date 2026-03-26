@@ -44,3 +44,13 @@ public struct ResetEvent
         Position = positon;
     }
 }
+
+public struct CampFireActivatedEvent
+{
+    public CampFire campFire;
+
+    public CampFireActivatedEvent(CampFire campFire)
+    {
+        this.campFire = campFire;
+    }
+}
