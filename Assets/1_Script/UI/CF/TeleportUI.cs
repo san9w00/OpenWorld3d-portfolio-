@@ -22,7 +22,9 @@ public class TeleportUI : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        
+        if (target == null) return;
+
+        TeleportSystem.Instance.Teleport(target.transform.position);
     }
 
     public void OnClickNo()

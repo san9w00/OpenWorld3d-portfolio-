@@ -13,8 +13,10 @@ public class CampFireIcon : MonoBehaviour
     public void Init()
     {
         button = GetComponent<Button>();
-        button.interactable = false;
 
+        button.onClick.AddListener(OnClick);
+
+        button.interactable = false;
         gameObject.SetActive(false);
     }
 
@@ -24,8 +26,6 @@ public class CampFireIcon : MonoBehaviour
 
         gameObject.SetActive(true);
         button.interactable = true;
-
-        button.onClick.AddListener(OnClick);
     }
 
     void OnClick()

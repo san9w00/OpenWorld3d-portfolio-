@@ -9,6 +9,9 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private ShopSlotUI[] slots;
 
+    [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private PlayerInventory inventory;
+
     private InputHandler _inputHandler;
 
     private void Awake()
@@ -27,6 +30,11 @@ public class ShopUI : MonoBehaviour
     {
         _inputHandler = FindAnyObjectByType<InputHandler>();
         shopPanel.SetActive(false);
+
+        foreach (var slot in slots)
+        {
+            slot.Init(playerStatus, inventory);
+        }
     }
 
     public void Open(ShopData data)
