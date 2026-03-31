@@ -15,5 +15,7 @@ public class AreaNameBox : MonoBehaviour
         if (showOnlyOnce && hasShown) return;
 
         hasShown = true;
+
+        AreaTextUIManager.Instance.ShowLocation(areaName);
     }
 }
