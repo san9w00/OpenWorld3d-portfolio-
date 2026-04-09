@@ -28,7 +28,7 @@ public class QuesterNPC : MonoBehaviour, IInteractable
     private void ShowDialogue()
     {
         dialogueUI.Show(
-            "몬스터를 처치해줄 수 있나?",
+            "Can you kill the Monsters out of this Castle?....",
             OnDialogueFinished);
     }
 
