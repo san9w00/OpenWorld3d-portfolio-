@@ -1,8 +1,16 @@
 using UnityEngine;
 
-public enum QuestType
+public enum EnemyType
 {
-    KillMonster,
+    Slime,
+    Turtle,
+    Bear,
+    Skeleton
+}
+
+public enum QuestGoalType
+{
+    KillEnemy,
     ReachLevel,
 }
 
@@ -10,6 +18,7 @@ public enum QuestType
 public class QuestDataSO : ScriptableObject
 {
     [Header("Info")]
+    public int questID;
     public string questName;
 
     [TextArea]
@@ -21,8 +30,14 @@ public class QuestDataSO : ScriptableObject
     [TextArea]
     public string completeDialogue = "Good job. Here your Reward.";
 
-    public QuestType questType;
+    public QuestGoalType goalType;
 
+    [Header("Kill Enemy")]
+    public EnemyType targetEnemyType;
+
+    [Header("Goal")]
     public int targetAmount;
+
+    [Header("Reward")]
     public int goldReward;
 }

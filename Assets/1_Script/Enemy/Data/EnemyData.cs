@@ -5,6 +5,7 @@ public class EnemyData : ScriptableObject
 {
     [Header("BaseStats")]
     public int EnemyId;
+    public EnemyType enemyType;
     public float maxHP;
     public float atkDamage;
     public float atkCooldown;

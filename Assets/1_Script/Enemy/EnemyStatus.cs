@@ -44,6 +44,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         levelSystem.AddExp((int)Data.rewardExp);
 
         EventBus.Publish(new GoldRewardEvent(Data.rewardGold, transform.position));
+        EventBus.Publish(new EnemyKilledEvent(Data.enemyType));
 
         spawner.ReturnToPool(this);
     }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638f6ee93f5cb24cb549c1c9456b90e, type: 3}
   m_Name: TurtleData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  EnemyId: 0
+  EnemyId: 1
+  enemyType: 1
   maxHP: 20
   atkDamage: 8
   atkCooldown: 2

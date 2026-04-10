@@ -42,7 +42,7 @@ public class MapUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleUpgradePanel();
         }

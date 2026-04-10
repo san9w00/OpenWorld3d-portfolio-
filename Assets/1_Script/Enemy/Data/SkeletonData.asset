@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638f6ee93f5cb24cb549c1c9456b90e, type: 3}
   m_Name: SkeletonData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  EnemyId: 0
+  EnemyId: 2
+  enemyType: 3
   maxHP: 30
   atkDamage: 15
   atkCooldown: 2.7

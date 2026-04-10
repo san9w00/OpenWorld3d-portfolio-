@@ -1,6 +1,16 @@
 using System;
 using UnityEngine;
 
+public struct EnemyKilledEvent
+{
+    public EnemyType enemyType;
+
+    public EnemyKilledEvent(EnemyType enemyType)
+    {
+        this.enemyType = enemyType;
+    }
+}
+
 public struct VFXEvent
 {
     public Vector3 Position;

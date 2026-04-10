@@ -2,70 +2,61 @@ using UnityEngine;
 
 public class QuesterNPC : MonoBehaviour, IInteractable
 {
-    [Header("Quest")]
     [SerializeField] private QuestDataSO baseQuest;
-
-    [Header("UI")]
     [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private QuestListUI questUI;
 
-    private int currentQuestTier = 1;
-    private bool hasAcceptedQuest;
+    private Animator animator;
+
+    private int questTier = 1;
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     public void Interact()
     {
-        Cursor.lockState = CursorLockMode.None;
+        QuestRuntimeData quest = QuestManager.Instance.GetQuest(this);
+        animator.Play("Dialogue");
 
-        if (!hasAcceptedQuest)
+        // 아직 수락 안한 상태
+        if (quest == null)
         {
-            ShowDialogue();
+            dialogueUI.ShowQuestOffer(
+                baseQuest.npcDialogue,
+                AcceptQuest,
+                null);
+
             return;
         }
 
-        OpenQuestUI();
+        // 완료함
+        if (quest.isCompleted)
+        {
+            dialogueUI.ShowSimple(
+                baseQuest.completeDialogue,
+                () => QuestManager.Instance.CompleteQuest(quest, FindAnyObjectByType<PlayerStatus>()));
+
+            return;
+        }
+
+        // 아직 진행중
+        dialogueUI.ShowSimple(baseQuest.progressDialogue, null);
     }
 
-    private void ShowDialogue()
+    private void AcceptQuest()
     {
-        dialogueUI.Show(
-            "Can you kill the Monsters out of this Castle?....",
-            OnDialogueFinished);
+        int target = baseQuest.targetAmount * questTier;
+
+        QuestManager.Instance.AcceptQuest(this, baseQuest, target);
     }
 
-    private void OnDialogueFinished()
+    public void IncreaseQuestTier()
     {
-        hasAcceptedQuest = true;
-
-        QuestManager.Instance.StartQuest(this, GetCurrentQuestTarget(), GetCurrentReward());
-
-        OpenQuestUI();
-    }
-
-    public int GetCurrentQuestTarget()
-    {
-        return baseQuest.targetAmount * currentQuestTier;
-    }
-
-    public int GetCurrentReward()
-    {
-        return baseQuest.goldReward * currentQuestTier;
-    }
-
-    public void CompleteQuest()
-    {
-        currentQuestTier++;
-        hasAcceptedQuest = false;
-    }
-
-    private void OpenQuestUI()
-    {
-        questUI.Open(this);
+        questTier++;
     }
 
     public bool CanInteract() => true;
 
-    public string GetInteractText()
-    {
-        return "Talk";
-    }    
+    public string GetInteractText() => "Talk";
 }

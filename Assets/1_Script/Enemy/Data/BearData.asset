@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638f6ee93f5cb24cb549c1c9456b90e, type: 3}
   m_Name: BearData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  EnemyId: 0
+  EnemyId: 3
+  enemyType: 2
   maxHP: 100
   atkDamage: 20
   atkCooldown: 2.3

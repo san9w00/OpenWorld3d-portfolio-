@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class QuestRuntimeData
 {
+    public int questID;
     public QuestDataSO questData;
 
     public int currentAmount;

@@ -14,6 +14,21 @@ public class QuestManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe<EnemyKilledEvent>(HandleEnemyKilled);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<EnemyKilledEvent>(HandleEnemyKilled);
+    }
+
+    private void HandleEnemyKilled(EnemyKilledEvent e)
+    {
+        OnEnemyKilled(e.enemyType);
+    }
+
     public bool HasQuest(QuesterNPC npc)
     {
         return acceptedQuests.Exists(q => q.ownerNPC == npc);
@@ -39,5 +54,62 @@ public class QuestManager : MonoBehaviour
         };
 
         acceptedQuests.Add(runtime);
+
+        QuestListUI.Instance.AddQuest(runtime);
+    }
+
+    public void OnEnemyKilled(EnemyType deadEnemyType)
+    {
+        foreach (QuestRuntimeData quest in acceptedQuests)
+        {
+            if (quest.isCompleted)
+                continue;
+
+            if (quest.questData.goalType != QuestGoalType.KillEnemy)
+                continue;
+
+            if (quest.questData.targetEnemyType != deadEnemyType)
+                continue;
+
+            quest.currentAmount++;
+
+            if (quest.currentAmount >= quest.questData.targetAmount)
+            {
+                quest.currentAmount = quest.questData.targetAmount;
+                quest.isCompleted = true;
+            }
+        }
+
+        QuestListUI.Instance.Refresh();
+    }    
+
+    public void CheckLevelQuest(int currentLevel)
+    {
+        foreach (QuestRuntimeData quest in acceptedQuests)
+        {
+            if (quest.questData.goalType != QuestGoalType.ReachLevel)
+                continue;
+
+            if (quest.isCompleted)
+                continue;
+
+            quest.currentAmount = currentLevel;
+
+            if (currentLevel >= quest.targetAmount)
+                quest.isCompleted = true;
+        }
+
+        QuestListUI.Instance.Refresh();
+    }
+
+    public void CompleteQuest(QuestRuntimeData quest, PlayerStatus playerStatus)
+    {
+        playerStatus.AddGold(quest.questData.goldReward);
+
+        acceptedQuests.Remove(quest);
+
+        quest.ownerNPC.IncreaseQuestTier();
+
+        QuestListUI.Instance.Refresh();
     }
 }
