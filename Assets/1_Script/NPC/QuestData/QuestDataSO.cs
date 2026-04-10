@@ -4,7 +4,6 @@ public enum QuestType
 {
     KillMonster,
     ReachLevel,
-    CollectItem
 }
 
 [CreateAssetMenu(menuName = "Quest/Quest Data")]
@@ -12,14 +11,18 @@ public class QuestDataSO : ScriptableObject
 {
     [Header("Info")]
     public string questName;
-    [TextArea] public string description;
 
-    [Header("Quest Type")]
+    [TextArea]
+    public string npcDialogue;
+
+    [TextArea]
+    public string progressDialogue = "Quest is Progressing now..";
+
+    [TextArea]
+    public string completeDialogue = "Good job. Here your Reward.";
+
     public QuestType questType;
 
-    [Header("Goal")]
     public int targetAmount;
-
-    [Header("Reward")]
     public int goldReward;
 }

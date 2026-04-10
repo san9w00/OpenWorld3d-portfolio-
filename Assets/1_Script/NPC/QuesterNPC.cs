@@ -7,7 +7,7 @@ public class QuesterNPC : MonoBehaviour, IInteractable
 
     [Header("UI")]
     [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private QuestUI questUI;
+    [SerializeField] private QuestListUI questUI;
 
     private int currentQuestTier = 1;
     private bool hasAcceptedQuest;

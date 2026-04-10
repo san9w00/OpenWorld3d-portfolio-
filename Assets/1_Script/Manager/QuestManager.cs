@@ -1,64 +1,43 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
     public static QuestManager Instance;
 
-    private QuesterNPC currentQuestNPC;
+    private List<QuestRuntimeData> acceptedQuests = new();
 
-    public int CurrentKillCount { get; private set; }
-    public int RequiredKillCount { get; private set; }
-    public int RewardGold { get; private set; }
-
-    public bool HasQuest => currentQuestNPC != null;
+    public IReadOnlyList<QuestRuntimeData> AcceptedQuests => acceptedQuests;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void StartQuest(QuesterNPC npc, int requiredKills, int rewardGold)
+    public bool HasQuest(QuesterNPC npc)
     {
-        currentQuestNPC = npc;
-
-        RequiredKillCount = requiredKills;
-        RewardGold = rewardGold;
-        CurrentKillCount = 0;
-
-        QuestUI.Instance.Refresh();
+        return acceptedQuests.Exists(q => q.ownerNPC == npc);
     }
 
-    public void AddKill()
+    public QuestRuntimeData GetQuest(QuesterNPC npc)
     {
-        if (!HasQuest)
+        return acceptedQuests.Find(q => q.ownerNPC == npc);
+    }
+
+    public void AcceptQuest(QuesterNPC npc, QuestDataSO data, int targetAmount)
+    {
+        if (HasQuest(npc))
             return;
 
-        CurrentKillCount++;
+        QuestRuntimeData runtime = new QuestRuntimeData
+        {
+            questData = data,
+            currentAmount = 0,
+            targetAmount = targetAmount,
+            ownerNPC = npc,
+            isCompleted = false
+        };
 
-        QuestUI.Instance.Refresh();
-
-        Debug.Log($"Äù½ºÆ® ÁøÇà: {CurrentKillCount}/{RequiredKillCount}");
-    }
-
-    public bool IsQuestComplete()
-    {
-        return CurrentKillCount >= RequiredKillCount;
-    }
-
-    public void ClaimReward(PlayerStatus playerStatus)
-    {
-        if (!IsQuestComplete()) return;
-
-        playerStatus.AddGold(RewardGold);
-
-        currentQuestNPC.CompleteQuest();
-
-        currentQuestNPC = null;
-
-        CurrentKillCount = 0;
-        RequiredKillCount = 0;
-        RewardGold = 0;
-
-        QuestUI.Instance.Close();
+        acceptedQuests.Add(runtime);
     }
 }
