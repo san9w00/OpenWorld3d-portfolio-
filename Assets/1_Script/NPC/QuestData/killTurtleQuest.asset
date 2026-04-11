@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e0040847a18fc42a496f72cc76f7c3, type: 3}
-  m_Name: Kill4SlimeQuest
+  m_Name: killTurtleQuest
   m_EditorClassIdentifier: Assembly-CSharp::QuestDataSO
-  questID: 1
-  questName: Kill Slimes
-  npcDialogue: Can you Kill the 5 Slime out of the castle..? If you Kills there slimes,
-    I' ll give you 100 golds. comeback to me
+  questID: 2
+  questName: kill Turtles
+  npcDialogue: and... you must be kill the Turtles... They are so dangerous to us,,,
+    Please kill and come back to me again.
   progressDialogue: Quest is Progressing now..
   completeDialogue: Good job. Here your Reward.
   goalType: 0
-  targetEnemyType: 0
+  targetEnemyType: 1
   targetAmount: 4
   goldReward: 150

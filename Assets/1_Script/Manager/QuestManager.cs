@@ -73,9 +73,9 @@ public class QuestManager : MonoBehaviour
 
             quest.currentAmount++;
 
-            if (quest.currentAmount >= quest.questData.targetAmount)
+            if (quest.currentAmount >= quest.targetAmount)
             {
-                quest.currentAmount = quest.questData.targetAmount;
+                quest.currentAmount = quest.targetAmount;
                 quest.isCompleted = true;
             }
         }
@@ -108,7 +108,7 @@ public class QuestManager : MonoBehaviour
 
         acceptedQuests.Remove(quest);
 
-        quest.ownerNPC.IncreaseQuestTier();
+        quest.ownerNPC.AdvanceQuest(); // 다음퀘스트 넘어가기
 
         QuestListUI.Instance.Refresh();
     }

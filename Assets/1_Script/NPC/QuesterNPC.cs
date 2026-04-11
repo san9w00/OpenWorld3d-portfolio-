@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuesterNPC : MonoBehaviour, IInteractable
@@ -5,13 +6,27 @@ public class QuesterNPC : MonoBehaviour, IInteractable
     [SerializeField] private QuestDataSO baseQuest;
     [SerializeField] private DialogueUI dialogueUI;
 
-    private Animator animator;
+    [SerializeField] private List<int> questIDList;
+    [SerializeField] private QuestDatabaseSO questDatabase;
 
-    private int questTier = 1;
+    private int currentIndex = 0;
+
+    private Animator animator;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private QuestDataSO CurrentQuestData
+    {
+        get
+        {
+            if (currentIndex >= questIDList.Count)
+                return null;
+
+            return questDatabase.GetQuest(questIDList[currentIndex]);
+        }
     }
 
     public void Interact()
@@ -19,11 +34,18 @@ public class QuesterNPC : MonoBehaviour, IInteractable
         QuestRuntimeData quest = QuestManager.Instance.GetQuest(this);
         animator.Play("Dialogue");
 
+        // 더이상 줄 퀘스트 없음
+        if (CurrentQuestData == null)
+        {
+            dialogueUI.ShowSimple("No more Quest for You! Thank you for your help!", null);
+            return;
+        }
+
         // 아직 수락 안한 상태
         if (quest == null)
         {
             dialogueUI.ShowQuestOffer(
-                baseQuest.npcDialogue,
+                CurrentQuestData.npcDialogue,
                 AcceptQuest,
                 null);
 
@@ -46,14 +68,14 @@ public class QuesterNPC : MonoBehaviour, IInteractable
 
     private void AcceptQuest()
     {
-        int target = baseQuest.targetAmount * questTier;
+        var questData = CurrentQuestData;
 
-        QuestManager.Instance.AcceptQuest(this, baseQuest, target);
+        QuestManager.Instance.AcceptQuest(this, questData, questData.targetAmount);
     }
 
-    public void IncreaseQuestTier()
+    public void AdvanceQuest()
     {
-        questTier++;
+        currentIndex++;
     }
 
     public bool CanInteract() => true;

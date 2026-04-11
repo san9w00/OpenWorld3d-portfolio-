@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestListUI : MonoBehaviour
@@ -41,7 +42,7 @@ public class QuestListUI : MonoBehaviour
     {
         for (int i = slots.Count - 1; i>= 0; i--)
         {
-            if (slots[i].Quest == null)
+            if (!QuestManager.Instance.AcceptedQuests.Contains(slots[i].Quest))
             {
                 Destroy(slots[i].gameObject);
                 slots.RemoveAt(i);

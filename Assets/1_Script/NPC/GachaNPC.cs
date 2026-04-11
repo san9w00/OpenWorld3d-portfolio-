@@ -8,7 +8,7 @@ public class GachaNPC : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Interact()
