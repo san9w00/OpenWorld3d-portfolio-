@@ -20,3 +20,4 @@ MonoBehaviour:
   itemType: 0
   damage: 20
   hitEffectVFX: {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+  skill: {fileID: 11400000, guid: 6d3b9383c3c69ef499162ae34e836139, type: 2}

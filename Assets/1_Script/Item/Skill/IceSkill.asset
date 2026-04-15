@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943b61bca88ceb1419803442cbfa7a25, type: 3}
+  m_Name: IceSkill
+  m_EditorClassIdentifier: Assembly-CSharp::IceSkillSO
+  skillIcon: {fileID: 21300000, guid: 6eed21ce7bc004d4daace9baaf267e6a, type: 3}
+  cooldown: 12
+  damage: 50
+  slowPercent: 0.5
+  slowDuration: 5
+  radius: 3
+  dropHeight: 10
+  forwardOffset: 5
+  icePrefab: {fileID: 4464964600885281288, guid: d043a0499210f3c44b4e2236d2906072, type: 3}
+  hitVFX: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
