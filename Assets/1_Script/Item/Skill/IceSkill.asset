@@ -21,7 +21,7 @@ MonoBehaviour:
   dropHeight: 10
   forwardOffset: 5
   icePrefab: {fileID: 4464964600885281288, guid: d043a0499210f3c44b4e2236d2906072, type: 3}
-  hitVFX: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+  hitVFX: {fileID: 176822597162087251, guid: 46009f57772e5e743bec9df57a49ed66, type: 3}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
