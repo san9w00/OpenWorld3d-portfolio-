@@ -8,17 +8,15 @@ public class FireSkillSO : WeaponSkillSO
     public float duration = 4f;
     public float tickInterval = 1f;
 
-    public GameObject ExplosionVFX;
-    public GameObject burnVFX;
-
     public LayerMask enemyLayer;
 
     public override void UseSkill(GameObject user)
     {
-        if (ExplosionVFX != null)
-        {
-            Instantiate(ExplosionVFX, user.transform.position, Quaternion.identity);
-        }
+        EventBus.Publish(new VFXEvent(
+            user.transform.position,
+            VFXActionType.Skill,
+            VFXSwordType.Fire
+            ));
 
         Collider[] enemies = Physics.OverlapSphere(user.transform.position, radius, enemyLayer);
 
@@ -49,9 +47,13 @@ public class FireSkillSO : WeaponSkillSO
 
             target.TakeDamage(tickDamage);
 
-            if (burnVFX != null && mb != null)
+            if (mb != null)
             {
-                Instantiate(burnVFX, mb.transform.position + Vector3.up * 1f, Quaternion.identity);
+                EventBus.Publish(new VFXEvent(
+                    mb.transform.position + Vector3.up * 1f,
+                    VFXActionType.Skill_Second,
+                    VFXSwordType.Fire
+                ));
             }
 
             yield return new WaitForSeconds(tickInterval);

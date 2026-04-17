@@ -42,7 +42,10 @@ public class PlayerLevelSystem : MonoBehaviour
 
         OnLevelStatChanged?.Invoke(StatType.Level, currentLevel, currentLevel);
 
-        EventBus.Publish(new LevelUpEvent(transform.position + Vector3.down * 1.5f));
+        EventBus.Publish(new VFXEvent(transform.position,
+            VFXActionType.LevelUp,
+            VFXSwordType.None
+        ));
 
         Debug.Log($"레벨업! 현재 레벨: {currentLevel}");
     }

@@ -19,5 +19,5 @@ MonoBehaviour:
   maxStack: 1
   itemType: 0
   damage: 25
-  hitEffectVFX: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
+  swordType: 2
   skill: {fileID: 11400000, guid: 259bfe9020e5d1942b5a8db2a6105cbe, type: 2}

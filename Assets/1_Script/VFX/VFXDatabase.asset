@@ -12,5 +12,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd3b3da2243ed44cb25cd5036ac98ae, type: 3}
   m_Name: VFXDatabase
   m_EditorClassIdentifier: Assembly-CSharp::VFXDatabase
-  levelUpVFX: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
-  healVFX: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e, type: 3}
+  vfxList:
+  - actionType: 4
+    swordType: 0
+    prefab: {fileID: 7155335147208632822, guid: 97c43495f80a3244fad1301dfafbe252, type: 3}
+    poolSize: 2
+  - actionType: 3
+    swordType: 0
+    prefab: {fileID: 9017484664307500583, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+    poolSize: 2
+  - actionType: 0
+    swordType: 2
+    prefab: {fileID: 6263782476919498309, guid: 1fd2749f2a4056446881dce86ed70c39, type: 3}
+    poolSize: 4
+  - actionType: 1
+    swordType: 2
+    prefab: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+    poolSize: 2
+  - actionType: 2
+    swordType: 2
+    prefab: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
+    poolSize: 2
+  - actionType: 0
+    swordType: 3
+    prefab: {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+    poolSize: 4
+  - actionType: 1
+    swordType: 3
+    prefab: {fileID: 176822597162087251, guid: 46009f57772e5e743bec9df57a49ed66, type: 3}
+    poolSize: 2
+  - actionType: 0
+    swordType: 4
+    prefab: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
+    poolSize: 4
+  - actionType: 0
+    swordType: 1
+    prefab: {fileID: 6823302871133167919, guid: 3138a83bedbd6ad4481ba0b061da2eb6, type: 3}
+    poolSize: 4

@@ -4,7 +4,6 @@ using UnityEngine;
 public class PotionItemSO : ItemSO
 {
     public int healAmount = 30;
-    public GameObject potionVFX;
 
     public override void Use(GameObject player)
     {
@@ -14,13 +13,11 @@ public class PotionItemSO : ItemSO
         {
             status.Heal(healAmount);
 
-            if (potionVFX != null)
-            {
-                EventBus.Publish(new VFXEvent(
-                    status.transform.position + Vector3.up * 1.5f,
-                    potionVFX
-                ));
-            }
+            EventBus.Publish(new VFXEvent(
+                    status.transform.position,
+                    VFXActionType.Heal,
+                    VFXSwordType.None
+            ));
         }
     }
 }

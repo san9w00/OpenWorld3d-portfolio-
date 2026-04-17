@@ -14,12 +14,14 @@ public struct EnemyKilledEvent
 public struct VFXEvent
 {
     public Vector3 Position;
-    public GameObject VFXPrefab;
+    public VFXActionType ActionType;
+    public VFXSwordType SwordType;
 
-    public VFXEvent(Vector3 position, GameObject vfxPrefab)
+    public VFXEvent(Vector3 position, VFXActionType action, VFXSwordType sword)
     {
         Position = position;
-        VFXPrefab = vfxPrefab;
+        ActionType = action;
+        SwordType = sword;
     }
 }
 
@@ -31,16 +33,6 @@ public struct GoldRewardEvent
     public GoldRewardEvent(int amount, Vector3 position)
     {
         Amount = amount;
-        Position = position;
-    }
-}
-
-public struct LevelUpEvent
-{
-    public Vector3 Position;
-
-    public LevelUpEvent(Vector3 position)
-    {
         Position = position;
     }
 }

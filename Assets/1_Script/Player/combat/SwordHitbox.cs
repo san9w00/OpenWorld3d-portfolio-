@@ -34,7 +34,7 @@ public class SwordHitbox : MonoBehaviour
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
 
-        EventBus.Publish(new VFXEvent(hitPoint, currentWeapon.hitEffectVFX));
+        EventBus.Publish(new VFXEvent(hitPoint, VFXActionType.Hit, currentWeapon.swordType));
     }
 
     // 애니메이션이벤트로 한단계 건너서 호출될예정

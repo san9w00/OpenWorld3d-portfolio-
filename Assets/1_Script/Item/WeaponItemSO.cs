@@ -5,7 +5,7 @@ public class WeaponItemSO : ItemSO
 {
     [Header("Weapon Settings")]
     public float damage;
-    public GameObject hitEffectVFX;
+    public VFXSwordType swordType;
 
     [Header("Skills")]
     public WeaponSkillSO skill;
