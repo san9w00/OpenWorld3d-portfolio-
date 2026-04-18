@@ -20,4 +20,4 @@ MonoBehaviour:
   itemType: 0
   damage: 7
   swordType: 1
-  skill: {fileID: 0}
+  skill: {fileID: 11400000, guid: c8d5057730f43d840a1865f32cccac1b, type: 2}

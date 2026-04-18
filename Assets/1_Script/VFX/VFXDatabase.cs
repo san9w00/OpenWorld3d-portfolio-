@@ -8,7 +8,8 @@ public enum VFXActionType
     Skill,
     Skill_Second,
     Heal,
-    LevelUp
+    LevelUp,
+    PlayerHit,
 }
 
 public enum VFXSwordType

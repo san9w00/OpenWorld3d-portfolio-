@@ -28,11 +28,11 @@ MonoBehaviour:
   - actionType: 1
     swordType: 2
     prefab: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
-    poolSize: 2
+    poolSize: 4
   - actionType: 2
     swordType: 2
     prefab: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
-    poolSize: 2
+    poolSize: 10
   - actionType: 0
     swordType: 3
     prefab: {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
@@ -49,3 +49,11 @@ MonoBehaviour:
     swordType: 1
     prefab: {fileID: 6823302871133167919, guid: 3138a83bedbd6ad4481ba0b061da2eb6, type: 3}
     poolSize: 4
+  - actionType: 1
+    swordType: 1
+    prefab: {fileID: 1289543790355709915, guid: b99922c2f59b1a542bdd06ae8bee47ae, type: 3}
+    poolSize: 2
+  - actionType: 5
+    swordType: 0
+    prefab: {fileID: 4553287630450876385, guid: 15483e51212e3d74886ea57291f4639a, type: 3}
+    poolSize: 5

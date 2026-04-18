@@ -42,17 +42,6 @@ public class PlayerController : MonoBehaviour
 
         _velocity.y += Physics.gravity.y * gravityMultiplier *Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
-
-        // 방어중 스태미나 소모
-        if (_isGuarding)
-        {
-            float staminaCost = _playerStatus.ShieldCost * Time.deltaTime;
-
-            if (!_playerStatus.UseStamina(staminaCost))
-            {
-                StopGuard();
-            }
-        }
     }
 
     // [이동]
@@ -203,37 +192,6 @@ public class PlayerController : MonoBehaviour
         }
 
         _isRolling = false;
-    }
-
-    public void StartGuard()
-    {
-        if(_isRolling || _isAttacking) return;
-
-        _isGuarding = true;
-
-        _playerStatus.IsUsingStamina = true;
-
-        // 방어 Animation
-        if (_animator != null)
-        {
-            _animator.SetBool("Guard", true);
-        }
-    }
-
-    public void StopGuard()
-    {
-        _isGuarding = false;
-        _playerStatus.IsUsingStamina = false;
-
-        if (_animator != null)
-        {
-            _animator.SetBool("Guard", false);
-        }
-    }
-
-    public bool IsGuarding()
-    {
-        return _isGuarding;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

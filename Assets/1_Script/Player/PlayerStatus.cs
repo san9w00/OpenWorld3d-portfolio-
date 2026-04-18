@@ -17,6 +17,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float curStamina { get; private set; }
     public int Gold { get; private set; } = 200;
 
+    private float damageMultiplier = 1f; // 기본 데미지 배율
+
     // Base Stats
     public float MaxHP => data.maxHP + bonusMaxHP;
     public float MaxStamina => data.maxStamina + bonusMaxStamina;
@@ -36,7 +38,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public float RollCost => data.rollStaminaCost;
     public float AttackCost => data.attackStaminaCost;
     public float RunCostPerSecond => data.runStaminaCost;
-    public float ShieldCost => data.shieldStaminaCost;
 
     public event Action<StatType, float, float> OnStatChanged;
     public Action OnGoldChanged;
@@ -90,17 +91,15 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         PlayerController controller = GetComponent<PlayerController>();
 
-        // 방어중이면 피해 무효
-        if (controller != null && controller.IsGuarding())
-        {
-            Debug.Log("방어 성공!");
-            return;
-        }
-
-        float finalDamage = Mathf.Max(1, damage - Defense);
+        float finalDamage = Mathf.Max(1, (damage - Defense) * damageMultiplier);
         curHP = Mathf.Clamp(curHP - finalDamage, 0, MaxHP);
 
         OnStatChanged?.Invoke(StatType.HP, curHP, MaxHP);
+        EventBus.Publish(new VFXEvent(
+            transform.position + Vector3.up * 1,
+            VFXActionType.PlayerHit,
+            VFXSwordType.None
+        ));
 
         Debug.Log($"플레이어 남은 체력 : {curHP}");
 
@@ -108,6 +107,25 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+
+    public void ApplyDamageMultiplier(float multiplier, float duration, MonoBehaviour runner)
+    {
+        runner.StopAllCoroutines();
+        runner.StartCoroutine(DamageMultiplierCorutine(multiplier, duration));
+    }
+
+    private System.Collections.IEnumerator DamageMultiplierCorutine(float multiplier, float duration)
+    {
+        damageMultiplier = multiplier;
+
+        Debug.Log("피해 감소 시작!");
+
+        yield return new WaitForSeconds(duration);
+
+        damageMultiplier = 1f;
+
+        Debug.Log("피해 감소 종료!");
     }
 
     private void OnGoldReward(GoldRewardEvent evt)

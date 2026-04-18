@@ -99,16 +99,6 @@ public class InputHandler : MonoBehaviour
 
         }
 
-        // [방패] 입력
-        if (Input.GetMouseButtonDown(1))
-        {
-            _commandQueue.Enqueue(new GuardStartCommand(_playerController));
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            _commandQueue.Enqueue(new GuardStopCommand(_playerController));
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerEquipment equipment = _playerController.GetComponent<PlayerEquipment>();
