@@ -1,11 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Data.SqlTypes;
+
+public enum SFXType
+{
+    FootStep, Jump, Hit, Rolling,
+    DoorOpen, DoorClose,
+}
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
+    [Header("BGM")]
     private AudioSource bgmSource;
+
+    [Header("SFX")]
+    [SerializeField] private int poolSize = 10;
+    private List<AudioSource> sfxSources = new List<AudioSource>();
+
+    [SerializeField] private List<SFXData> sfxList;
+    private Dictionary<SFXType, AudioClip> sfxDict;
 
     private void Awake()
     {
@@ -18,8 +34,24 @@ public class SoundManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // BGM
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = true;
+
+        // SFX 풀 생성
+        for (int i = 0; i < poolSize; i++)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.playOnAwake = false;
+            sfxSources.Add(source);
+        }
+
+        // 딕셔너리 반환
+        sfxDict = new Dictionary<SFXType, AudioClip>();
+        foreach (var sfx in sfxList)
+        {
+            sfxDict[sfx.type] = sfx.clip;
+        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -47,4 +79,35 @@ public class SoundManager : MonoBehaviour
         bgmSource.clip = clip;
         bgmSource.Play();
     }
+
+    // SFX 재생
+    public void PlaySFX(SFXType type)
+    {
+        if (!sfxDict.ContainsKey(type))
+        {
+            Debug.LogWarning($"SFX 찾지 못함: {type}");
+            return;
+        }
+
+        AudioSource source = GetAvailableSFXSource();
+        source.PlayOneShot(sfxDict[type]);
+    }
+
+    private AudioSource GetAvailableSFXSource()
+    {
+        foreach (var source in sfxSources)
+        {
+            if (!source.isPlaying)
+                return source;
+        }
+
+        return sfxSources[0]; // 부족하면 덮어쓰기
+    }
+}
+
+[System.Serializable]
+public class SFXData
+{
+    public SFXType type;
+    public AudioClip clip;
 }

@@ -204,4 +204,10 @@ public class PlayerController : MonoBehaviour
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         rb.linearVelocity = pushDir * 2f;
     }
+
+    // 애니메이션 이벤트 (사운드)
+    public void PlayFootStep()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.FootStep);
+    }
 }
