@@ -5,9 +5,9 @@ public class BossAI : EnemyAI
 {
     [Header("Patterns")]
     public BossPatternSO[] patterns;
+    public GameObject bossModel;
 
     [Header("Phase2")]
-    [SerializeField] private GameObject bossModel;
     [SerializeField] private GameObject skeletonPrefab;
     [SerializeField] private Transform[] spawnPoints;
     private int aliveSkeletons;

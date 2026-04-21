@@ -5,7 +5,8 @@ public enum EnemyType
     Slime,
     Turtle,
     Bear,
-    Skeleton
+    Skeleton,
+    Boss
 }
 
 public enum QuestGoalType

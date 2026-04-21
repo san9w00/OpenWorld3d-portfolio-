@@ -10,6 +10,7 @@ public enum VFXActionType
     Heal,
     LevelUp,
     PlayerHit,
+    BossAOE,
 }
 
 public enum VFXSwordType

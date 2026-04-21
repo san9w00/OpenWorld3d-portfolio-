@@ -9,7 +9,6 @@ public enum State
 
 [RequireComponent(typeof(EnemyIdleState))]
 [RequireComponent(typeof(EnemyPursueState))]
-[RequireComponent(typeof(EnemyAttackState))]
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyState currentState { get; set; }
