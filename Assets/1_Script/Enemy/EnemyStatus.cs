@@ -12,6 +12,12 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     public Action<float, float> OnHPChanged;
 
+    public Action OnPhase2Trigger;
+    private bool phaseTriggered = false;
+
+    public Action OnDeath;
+    private bool isDead = false;
+
     private void Awake()
     {
         CurHP = Data.maxHP;       
@@ -32,6 +38,12 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
         OnHPChanged?.Invoke(CurHP, Data.maxHP);
 
+        if (!phaseTriggered && CurHP <= Data.maxHP * 0.3f)
+        {
+            phaseTriggered = true;
+            OnPhase2Trigger?.Invoke();
+        }
+
         if (CurHP <= 0)
         {
             Die();
@@ -40,6 +52,19 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
+        BossAI boss = GetComponent<BossAI>();
+
+        if (boss != null)
+        {
+            boss.OnBossDeath();
+            return;
+        }
+
+        OnDeath?.Invoke();
+
         PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
         levelSystem.AddExp((int)Data.rewardExp);
 
@@ -52,6 +77,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     public void ResetEnemy()
     {
         CurHP = Data.maxHP;
+        isDead = false;
         OnHPChanged?.Invoke(CurHP, Data.maxHP);
     }
 }

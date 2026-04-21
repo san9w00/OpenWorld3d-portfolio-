@@ -5,8 +5,6 @@ public enum State
     Idle,
     Attack,
     Pursue,
-    Hit,
-    Avoid
 }
 
 [RequireComponent(typeof(EnemyIdleState))]
@@ -16,13 +14,15 @@ public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyState currentState { get; set; }
 
-    private EnemyState _IdleState, _AttackState, _PursueState, _AvoidState;
+    private EnemyState _IdleState, _AttackState, _PursueState;
+    private EnemyState _BossAttackState;
 
     private void AttachStateToObject()
     {
         _IdleState = gameObject.GetComponent<EnemyIdleState>();
         _PursueState = gameObject.GetComponent<EnemyPursueState>(); 
         _AttackState = gameObject.GetComponent<EnemyAttackState>();
+        _BossAttackState = GetComponent<BossAttackState>();
     }
 
     private void Start()
@@ -39,13 +39,10 @@ public class EnemyStateMachine : MonoBehaviour
                 currentState = _IdleState;
                 break;
             case State.Attack:
-                currentState = _AttackState;
+                currentState = _BossAttackState != null ? _BossAttackState : _AttackState;
                 break;
             case State.Pursue:
                 currentState = _PursueState;
-                break;
-            case State.Avoid:
-                currentState = _AvoidState;
                 break;
         }
     }

@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     private EnemyStateMachine _enemySM;
     private EnemyStatus _enemyStatus;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -50,6 +50,14 @@ public class EnemyAI : MonoBehaviour
     // Animation Event
     public void ApplyDamage()
     {
+        float damage = _enemyStatus.Data.atkDamage;
+
+        BossAI boss = GetComponent<BossAI>();
+        if (boss != null && boss.currentAttackDamage > 0)
+        {
+            damage = boss.currentAttackDamage;
+        }
+
         Vector3 center = transform.position + transform.forward * hitBoxPos.z
                      + transform.right * hitBoxPos.x
                      + transform.up * hitBoxPos.y;
