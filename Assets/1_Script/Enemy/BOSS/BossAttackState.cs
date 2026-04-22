@@ -78,7 +78,7 @@ public class BossAttackState : EnemyState
         boss.bossModel.SetActive(false);
 
         // 사라진 자리에 광역 데미지
-        DoAOEDamage(transform.position, attack.aoeRadius, attack.aoeRadius);
+        DoAOEDamage(transform.position, attack.aoeRadius, attack.aoeDamage);
         EventBus.Publish(new VFXEvent(transform.position, VFXActionType.BossAOE, VFXSwordType.None));
 
         // 대기하기

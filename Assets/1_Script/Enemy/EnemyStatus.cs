@@ -52,17 +52,6 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        if (isDead) return;
-        isDead = true;
-
-        BossAI boss = GetComponent<BossAI>();
-
-        if (boss != null)
-        {
-            boss.OnBossDeath();
-            return;
-        }
-
         OnDeath?.Invoke();
 
         PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
@@ -71,7 +60,14 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         EventBus.Publish(new GoldRewardEvent(Data.rewardGold, transform.position));
         EventBus.Publish(new EnemyKilledEvent(Data.enemyType));
 
-        spawner.ReturnToPool(this);
+        if (spawner != null)
+        {
+            spawner.ReturnToPool(this);
+        }
+        else
+        {
+            Destroy(gameObject); // 보스는 그냥 삭제
+        }
     }
 
     public void ResetEnemy()
