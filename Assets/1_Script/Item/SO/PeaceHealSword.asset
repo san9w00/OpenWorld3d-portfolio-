@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
-  m_Name: IceSword
+  m_Name: PeaceHealSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
-  itemName: Icer
-  price: 1300
-  itemExplain: SWORD / + '23' Damage, Can use "Ice Skill" with 'RightClick'
-  itemIcon: {fileID: 21300000, guid: faeec5264147ca34c974c196252007a4, type: 3}
+  itemName: PeaceSword
+  price: 1500
+  itemExplain: Its Great Healing Sword in the world
+  itemIcon: {fileID: 21300000, guid: bcdba771b9ffa8842976a21e3c633d91, type: 3}
   maxStack: 1
   itemType: 0
-  damage: 23
-  swordType: 3
-  skill: {fileID: 11400000, guid: 6d3b9383c3c69ef499162ae34e836139, type: 2}
+  damage: 19
+  swordType: 5
+  skill: {fileID: 0}

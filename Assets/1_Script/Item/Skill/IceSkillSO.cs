@@ -14,7 +14,6 @@ public class IceSkillSO : WeaponSkillSO
     public float radius = 3f;
 
     [Header("Ice Drop")]
-    public float dropHeight = 10f; // 위에서 떨어지는 높이
     public float forwardOffset = 5f; // 플레이어 앞 거리
 
     public LayerMask enemyLayer;

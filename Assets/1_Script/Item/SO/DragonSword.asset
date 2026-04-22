@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: DragonSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemName: DragonSword
-  price: 2500
+  price: 2300
   itemExplain: The legend Sword in the world
   itemIcon: {fileID: 21300000, guid: 0d9a5006edbb13c4c97e0731a82265b2, type: 3}
   maxStack: 1
   itemType: 0
-  damage: 100
+  damage: 40
   swordType: 4
   skill: {fileID: 0}

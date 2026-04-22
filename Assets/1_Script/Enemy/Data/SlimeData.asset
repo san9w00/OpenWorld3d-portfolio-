@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: SlimeData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 0
-  maxHP: 10
+  enemyType: 0
+  maxHP: 16
   atkDamage: 5
   atkCooldown: 2
   defense: 0
-  rewardExp: 5
-  rewardGold: 10
+  rewardExp: 10
+  rewardGold: 30
