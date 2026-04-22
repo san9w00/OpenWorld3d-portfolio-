@@ -51,7 +51,7 @@ public class VFXManager : MonoBehaviour
         obj.transform.position = e.Position;
         obj.SetActive(true);
 
-        StartCoroutine(ReturnToPoolAfterTime(key, obj, 2f));
+        StartCoroutine(ReturnToPoolAfterTime(key, obj, 5f));
     }
 
     private GameObject GetFromPool((VFXActionType, VFXSwordType) key, GameObject prefab)
