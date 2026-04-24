@@ -10,23 +10,6 @@ public class UIStatBar : MonoBehaviour
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private PlayerLevelSystem levelSystem;
 
-    private void Start()
-    {
-        // 초기값 강제 세팅
-        if (targetType == StatType.HP && playerStatus != null)
-        {
-            fillImage.fillAmount = playerStatus.curHP / playerStatus.MaxHP;
-        }
-        else if (targetType == StatType.Stamina && playerStatus != null)
-        {
-            fillImage.fillAmount = playerStatus.curStamina / playerStatus.MaxStamina;
-        }
-        else if (targetType == StatType.Exp && levelSystem != null)
-        {
-            fillImage.fillAmount = (float)levelSystem.CurrentExp / levelSystem.RequiredExp;
-        }
-    }
-
     private void OnEnable()
     {
         // 이벤트 구독
@@ -51,11 +34,44 @@ public class UIStatBar : MonoBehaviour
             levelSystem.OnLevelStatChanged -= UpdateUI;
     }
 
+    private void Start()
+    {
+        ForceInit(); // 최초 1회 안전 초기화
+    }
+
+    private void ForceInit()
+    {
+        switch (targetType)
+        {
+            case StatType.HP:
+                if (playerStatus != null)
+                    UpdateFill(playerStatus.curHP, playerStatus.MaxHP);
+                break;
+
+            case StatType.Stamina:
+                if (playerStatus != null)
+                    UpdateFill(playerStatus.curStamina, playerStatus.MaxStamina);
+                break;
+
+            case StatType.Exp:
+                if (levelSystem != null)
+                    UpdateFill(levelSystem.CurrentExp, levelSystem.RequiredExp);
+                break;
+        }
+    }
+
     private void UpdateUI(StatType type, float current, float max)
     {
-        if (type == targetType)
-        {
-            fillImage.fillAmount = current / max;
-        }
+        if (type != targetType) return;
+
+        UpdateFill(current, max);
     }    
+
+    private void UpdateFill(float current, float max)
+    {
+        if (fillImage == null) return;
+
+        float ratio = (max <= 0) ? 0f : current / max;
+        fillImage.fillAmount = Mathf.Clamp01(ratio);
+    }
 }

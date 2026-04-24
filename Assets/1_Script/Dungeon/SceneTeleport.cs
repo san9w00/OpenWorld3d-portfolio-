@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DungeonTeleporter : MonoBehaviour, IInteractable
+public class SceneTeleport : MonoBehaviour, IInteractable
 {
     [SerializeField] private string deongeonSceneName;
 

@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
         _playerStatus = GetComponent<PlayerStatus>();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+
+        PlayerManager.Instance.RegisterPlayer(gameObject);
     }
 
     private void Update()
