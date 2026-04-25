@@ -5,7 +5,6 @@ public class TeleportSystem : MonoBehaviour
 {
     public static TeleportSystem Instance;
 
-    private Transform playerTransform;
     private InputHandler inputHandler;
 
     private bool isTeleporting = false;
@@ -17,7 +16,6 @@ public class TeleportSystem : MonoBehaviour
 
     private void Start()
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
         inputHandler = FindAnyObjectByType<InputHandler>();
     }
 
@@ -30,20 +28,15 @@ public class TeleportSystem : MonoBehaviour
 
     IEnumerator TeleportRoutine(Vector3 targetPosition)
     {
+        isTeleporting = true;
+
         inputHandler.SetInputEnabled(false);
 
         yield return FadeUI.Instance.FadeOut();
 
-        var controller = playerTransform.GetComponent<CharacterController>();
-        if (controller != null)
-            controller.enabled = false;
-
-        playerTransform.position = targetPosition;
+        PlayerManager.Instance.Teleport(targetPosition);
 
         yield return null;
-
-        if (controller != null)
-            controller.enabled = true;
 
         yield return FadeUI.Instance.FadeIn();
 

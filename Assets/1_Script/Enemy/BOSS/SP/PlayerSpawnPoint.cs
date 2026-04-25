@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossSceneSpawnPoint : MonoBehaviour
+public class PlayerSpawnPoint : MonoBehaviour
 {
     [SerializeField] private bool useTimeLine = true;
 

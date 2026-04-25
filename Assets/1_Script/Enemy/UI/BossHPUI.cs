@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BossHPUI : MonoBehaviour
 {
     [SerializeField] private Image fillImage;
+    [SerializeField] private GameObject hpBarRoot; // 실제 보이는 UI
 
     private EnemyStatus bossStatus;
 
@@ -14,7 +15,7 @@ public class BossHPUI : MonoBehaviour
         bossStatus.OnHPChanged += UpdateHP;
         bossStatus.OnDeath += Hide;
 
-        gameObject.SetActive(false);
+        hpBarRoot.SetActive(false);
 
         // 초기값 반영
         UpdateHP(status.Data.maxHP, status.Data.maxHP);
@@ -27,12 +28,13 @@ public class BossHPUI : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        Debug.Log("Show 호출됨");
+        hpBarRoot.SetActive(true);
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        hpBarRoot.SetActive(false);
     }
 
     private void OnDestroy()

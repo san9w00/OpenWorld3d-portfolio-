@@ -36,8 +36,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!_characterController.enabled) return;
+
         // ม฿ทย
-        if(_characterController.isGrounded && _velocity.y < 0)
+        if (_characterController.isGrounded && _velocity.y < 0)
         {
             _velocity.y = -2f;
         }

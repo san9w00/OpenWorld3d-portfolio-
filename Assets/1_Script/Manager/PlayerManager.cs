@@ -27,6 +27,16 @@ public class PlayerManager : MonoBehaviour
 
     public void Teleport(Vector3 position)
     {
+        if (Player == null) return;
+
+        var controller = Player.GetComponent<CharacterController>();
+
+        if (controller != null)
+            controller.enabled = false;
+
         Player.transform.position = position;
+
+        if (controller != null)
+            controller.enabled = true;
     }
 }
