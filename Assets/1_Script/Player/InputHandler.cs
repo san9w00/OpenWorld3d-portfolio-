@@ -7,8 +7,9 @@ public class InputHandler : MonoBehaviour
 {
     private Queue<ICommand> _commandQueue = new Queue<ICommand>();
 
-    [Header("Player Components")]
+    [Header("Components")]
     private PlayerController _playerController;
+    [SerializeField] private QuickSlot quickSlot;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraArm;
@@ -99,6 +100,7 @@ public class InputHandler : MonoBehaviour
 
         }
 
+        // 장착중인 무기 스킬 사용
         if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerEquipment equipment = _playerController.GetComponent<PlayerEquipment>();
@@ -112,6 +114,12 @@ public class InputHandler : MonoBehaviour
                     hitbox.WeaponData.skill.TryUse(gameObject);
                 }
             }
+        }
+
+        // 퀵슬롯 아이템 사용
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            quickSlot.UseItem(gameObject);
         }
     }
 

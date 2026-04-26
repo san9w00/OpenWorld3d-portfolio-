@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: adaa84fa37a7fe341bf67adcfc0c2f35
+guid: c5dae4c684c9db44daf1a5d967ee58e1
 AudioImporter:
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 8
   defaultSettings:
     serializedVersion: 2
     loadType: 0
@@ -23,8 +23,8 @@ AudioImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 363414
-  packageName: Path of Adventure - Free Music Pack for JRPG
+  productId: 310781
+  packageName: Free 10 Medieval Ambient Fantasy Tracks Music Pack
   packageVersion: 1.0
-  assetPath: Assets/PathOfAdventure/Loop/Field_Loop.wav
-  uploadId: 867734
+  assetPath: Assets/10 Fantasy Medieval Ambient Tracks/Loops/2. Winds of Valor.wav
+  uploadId: 731920

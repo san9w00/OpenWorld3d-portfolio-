@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     [Header("Main")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private QuickSlot quickSlot;
     [SerializeField] private List<SlotUI> slots;
 
     [Header("Detail UI")]
@@ -124,18 +125,24 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        selectedItem.itemData.Use(playerInventory.gameObject);
-
         if (selectedItem.itemData.itemType == ItemType.Weapon)
         {
+            selectedItem.itemData.Use(playerInventory.gameObject);
             curEquippedWeapon = (WeaponItemSO)selectedItem.itemData;
             RefreshUI();
+            return;
         }
 
-        // Æ÷¼Ç -> ¼Òºñ
+        // Æ÷¼Ç -> Äü½½·Ô µî·Ï
         if (selectedItem.itemData.itemType == ItemType.potion)
         {
-            playerInventory.RemoveItem(selectedItem.itemData, 1);
+            if (quickSlot == null)
+            {
+                Debug.LogError("QuickSlot ¿¬°á ¾ÈµÊ");
+                return;
+            }
+
+            quickSlot.SetItem(selectedItem);
         }
     }
 
