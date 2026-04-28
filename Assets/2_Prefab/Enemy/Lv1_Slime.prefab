@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 749852017539415811}
   - component: {fileID: 1448306596963218857}
   m_Layer: 10
-  m_Name: Slime
+  m_Name: Lv1_Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,6 +653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HpBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3612994534500058920, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.985
+      objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -679,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -719,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.409
+      value: 1.278
       objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -733,9 +737,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -29.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -10.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000083446
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.97353363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 4201319833889669098, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182015075576833888, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 133.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

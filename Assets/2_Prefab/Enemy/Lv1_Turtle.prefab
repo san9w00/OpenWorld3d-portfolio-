@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 4256019328805201192}
   - component: {fileID: 6454364291262549982}
   m_Layer: 10
-  m_Name: Turtle
+  m_Name: Lv1_Turtle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,6 +1392,26 @@ PrefabInstance:
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -32.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -11.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0899963
+      objectReference: {fileID: 0}
+    - target: {fileID: 3712593641082648343, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.069999695
       objectReference: {fileID: 0}
     - target: {fileID: 4201319833889669098, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_PresetInfoIsWorld

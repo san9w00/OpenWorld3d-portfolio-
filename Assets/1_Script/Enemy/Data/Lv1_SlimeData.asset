@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b638f6ee93f5cb24cb549c1c9456b90e, type: 3}
-  m_Name: BearData
+  m_Name: Lv1_SlimeData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  EnemyId: 3
-  enemyType: 2
-  maxHP: 130
-  atkDamage: 20
-  atkCooldown: 2.3
-  defense: 1
-  rewardExp: 45
-  rewardGold: 150
+  EnemyId: 0
+  enemyType: 0
+  maxHP: 16
+  atkDamage: 5
+  atkCooldown: 2
+  defense: 0
+  rewardExp: 10
+  rewardGold: 30
