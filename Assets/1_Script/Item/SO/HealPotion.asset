@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcdbf07ed6a49534491417329dd736c0, type: 3}
   m_Name: HealPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionItemSO
+  itemID: HealPotion
   itemName: HP Potion
   price: 50
   itemExplain: ITEM / '30' HP to 'Player'

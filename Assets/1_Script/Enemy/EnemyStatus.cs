@@ -59,6 +59,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
         EventBus.Publish(new GoldRewardEvent(Data.rewardGold, transform.position));
         EventBus.Publish(new EnemyKilledEvent(Data.enemyType));
+        EventBus.Publish(new VFXEvent(transform.position, VFXActionType.EnemyDie, VFXSwordType.None));
 
         if (spawner != null)
         {

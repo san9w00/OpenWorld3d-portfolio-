@@ -58,4 +58,16 @@ public class PlayerLevelSystem : MonoBehaviour
         upgradePoint--;
         return true;
     }
+
+
+    // Load
+    public void LoadLevelData(int level, int exp, int upgrade) // 데이터 강제 복원
+    {
+        currentLevel = level;
+        currentExp = exp;
+        upgradePoint = upgrade;
+
+        OnLevelStatChanged?.Invoke(StatType.Level, currentLevel, currentLevel);
+        OnLevelStatChanged?.Invoke(StatType.Exp, currentExp, requiredExp);
+    }
 }

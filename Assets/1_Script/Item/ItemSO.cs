@@ -8,6 +8,9 @@ public enum ItemType
 
 public abstract class ItemSO : ScriptableObject
 {
+    [Header("Save")]
+    public string itemID;
+
     public string itemName;
     public int price;
     public string itemExplain;

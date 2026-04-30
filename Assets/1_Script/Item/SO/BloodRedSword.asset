@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
   m_Name: BloodRedSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
+  itemID: BloodSword
   itemName: Snake
   price: 300
   itemExplain: SWORD / + '12' Damage, "Feel good"
@@ -19,4 +20,5 @@ MonoBehaviour:
   maxStack: 1
   itemType: 0
   damage: 12
-  hitEffectVFX: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2, type: 3}
+  swordType: 0
+  skill: {fileID: 0}

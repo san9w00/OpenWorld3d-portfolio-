@@ -11,6 +11,7 @@ public enum VFXActionType
     LevelUp,
     PlayerHit,
     BossAOE,
+    EnemyDie,
 }
 
 public enum VFXSwordType

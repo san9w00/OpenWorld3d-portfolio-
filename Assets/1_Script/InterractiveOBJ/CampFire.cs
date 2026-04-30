@@ -55,7 +55,7 @@ public class CampFire : MonoBehaviour, IInteractable
         isActivated = true;
         fireVFX?.SetActive(true);
 
-        CampFireManager.Instance.Register(this);
+        CampFireManager.Instance.ActivateCampfire(ID);
 
         Debug.Log("캠프파이어 활성화!");
     }
@@ -89,5 +89,11 @@ public class CampFire : MonoBehaviour, IInteractable
             return "Out Rest";
 
         return "Rest & Reset Monsters";
+    }
+
+    public void LoadActivate()
+    {
+        isActivated = true;
+        fireVFX.SetActive(true);
     }
 }

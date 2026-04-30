@@ -5,7 +5,8 @@ public class CampFireManager : MonoBehaviour
 {
     public static CampFireManager Instance;
 
-    private Dictionary<string, CampFire> campFireList = new();
+    private Dictionary<string, CampFire> allCampfires = new();
+    private HashSet<string> activatedCampfires = new();
 
     private void Awake()
     {
@@ -14,21 +15,37 @@ public class CampFireManager : MonoBehaviour
 
     public void Register(CampFire campFire)
     {
-        if(!campFireList.ContainsKey(campFire.ID))
+        if(!allCampfires.ContainsKey(campFire.ID))
         {
-            campFireList.Add(campFire.ID, campFire);
+            allCampfires.Add(campFire.ID, campFire);
+        }
+    }
 
+    public void ActivateCampfire(string id)
+    {
+        if (activatedCampfires.Contains(id))
+            return;
+
+        activatedCampfires.Add(id);
+
+        if (allCampfires.TryGetValue(id, out var campFire))
+        {
             EventBus.Publish(new CampFireActivatedEvent(campFire));
         }
     }
 
-    public CampFire Get(string id)
+    public bool IsActivated(string id)
     {
-        return campFireList.TryGetValue(id, out var cf) ? cf : null;
+        return activatedCampfires.Contains(id);
     }
 
-    public List<CampFire> GetAllActivated()
+    public CampFire Get(string id)
     {
-        return new List<CampFire>(campFireList.Values);
+        return allCampfires.TryGetValue(id, out var cf) ? cf : null;
+    }
+
+    public List<string> GetAllActivated()
+    {
+        return new List<string>(activatedCampfires);
     }
 }

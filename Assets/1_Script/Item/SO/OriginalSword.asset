@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
   m_Name: OriginalSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
+  itemID: OriginSword
   itemName: Origin
   price: 150
   itemExplain: SWORD / + '7' Damage, "Original is Best"

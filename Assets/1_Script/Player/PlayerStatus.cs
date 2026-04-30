@@ -183,4 +183,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         bonusDefense += amount;
     }
+
+    // Load
+    public void LoadGold(int amount)
+    {
+        Gold = amount;
+        OnGoldChanged?.Invoke();
+    }
 }
