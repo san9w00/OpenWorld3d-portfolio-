@@ -4,24 +4,25 @@ public class TeleportUI : MonoBehaviour
 {
     public static TeleportUI Instance;
 
+    [SerializeField] private GameObject panel;
     private CampFire target;
 
     private void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+
+        panel.SetActive(false);
     }
 
     public void Open(CampFire campFire)
     {
         target = campFire;
-        gameObject.SetActive(true);
+        panel.SetActive(true);
     }
 
     public void OnClickYes()
     {
-        gameObject.SetActive(false);
-
+        panel.SetActive(false);
         if (target == null) return;
 
         TeleportSystem.Instance.Teleport(target.transform.position);
@@ -29,6 +30,6 @@ public class TeleportUI : MonoBehaviour
 
     public void OnClickNo()
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
 }

@@ -8,8 +8,6 @@ public class InventoryUI : MonoBehaviour
 {
     [Header("Main")]
     [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private QuickSlot quickSlot;
     [SerializeField] private List<SlotUI> slots;
 
     [Header("Detail UI")]
@@ -18,16 +16,26 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI detailName;
     [SerializeField] private TextMeshProUGUI detailDescription;
 
-    private InputHandler _inputHandler;
+    private PlayerInventory playerInventory;
+    private QuickSlot quickSlot;
     private InventoryItem selectedItem;
     private WeaponItemSO curEquippedWeapon; // 현재 장착 무기;
 
     void Start()
     {
-        _inputHandler = FindAnyObjectByType<InputHandler>();
-        inventoryPanel.SetActive(false);
+        playerInventory = PlayerInventory.Instance;
+        quickSlot = QuickSlot.Instance;
 
-        playerInventory.OnInventoryChanged += RefreshUI;
+        if (playerInventory != null)
+        {
+            playerInventory.OnInventoryChanged += RefreshUI;
+        }
+        else
+        {
+            Debug.LogError("PlayerInventory 없음");
+        }
+
+        inventoryPanel.SetActive(false);
 
         ClearDatailUI();
         RefreshUI();
@@ -46,7 +54,7 @@ public class InventoryUI : MonoBehaviour
         bool isOpen = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(isOpen);
 
-        _inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance?.SetInventoryState(isOpen);
 
         if (!isOpen)
         {
@@ -56,6 +64,12 @@ public class InventoryUI : MonoBehaviour
 
     void RefreshUI()
     {
+        if (playerInventory == null)
+        {
+            Debug.LogError("PlayerInventory 없음");
+            return;
+        }
+
         for (int i = 0; i < slots.Count; i++)
         {
             if (i < playerInventory.items.Count)
@@ -149,7 +163,17 @@ public class InventoryUI : MonoBehaviour
     public void CloseButton()
     {
         inventoryPanel.SetActive(false);
-        _inputHandler.SetInventoryState(false);
+
+        InputHandler.Instance?.SetInventoryState(false);
+
         ClearDatailUI();
+    }
+
+    private void OnDestroy()
+    {
+        if (playerInventory != null)
+        {
+            playerInventory.OnInventoryChanged -= RefreshUI;
+        }
     }
 }

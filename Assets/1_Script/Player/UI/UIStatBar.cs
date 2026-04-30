@@ -6,9 +6,14 @@ public class UIStatBar : MonoBehaviour
     [SerializeField] private StatType targetType;
     [SerializeField] private Image fillImage;
 
-    [Header("Reference")]
-    [SerializeField] private PlayerStatus playerStatus;
-    [SerializeField] private PlayerLevelSystem levelSystem;
+    private PlayerStatus playerStatus;
+    private PlayerLevelSystem levelSystem;
+
+    private void Awake()
+    {
+        playerStatus = FindAnyObjectByType<PlayerStatus>();
+        levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
+    }
 
     private void OnEnable()
     {

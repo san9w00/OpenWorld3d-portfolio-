@@ -12,6 +12,8 @@ public enum StatType
 
 public class PlayerStatus : MonoBehaviour, IDamageable
 {
+    public static PlayerStatus Instance;
+
     [SerializeField] private PlayerData data;
     public float curHP { get; private set; } 
     public float curStamina { get; private set; }
@@ -47,6 +49,14 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         curHP = MaxHP;
         curStamina = MaxStamina;
     }

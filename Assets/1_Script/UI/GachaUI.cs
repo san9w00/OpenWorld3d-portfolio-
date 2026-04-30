@@ -19,11 +19,6 @@ public class GachaUI : MonoBehaviour
     [SerializeField] private ItemSO secondItem;
     [SerializeField] private Sprite coinSprite;
 
-    [Header("other")]
-    [SerializeField] private PlayerStatus playerStatus;
-    [SerializeField] private PlayerInventory playerInventory;
-    [SerializeField] private InputHandler inputHandler;
-
     private void Start()
     {
         resultImg.gameObject.SetActive(false);
@@ -38,18 +33,18 @@ public class GachaUI : MonoBehaviour
     {
         bool isOpen = !panel.activeSelf;
         panel.SetActive(isOpen);
-        inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance.SetInventoryState(isOpen);
     }
 
     public void Close()
     {
         panel.SetActive(false);
-        inputHandler.SetInventoryState(false);
+        InputHandler.Instance.SetInventoryState(false);
     }
 
     public void Roll()
     {
-        if (!playerStatus.TrySpendGold(gachaCost))
+        if (!PlayerStatus.Instance.TrySpendGold(gachaCost))
         {
             Debug.Log("골드가 부족하다!");
             return;
@@ -59,17 +54,17 @@ public class GachaUI : MonoBehaviour
 
         if (random < 40)
         {
-            playerInventory.AddItem(firstItem, 1);
+            PlayerInventory.Instance.AddItem(firstItem, 1);
             StartCoroutine(ShowResult(firstItem.itemIcon));
         }
         else if (random < 80)
         {
-            playerStatus.AddGold(coinRewardAmount);
+            PlayerStatus.Instance.AddGold(coinRewardAmount);
             StartCoroutine(ShowResult(coinSprite));
         }
         else
         {
-            playerInventory.AddItem(secondItem, 1);
+            PlayerInventory.Instance.AddItem(secondItem, 1);
             StartCoroutine(ShowResult(secondItem.itemIcon));
         }
     }

@@ -6,24 +6,18 @@ public class QuickSlotUII : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI quantityText;
-    [SerializeField] private QuickSlot quickSlot;
-
-    [SerializeField] private PlayerInventory inventory;
 
     private void Start()
     {
-        if (quickSlot != null)
-            quickSlot.OnQuickSlotChanged += Refresh;
-
-        if (inventory != null)
-            inventory.OnInventoryChanged += Refresh;
+        QuickSlot.Instance.OnQuickSlotChanged += Refresh;
+        PlayerInventory.Instance.OnInventoryChanged += Refresh;
 
         Refresh();
     }
 
     void Refresh()
     {
-        if (quickSlot == null)
+        if (QuickSlot.Instance == null)
         {
             Debug.LogError("QuickSlot ¿¬°á ¾ÈµÊ");
             return;
@@ -35,7 +29,7 @@ public class QuickSlotUII : MonoBehaviour
             return;
         }
 
-        if (quickSlot.currentItem == null || quickSlot.currentItem.itemData == null)
+        if (QuickSlot.Instance.currentItem == null || QuickSlot.Instance.currentItem.itemData == null)
         {
             icon.enabled = false;
             quantityText.text = "";
@@ -43,8 +37,8 @@ public class QuickSlotUII : MonoBehaviour
         }
 
         icon.enabled = true;
-        icon.sprite = quickSlot.currentItem.itemData.itemIcon;
+        icon.sprite = QuickSlot.Instance.currentItem.itemData.itemIcon;
 
-        quantityText.text = quickSlot.currentItem.quantity > 1 ? quickSlot.currentItem.quantity.ToString() : "";
+        quantityText.text = QuickSlot.Instance.currentItem.quantity > 1 ? QuickSlot.Instance.currentItem.quantity.ToString() : "";
     }
 }

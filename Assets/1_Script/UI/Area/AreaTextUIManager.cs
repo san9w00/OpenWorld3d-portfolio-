@@ -16,7 +16,15 @@ public class AreaTextUIManager : MonoBehaviour
     private Coroutine currentRoutine;
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         panel.alpha = 0;
     }
 

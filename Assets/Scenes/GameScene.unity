@@ -1534,8 +1534,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIStatBar
   targetType: 0
   fillImage: {fileID: 47705800}
-  playerStatus: {fileID: 980223094}
-  levelSystem: {fileID: 0}
 --- !u!114 &47705800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,8 +1818,6 @@ MonoBehaviour:
   - {fileID: 1980083157}
   - {fileID: 1590317976}
   - {fileID: 1431929467}
-  playerStatus: {fileID: 980223094}
-  inventory: {fileID: 980223092}
 --- !u!1 &63610323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,6 +4335,152 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6808991270454288037, guid: 3186e88e860a0374f86aa14648b41c80, type: 3}
   m_PrefabInstance: {fileID: 799374921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &187705213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187705214}
+  - component: {fileID: 187705216}
+  - component: {fileID: 187705215}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187705214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187705213}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1860962, y: -1.3054004, z: -28.760712}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1517736824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187705215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187705213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd085a914287ed64885140041aed24e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  poolSize: 10
+  sfxList:
+  - type: 0
+    clip: {fileID: 8300000, guid: 6a0b4267ac8ee8448b619bc9a3bca6d9, type: 3}
+--- !u!82 &187705216
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187705213}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &193841251
 GameObject:
   m_ObjectHideFlags: 0
@@ -5368,7 +5510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48ca292d1607b44ba570fd1aca15eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUPMiddleTextUI
-  levelSystem: {fileID: 980223091}
   canvasGroup: {fileID: 233796545}
   levelUpText: {fileID: 233796543}
   lvText: {fileID: 1139274960}
@@ -10895,7 +11036,6 @@ GameObject:
   - component: {fileID: 526422643}
   - component: {fileID: 526422644}
   - component: {fileID: 526422646}
-  - component: {fileID: 526422645}
   - component: {fileID: 526422647}
   - component: {fileID: 526422648}
   m_Layer: 5
@@ -10981,8 +11121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryUI
   inventoryPanel: {fileID: 1178203496}
-  playerInventory: {fileID: 980223092}
-  quickSlot: {fileID: 980223107}
   slots:
   - {fileID: 1766684643}
   - {fileID: 1198784860}
@@ -11070,8 +11208,6 @@ MonoBehaviour:
   hpText: {fileID: 1781050588}
   damageText: {fileID: 2012454125}
   defenseText: {fileID: 2023714621}
-  levelSystem: {fileID: 980223091}
-  status: {fileID: 980223094}
 --- !u!114 &526422643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11085,7 +11221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoldUI
   goldText: {fileID: 1582461821}
-  playerStatus: {fileID: 980223094}
 --- !u!114 &526422644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11103,18 +11238,6 @@ MonoBehaviour:
   - {fileID: 1367333919}
   - {fileID: 348134125}
   - {fileID: 139404455}
---- !u!114 &526422645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526422636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc13638305a518941b4e09b2554d43ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasKeep
 --- !u!114 &526422646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11251,6 +11374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181efc422a3c2cf40b2dbb9331889202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportUI
+  panel: {fileID: 526861815}
 --- !u!1001 &546359688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14673,11 +14797,11 @@ Transform:
   m_GameObject: {fileID: 724876134}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 109.28967, y: 8.48606, z: 143.49232}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1517736824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &724876136
 MonoBehaviour:
@@ -15194,7 +15318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemQueueUI
   icon: {fileID: 1984248825}
   itemName: {fileID: 63610325}
-  inventory: {fileID: 980223092}
 --- !u!225 &766560335
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -19922,8 +20045,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIStatBar
   targetType: 1
   fillImage: {fileID: 835599617}
-  playerStatus: {fileID: 980223094}
-  levelSystem: {fileID: 0}
 --- !u!114 &835599617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23983,7 +24104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3594475216015c47a288c9ace299418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputHandler
-  quickSlot: {fileID: 980223107}
   cameraArm: {fileID: 1653153760}
   cameraSensitivity: 2
   minVerticalAngle: -30
@@ -24042,7 +24162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa435bc9ec097a478c962a67a9994b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuickSlot
-  inventory: {fileID: 980223092}
   currentItem:
     itemData: {fileID: 0}
     quantity: 0
@@ -26932,7 +27051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d48ca292d1607b44ba570fd1aca15eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUPMiddleTextUI
-  levelSystem: {fileID: 980223091}
   canvasGroup: {fileID: 1139274958}
   levelUpText: {fileID: 1139274960}
   lvText: {fileID: 1139274960}
@@ -28671,54 +28789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179680031}
   m_CullTransparentMesh: 1
---- !u!1 &1193569814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1193569816}
-  - component: {fileID: 1193569815}
-  m_Layer: 0
-  m_Name: SoundManager_LateDelete~~~~
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1193569815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193569814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd085a914287ed64885140041aed24e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
-  poolSize: 10
-  sfxList:
-  - type: 0
-    clip: {fileID: 8300000, guid: 6a0b4267ac8ee8448b619bc9a3bca6d9, type: 3}
---- !u!4 &1193569816
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193569814}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150.47388, y: 18.80966, z: 196.526}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1198784855
 GameObject:
   m_ObjectHideFlags: 0
@@ -29054,7 +29124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuesterNPC
   baseQuest: {fileID: 11400000, guid: 686345ec3b5e2d14b91f4d58b3e4a122, type: 2}
-  dialogueUI: {fileID: 1566893487}
   questIDList: 0100000002000000
   questDatabase: {fileID: 11400000, guid: 6a8c37ebc3c5ca04b8bcb56b2167802d, type: 2}
 --- !u!54 &1209605026
@@ -36368,8 +36437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuickSlotUII
   icon: {fileID: 460391075}
   quantityText: {fileID: 132818201}
-  quickSlot: {fileID: 980223107}
-  inventory: {fileID: 980223092}
 --- !u!1 &1477797025
 GameObject:
   m_ObjectHideFlags: 0
@@ -37643,6 +37710,9 @@ Transform:
   - {fileID: 1985081884}
   - {fileID: 244841103}
   - {fileID: 834295773}
+  - {fileID: 1935767673}
+  - {fileID: 187705214}
+  - {fileID: 724876135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1520938640
@@ -38327,7 +38397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1566893484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41051,8 +41121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIStatBar
   targetType: 4
   fillImage: {fileID: 1676413986}
-  playerStatus: {fileID: 980223094}
-  levelSystem: {fileID: 980223091}
 --- !u!114 &1676413986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45965,9 +46033,6 @@ MonoBehaviour:
   firstItem: {fileID: 11400000, guid: 1e883d4a5cb7afc4994a7fb98e8341c4, type: 2}
   secondItem: {fileID: 11400000, guid: 67c002c6ce5db8541b17414fc116119f, type: 2}
   coinSprite: {fileID: 21300000, guid: 4605338a5a51383478a6b8eb3707e90c, type: 3}
-  playerStatus: {fileID: 980223094}
-  playerInventory: {fileID: 980223092}
-  inputHandler: {fileID: 980223097}
 --- !u!1 &1910044535
 GameObject:
   m_ObjectHideFlags: 0
@@ -46588,12 +46653,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935767671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1076.0852, y: -503.12726, z: 1177.8757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 966.79553, y: -511.6133, z: 1034.3834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1517736824}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1947656377
 GameObject:
@@ -53593,10 +53658,7 @@ SceneRoots:
   - {fileID: 837039673}
   - {fileID: 1000803841}
   - {fileID: 1166138029}
-  - {fileID: 1517736824}
   - {fileID: 1612646554}
-  - {fileID: 1193569816}
-  - {fileID: 724876135}
   - {fileID: 1540096201}
   - {fileID: 920285233}
-  - {fileID: 1935767673}
+  - {fileID: 1517736824}

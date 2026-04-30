@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public static PlayerInventory Instance;
+
     [SerializeField] private int maxSlotCount = 30;
 
     public List<InventoryItem> items = new List<InventoryItem>();
 
     public Action OnInventoryChanged; // 인벤토리가 변경될 때 호출되는 이벤트
     public Action<ItemSO, int> OnItemAdded; // 아이템 흭득 이벤트
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void AddItem(ItemSO item, int amount = 1)
     {

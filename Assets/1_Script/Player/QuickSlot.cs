@@ -3,10 +3,21 @@ using UnityEngine;
 
 public class QuickSlot : MonoBehaviour
 {
-    [SerializeField] private PlayerInventory inventory;
+    public static QuickSlot Instance;
 
     public InventoryItem currentItem;
     public Action OnQuickSlotChanged;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void SetItem(InventoryItem item)
     {
@@ -26,7 +37,7 @@ public class QuickSlot : MonoBehaviour
 
         currentItem.itemData.Use(player);
 
-        inventory.RemoveItem(currentItem.itemData, 1);
+        PlayerInventory.Instance.RemoveItem(currentItem.itemData, 1);
 
         if (currentItem.quantity <= 0)
         {

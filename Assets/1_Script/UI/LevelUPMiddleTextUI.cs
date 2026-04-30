@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class LevelUPMiddleTextUI : MonoBehaviour
 {
-    [SerializeField] private PlayerLevelSystem levelSystem;
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private TextMeshProUGUI lvText;
 
+    private PlayerLevelSystem levelSystem;
+
     private Coroutine currentRoutine;
 
-    private void OnEnable()
+    private void Start()
     {
-        levelSystem.OnLevelStatChanged += OnLevelStatChanged;
-    }
+        levelSystem = PlayerLevelSystem.Instance;
 
-    private void OnDisable()
-    {
-        levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelStatChanged += OnLevelStatChanged;
+        }
     }
 
     private void OnLevelStatChanged(StatType type, float current, float max)
@@ -56,6 +57,14 @@ public class LevelUPMiddleTextUI : MonoBehaviour
             t += Time.deltaTime * 2f;
             canvasGroup.alpha = Mathf.Lerp(1, 0, t);
             yield return null;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
         }
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 public class QuesterNPC : MonoBehaviour, IInteractable
 {
     [SerializeField] private QuestDataSO baseQuest;
-    [SerializeField] private DialogueUI dialogueUI;
-
     [SerializeField] private List<int> questIDList;
     [SerializeField] private QuestDatabaseSO questDatabase;
 
@@ -37,14 +35,14 @@ public class QuesterNPC : MonoBehaviour, IInteractable
         // 더이상 줄 퀘스트 없음
         if (CurrentQuestData == null)
         {
-            dialogueUI.ShowSimple("No more Quest for You! Thank you for your help!", null);
+            DialogueUI.Instance.ShowSimple("No more Quest for You! Thank you for your help!", null);
             return;
         }
 
         // 아직 수락 안한 상태
         if (quest == null)
         {
-            dialogueUI.ShowQuestOffer(
+            DialogueUI.Instance.ShowQuestOffer(
                 CurrentQuestData.npcDialogue,
                 AcceptQuest,
                 null);
@@ -55,7 +53,7 @@ public class QuesterNPC : MonoBehaviour, IInteractable
         // 완료함
         if (quest.isCompleted)
         {
-            dialogueUI.ShowSimple(
+            DialogueUI.Instance.ShowSimple(
                 baseQuest.completeDialogue,
                 () => QuestManager.Instance.CompleteQuest(quest, FindAnyObjectByType<PlayerStatus>()));
 
@@ -63,7 +61,7 @@ public class QuesterNPC : MonoBehaviour, IInteractable
         }
 
         // 아직 진행중
-        dialogueUI.ShowSimple(baseQuest.progressDialogue, null);
+        DialogueUI.Instance.ShowSimple(baseQuest.progressDialogue, null);
     }
 
     private void AcceptQuest()

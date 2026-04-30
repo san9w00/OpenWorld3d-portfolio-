@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class UpgradeUI : MonoBehaviour
@@ -14,21 +15,8 @@ public class UpgradeUI : MonoBehaviour
     private int damageUpgradeCount = 0;
     private int defenseUpgradeCount = 0;
 
-    [Header("References")]
-    [SerializeField] private PlayerLevelSystem levelSystem;
-    [SerializeField] private PlayerStatus status;
-
-    private InputHandler _inputHandler;
-
-    private void OnEnable()
-    {
-        levelSystem.OnLevelStatChanged += OnLevelStatChanged;
-    }
-
-    private void OnDisable()
-    {
-        levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
-    }
+    private PlayerLevelSystem levelSystem;
+    private PlayerStatus status;
 
     private void OnLevelStatChanged(StatType type, float current, float max)
     {
@@ -40,7 +28,14 @@ public class UpgradeUI : MonoBehaviour
 
     private void Start()
     {
-        _inputHandler = FindAnyObjectByType<InputHandler>();
+        levelSystem = PlayerLevelSystem.Instance;
+        status = PlayerStatus.Instance;
+
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelStatChanged += OnLevelStatChanged;
+        }
+
         upgradePanel.SetActive(false);
 
         hpText.text = "+0";
@@ -62,7 +57,7 @@ public class UpgradeUI : MonoBehaviour
     {
         bool isOpen = !upgradePanel.activeSelf;
         upgradePanel.SetActive(isOpen);
-        _inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance?.SetInventoryState(isOpen);
     }
 
     public void UpgradeHP()
@@ -107,6 +102,14 @@ public class UpgradeUI : MonoBehaviour
     public void CloseButton()
     {
         upgradePanel.SetActive(false);
-        _inputHandler.SetInventoryState(false);
+        InputHandler.Instance?.SetInventoryState(false);
+    }
+
+    private void OnDestroy()
+    {
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
+        }
     }
 }

@@ -5,11 +5,13 @@ using UnityEngine.VFX;
 
 public class InputHandler : MonoBehaviour
 {
+    public static InputHandler Instance;
+
     private Queue<ICommand> _commandQueue = new Queue<ICommand>();
 
     [Header("Components")]
     private PlayerController _playerController;
-    [SerializeField] private QuickSlot quickSlot;
+    private QuickSlot quickSlot;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraArm;
@@ -30,7 +32,16 @@ public class InputHandler : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         _playerController = GetComponent<PlayerController>();
+        quickSlot = QuickSlot.Instance;
     }
 
     private void Start()

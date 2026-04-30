@@ -13,7 +13,7 @@ public class LevelUpFeedbackUI : MonoBehaviour
 
     private void Start()
     {
-        levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
+        levelSystem = PlayerLevelSystem.Instance;
 
         exclamationUI.alpha = 0f;
     }

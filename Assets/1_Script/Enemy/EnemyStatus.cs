@@ -16,7 +16,6 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     private bool phaseTriggered = false;
 
     public Action OnDeath;
-    private bool isDead = false;
 
     private void Awake()
     {
@@ -74,7 +73,6 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     public void ResetEnemy()
     {
         CurHP = Data.maxHP;
-        isDead = false;
         OnHPChanged?.Invoke(CurHP, Data.maxHP);
     }
 }

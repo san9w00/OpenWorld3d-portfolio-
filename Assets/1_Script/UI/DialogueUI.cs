@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DialogueUI : MonoBehaviour
 {
+    public static DialogueUI Instance;
+
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text dialogueText;
 
@@ -15,17 +17,33 @@ public class DialogueUI : MonoBehaviour
 
     [SerializeField] private Button continueButton;
 
-    private InputHandler _inputHandler;
-
     private void Awake()
     {
-        _inputHandler = FindAnyObjectByType<InputHandler>();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        panel.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     public void ShowQuestOffer(string text, Action onYes, Action onNo)
     {
         panel.SetActive(true);
-        _inputHandler.SetInventoryState(true);
+        InputHandler.Instance.SetInventoryState(true);
 
         dialogueText.text = text;
 
@@ -38,14 +56,14 @@ public class DialogueUI : MonoBehaviour
         yesButton.onClick.AddListener(() =>
         {
             panel.SetActive(false);
-            _inputHandler.SetInventoryState(false);
+            InputHandler.Instance.SetInventoryState(false);
             onYes?.Invoke();
         });
 
         noButton.onClick.AddListener(() =>
         {
             panel.SetActive(false);
-            _inputHandler.SetInventoryState(false);
+            InputHandler.Instance.SetInventoryState(false);
             onNo?.Invoke();
         });
     }
@@ -53,7 +71,7 @@ public class DialogueUI : MonoBehaviour
     public void ShowSimple(string text, Action onContinue)
     {
         panel.SetActive(true);
-        _inputHandler.SetInventoryState(true);
+        InputHandler.Instance.SetInventoryState(true);
 
         dialogueText.text = text;
 
@@ -64,7 +82,7 @@ public class DialogueUI : MonoBehaviour
         continueButton.onClick.AddListener(() =>
         {
             panel.SetActive(false);
-            _inputHandler.SetInventoryState(false);
+            InputHandler.Instance.SetInventoryState(false);
             onContinue?.Invoke();
         });
     }

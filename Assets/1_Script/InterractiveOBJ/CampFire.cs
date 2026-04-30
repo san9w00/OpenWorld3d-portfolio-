@@ -16,6 +16,11 @@ public class CampFire : MonoBehaviour, IInteractable
     public Vector3 Position => transform.position;
     public bool IsActivated => isActivated;
 
+    private void Awake()
+    {
+        CampFireManager.Instance.Register(this);
+    }
+
     private void Start()
     {
         fireVFX.SetActive(false);

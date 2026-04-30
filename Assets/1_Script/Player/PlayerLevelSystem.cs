@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerLevelSystem : MonoBehaviour
 {
+    public static PlayerLevelSystem Instance;
+
     private int currentLevel = 1;
     private int currentExp = 0;
     private int requiredExp = 20;
@@ -14,6 +16,17 @@ public class PlayerLevelSystem : MonoBehaviour
     public int UpgradePoint => upgradePoint;
 
     public event Action<StatType, float, float> OnLevelStatChanged;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void Start()
     {

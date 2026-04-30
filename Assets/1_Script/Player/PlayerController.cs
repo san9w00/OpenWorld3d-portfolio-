@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
         _playerStatus = GetComponent<PlayerStatus>();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         PlayerManager.Instance.RegisterPlayer(gameObject);
     }
 

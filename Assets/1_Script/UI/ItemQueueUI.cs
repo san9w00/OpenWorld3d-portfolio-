@@ -8,7 +8,8 @@ public class ItemQueueUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI itemName;
-    [SerializeField] private PlayerInventory inventory;
+
+    private PlayerInventory inventory;
 
     private CanvasGroup canvasGroup;
 
@@ -24,14 +25,18 @@ public class ItemQueueUI : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    void OnEnable()
+    private void Start()
     {
-        inventory.OnItemAdded += AddQueue;
-    }
+        inventory = PlayerInventory.Instance;
 
-    void OnDisable()
-    {
-        inventory.OnItemAdded -= AddQueue;
+        if (inventory != null)
+        {
+            inventory.OnItemAdded += AddQueue;
+        }
+        else
+        {
+            Debug.LogError("PlayerInventory Instance ¾øÀ½");
+        }
     }
 
     void AddQueue(ItemSO item, int amount)
@@ -75,5 +80,13 @@ public class ItemQueueUI : MonoBehaviour
         }
 
         canvasGroup.alpha = end;
+    }
+
+    private void OnDestroy()
+    {
+        if (inventory != null)
+        {
+            inventory.OnItemAdded -= AddQueue;
+        }
     }
 }
