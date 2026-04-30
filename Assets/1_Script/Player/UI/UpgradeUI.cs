@@ -15,9 +15,6 @@ public class UpgradeUI : MonoBehaviour
     private int damageUpgradeCount = 0;
     private int defenseUpgradeCount = 0;
 
-    private PlayerLevelSystem levelSystem;
-    private PlayerStatus status;
-
     private void OnLevelStatChanged(StatType type, float current, float max)
     {
         if (type == StatType.Level)
@@ -28,13 +25,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-        status = PlayerStatus.Instance;
-
-        if (levelSystem != null)
-        {
-            levelSystem.OnLevelStatChanged += OnLevelStatChanged;
-        }
+        PlayerLevelSystem.Instance.OnLevelStatChanged += OnLevelStatChanged;
 
         upgradePanel.SetActive(false);
 
@@ -62,20 +53,20 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradeHP()
     {
-        if (!levelSystem.UseUpgradePoint()) return;
+        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
 
         hpUpgradeCount++;
-        status.IncreaseMaxHP(10);
+        PlayerStatus.Instance.IncreaseMaxHP(10);
 
         hpText.text = "+" + (hpUpgradeCount * 10);
         RefreshPointText();
     }
     public void UpgradeDamage()
     {
-        if (!levelSystem.UseUpgradePoint()) return;
+        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
 
         damageUpgradeCount++;
-        status.IncreaseAttack(5);
+        PlayerStatus.Instance.IncreaseAttack(5);
 
         damageText.text = "+" + (damageUpgradeCount * 5);
 
@@ -84,10 +75,10 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradeDefense()
     {
-        if (!levelSystem.UseUpgradePoint()) return;
+        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
 
         defenseUpgradeCount++;
-        status.IncreaseDefense(3);
+        PlayerStatus.Instance.IncreaseDefense(3);
 
         defenseText.text = "+" + (defenseUpgradeCount * 3);
 
@@ -96,7 +87,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void RefreshPointText()
     {
-        upgradePointText.text = levelSystem.UpgradePoint.ToString();
+        upgradePointText.text = PlayerLevelSystem.Instance.UpgradePoint.ToString();
     }
 
     public void CloseButton()
@@ -107,9 +98,6 @@ public class UpgradeUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (levelSystem != null)
-        {
-            levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
-        }
+        PlayerLevelSystem.Instance.OnLevelStatChanged -= OnLevelStatChanged;
     }
 }

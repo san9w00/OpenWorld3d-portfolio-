@@ -5,29 +5,19 @@ public class GoldUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI goldText;
 
-    private PlayerStatus playerStatus;
-
     private void Start()
     {
-        playerStatus = PlayerStatus.Instance;
-
-        if (playerStatus != null)
-        {
-            playerStatus.OnGoldChanged += UpdateGoldUI;
-            UpdateGoldUI();
-        }
+        PlayerStatus.Instance.OnGoldChanged += UpdateGoldUI;
+        UpdateGoldUI();
     }
 
     private void OnDestroy()
     {
-        if (playerStatus != null)
-        {
-            playerStatus.OnGoldChanged -= UpdateGoldUI;
-        }
+        PlayerStatus.Instance.OnGoldChanged -= UpdateGoldUI;
     }
 
     private void UpdateGoldUI()
     {
-        goldText.text = playerStatus.Gold.ToString();
+        goldText.text = PlayerStatus.Instance.Gold.ToString();
     }
 }

@@ -9,8 +9,6 @@ public class ItemQueueUI : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI itemName;
 
-    private PlayerInventory inventory;
-
     private CanvasGroup canvasGroup;
 
     private Queue<ItemSO> itemQueue = new Queue<ItemSO>();
@@ -27,16 +25,7 @@ public class ItemQueueUI : MonoBehaviour
 
     private void Start()
     {
-        inventory = PlayerInventory.Instance;
-
-        if (inventory != null)
-        {
-            inventory.OnItemAdded += AddQueue;
-        }
-        else
-        {
-            Debug.LogError("PlayerInventory Instance ¾øÀ½");
-        }
+        PlayerInventory.Instance.OnItemAdded += AddQueue;
     }
 
     void AddQueue(ItemSO item, int amount)
@@ -84,9 +73,6 @@ public class ItemQueueUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (inventory != null)
-        {
-            inventory.OnItemAdded -= AddQueue;
-        }
+        PlayerInventory.Instance.OnItemAdded -= AddQueue;
     }
 }

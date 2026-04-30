@@ -10,12 +10,8 @@ public class MapUI : MonoBehaviour
 
     private Dictionary<string, CampFireIcon> iconDict = new();
 
-    private InputHandler _inputHandler;
-
     private void Awake()
     {
-        _inputHandler = FindAnyObjectByType<InputHandler>();
-
         mapPanel.SetActive(false);
 
         foreach(var icon in campFireIcons)
@@ -52,12 +48,12 @@ public class MapUI : MonoBehaviour
     {
         bool isOpen = !mapPanel.activeSelf;
         mapPanel.SetActive(isOpen);
-        _inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance.SetInventoryState(isOpen);
     }
 
     public void Close()
     {
         mapPanel.SetActive(false);
-        _inputHandler.SetInventoryState(false);
+        InputHandler.Instance.SetInventoryState(false);
     }
 }

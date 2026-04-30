@@ -16,24 +16,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI detailName;
     [SerializeField] private TextMeshProUGUI detailDescription;
 
-    private PlayerInventory playerInventory;
-    private QuickSlot quickSlot;
     private InventoryItem selectedItem;
     private WeaponItemSO curEquippedWeapon; // 현재 장착 무기;
 
     void Start()
     {
-        playerInventory = PlayerInventory.Instance;
-        quickSlot = QuickSlot.Instance;
-
-        if (playerInventory != null)
-        {
-            playerInventory.OnInventoryChanged += RefreshUI;
-        }
-        else
-        {
-            Debug.LogError("PlayerInventory 없음");
-        }
+        PlayerInventory.Instance.OnInventoryChanged += RefreshUI;
 
         inventoryPanel.SetActive(false);
 
@@ -64,17 +52,11 @@ public class InventoryUI : MonoBehaviour
 
     void RefreshUI()
     {
-        if (playerInventory == null)
-        {
-            Debug.LogError("PlayerInventory 없음");
-            return;
-        }
-
         for (int i = 0; i < slots.Count; i++)
         {
-            if (i < playerInventory.items.Count)
+            if (i < PlayerInventory.Instance.items.Count)
             {
-                slots[i].SetItem(playerInventory.items[i]);
+                slots[i].SetItem(PlayerInventory.Instance.items[i]);
             }
             else
             {
@@ -84,7 +66,7 @@ public class InventoryUI : MonoBehaviour
 
         if (selectedItem != null)
         {
-            if (!playerInventory.items.Contains(selectedItem) || selectedItem.quantity <= 0)
+            if (!PlayerInventory.Instance.items.Contains(selectedItem) || selectedItem.quantity <= 0)
             {
                 selectedItem = null;
             }
@@ -141,7 +123,7 @@ public class InventoryUI : MonoBehaviour
 
         if (selectedItem.itemData.itemType == ItemType.Weapon)
         {
-            selectedItem.itemData.Use(playerInventory.gameObject);
+            selectedItem.itemData.Use(PlayerInventory.Instance.gameObject);
             curEquippedWeapon = (WeaponItemSO)selectedItem.itemData;
             RefreshUI();
             return;
@@ -150,13 +132,13 @@ public class InventoryUI : MonoBehaviour
         // 포션 -> 퀵슬롯 등록
         if (selectedItem.itemData.itemType == ItemType.potion)
         {
-            if (quickSlot == null)
+            if (QuickSlot.Instance == null)
             {
                 Debug.LogError("QuickSlot 연결 안됨");
                 return;
             }
 
-            quickSlot.SetItem(selectedItem);
+            QuickSlot.Instance.SetItem(selectedItem);
         }
     }
 
@@ -171,9 +153,9 @@ public class InventoryUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (playerInventory != null)
+        if (PlayerInventory.Instance != null)
         {
-            playerInventory.OnInventoryChanged -= RefreshUI;
+            PlayerInventory.Instance.OnInventoryChanged -= RefreshUI;
         }
     }
 }

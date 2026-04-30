@@ -11,7 +11,6 @@ public class ShopUI : MonoBehaviour
 
     private PlayerStatus playerStatus;
     private PlayerInventory inventory;
-    private InputHandler _inputHandler;
 
     private void Awake()
     {
@@ -29,7 +28,7 @@ public class ShopUI : MonoBehaviour
     {
         inventory = FindAnyObjectByType<PlayerInventory>();
         playerStatus = FindAnyObjectByType<PlayerStatus>();
-        _inputHandler = FindAnyObjectByType<InputHandler>();
+
         shopPanel.SetActive(false);
 
         foreach (var slot in slots)
@@ -59,12 +58,12 @@ public class ShopUI : MonoBehaviour
     {
         bool isOpen = !shopPanel.activeSelf;
         shopPanel.SetActive(isOpen);
-        _inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance.SetInventoryState(isOpen);
     }
 
     public void Close()
     {
         shopPanel.SetActive(false);
-        _inputHandler.SetInventoryState(false);
+        InputHandler.Instance.SetInventoryState(false);
     }
 }

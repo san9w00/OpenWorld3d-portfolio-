@@ -9,12 +9,8 @@ public class LevelUpFeedbackUI : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float fadeSpeed = 2f;
 
-    private PlayerLevelSystem levelSystem;
-
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-
         exclamationUI.alpha = 0f;
     }
 
@@ -25,7 +21,7 @@ public class LevelUpFeedbackUI : MonoBehaviour
 
     private void HandleExclamation()
     {
-        if(levelSystem.UpgradePoint > 0)
+        if(PlayerLevelSystem.Instance.UpgradePoint > 0)
         {
             float alpha = Mathf.PingPong(Time.time * fadeSpeed, 1f);
             exclamationUI.alpha = alpha;

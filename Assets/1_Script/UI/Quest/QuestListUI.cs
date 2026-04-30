@@ -12,13 +12,10 @@ public class QuestListUI : MonoBehaviour
 
     private List<QuestSlotUI> slots = new();
 
-    private InputHandler _inputHandler;
-
     private void Awake()
     {
         Instance = this;
 
-        _inputHandler = FindAnyObjectByType<InputHandler>();
         panel.SetActive(false);
     }
 
@@ -57,12 +54,12 @@ public class QuestListUI : MonoBehaviour
     {
         bool isOpen = !panel.activeSelf;
         panel.SetActive(isOpen);
-        _inputHandler.SetInventoryState(isOpen);
+        InputHandler.Instance.SetInventoryState(isOpen);
     }
 
     public void Close()
     {
         panel.SetActive(false);
-        _inputHandler.SetInventoryState(false);
+        InputHandler.Instance.SetInventoryState(false);
     }
 }

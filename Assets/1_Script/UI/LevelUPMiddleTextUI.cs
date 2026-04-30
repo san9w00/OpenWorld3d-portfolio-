@@ -8,18 +8,11 @@ public class LevelUPMiddleTextUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelUpText;
     [SerializeField] private TextMeshProUGUI lvText;
 
-    private PlayerLevelSystem levelSystem;
-
     private Coroutine currentRoutine;
 
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-
-        if (levelSystem != null)
-        {
-            levelSystem.OnLevelStatChanged += OnLevelStatChanged;
-        }
+        PlayerLevelSystem.Instance.OnLevelStatChanged += OnLevelStatChanged;
     }
 
     private void OnLevelStatChanged(StatType type, float current, float max)
@@ -62,9 +55,6 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (levelSystem != null)
-        {
-            levelSystem.OnLevelStatChanged -= OnLevelStatChanged;
-        }
+        PlayerLevelSystem.Instance.OnLevelStatChanged -= OnLevelStatChanged;
     }
 }
