@@ -7,13 +7,22 @@ public class QuickSlotUII : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI quantityText;
 
-    private void Start()
+    private void OnEnable()
     {
-        QuickSlot.Instance.OnQuickSlotChanged += Refresh;
-        PlayerInventory.Instance.OnInventoryChanged += Refresh;
+        EventBus.Subscribe<QuickSlotChangedEvent>(OnQuickSlotChangedMsg);
+        EventBus.Subscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
 
         Refresh();
     }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<QuickSlotChangedEvent>(OnQuickSlotChangedMsg);
+        EventBus.UnSubscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+    }
+
+    private void OnQuickSlotChangedMsg(QuickSlotChangedEvent evt) => Refresh();
+    private void OnInventoryChangedMsg(InventoryChangedEvent evt) => Refresh();
 
     void Refresh()
     {

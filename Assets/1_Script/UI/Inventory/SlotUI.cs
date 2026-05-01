@@ -15,34 +15,41 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         inventoryUI = GetComponentInParent<InventoryUI>();
+
+        ClearSlot();
     }
 
-    public void Initialize(InventoryUI ui)
+    public void ClearSlot()
     {
-        inventoryUI = ui;
+        currentItem = null;
+        if (icon != null) icon.enabled = false;
+        if (quantityText != null) quantityText.text = "";
+        if (equipMark != null) equipMark.SetActive(false);
     }
 
     public void SetItem(InventoryItem item)
     {
-        currentItem = item;
-
-        if (item == null)
+        // 아이템이 null이면 즉시 비우고 종료
+        if (item == null || item.itemData == null)
         {
-            icon.enabled = false;
-            quantityText.text = "";
+            ClearSlot();
             return;
         }
 
+        currentItem = item;
+
+        // 아이콘 설정
         icon.enabled = true;
         icon.sprite = item.itemData.itemIcon;
 
+        // 수량 표시
         quantityText.text = item.quantity > 1 ? item.quantity.ToString() : "";
 
         // 무기 장착 표시 업데이트
-        if (inventoryUI.IsEquipped(item.itemData))
-            equipMark.SetActive(true);
-        else
-            equipMark.SetActive(false);
+        if (inventoryUI != null)
+        {
+            equipMark.SetActive(inventoryUI.IsEquipped(item.itemData));
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)

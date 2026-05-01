@@ -1,16 +1,7 @@
 using System;
 using UnityEngine;
 
-public struct EnemyKilledEvent
-{
-    public EnemyType enemyType;
-
-    public EnemyKilledEvent(EnemyType enemyType)
-    {
-        this.enemyType = enemyType;
-    }
-}
-
+// --- 전투 및 효과 관련 이벤트 ---
 public struct VFXEvent
 {
     public Vector3 Position;
@@ -25,6 +16,17 @@ public struct VFXEvent
     }
 }
 
+public struct EnemyKilledEvent
+{
+    public EnemyType enemyType;
+
+    public EnemyKilledEvent(EnemyType enemyType)
+    {
+        this.enemyType = enemyType;
+    }
+}
+
+// --- 경제 및 보상 관련 이벤트 ---
 public struct GoldRewardEvent
 {
     public int Amount;
@@ -37,6 +39,7 @@ public struct GoldRewardEvent
     }
 }
 
+// --- 월드 및 체크포인트 관련 이벤트 ---
 public struct ResetEvent
 {
     public Vector3 Position;
@@ -55,4 +58,32 @@ public struct CampFireActivatedEvent
     {
         this.campFire = campFire;
     }
+}
+
+// --- 인벤토리 및 아이템 관련 이벤트 ---
+// UI 갱신이나 아이템 흭득 알림 등에 사용
+public struct InventoryChangedEvent
+{
+    public readonly System.Collections.Generic.List<InventoryItem> Items;
+    public InventoryChangedEvent(System.Collections.Generic.List<InventoryItem> items) => Items = items;
+}
+
+public struct ItemAddedEvent
+{
+    public readonly ItemSO Item;
+    public readonly int Amount;
+    public ItemAddedEvent(ItemSO item, int amount) { Item = item; Amount = amount; }
+}
+
+public struct ItemUseRequestedEvent
+{
+    public readonly InventoryItem Item;
+    public ItemUseRequestedEvent(InventoryItem item) { Item = item; }
+}
+
+// --- 시스템 및 UI 관련 이벤트 ---
+public struct QuickSlotChangedEvent
+{
+    public readonly InventoryItem CurrentItem;
+    public QuickSlotChangedEvent(InventoryItem item) => CurrentItem = item;
 }

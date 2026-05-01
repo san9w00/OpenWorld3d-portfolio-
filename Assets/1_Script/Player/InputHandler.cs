@@ -11,7 +11,6 @@ public class InputHandler : MonoBehaviour
 
     [Header("Components")]
     private PlayerController _playerController;
-    private QuickSlot quickSlot;
 
     [Header("Camera Settings")]
     [SerializeField] private Transform cameraArm;
@@ -41,7 +40,6 @@ public class InputHandler : MonoBehaviour
         Instance = this;
 
         _playerController = GetComponent<PlayerController>();
-        quickSlot = QuickSlot.Instance;
     }
 
     private void Start()
@@ -130,7 +128,7 @@ public class InputHandler : MonoBehaviour
         // Äü½½·Ô ¾ÆÀÌÅÛ »ç¿ë
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            quickSlot.UseItem(gameObject);
+            QuickSlot.Instance.UseItem(gameObject);
         }
     }
 

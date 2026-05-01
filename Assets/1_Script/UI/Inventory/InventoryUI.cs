@@ -19,14 +19,26 @@ public class InventoryUI : MonoBehaviour
     private InventoryItem selectedItem;
     private WeaponItemSO curEquippedWeapon; // 현재 장착 무기;
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+
+        // 인벤토리가 켜질 때마다 최신화된 상태로 보여주기 위해 초기화
+        if (PlayerInventory.Instance != null)
+        {
+            RefreshUI(PlayerInventory.Instance.items);
+        }
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+    }
+
     void Start()
     {
-        PlayerInventory.Instance.OnInventoryChanged += RefreshUI;
-
         inventoryPanel.SetActive(false);
-
         ClearDatailUI();
-        RefreshUI();
     }
 
     void Update()
@@ -35,6 +47,12 @@ public class InventoryUI : MonoBehaviour
         {
             ToggleInventory();
         }
+    }
+
+    // 이벤트 매개변수를 처리하는 래퍼
+    private void OnInventoryChangedMsg(InventoryChangedEvent evt)
+    {
+        RefreshUI(evt.Items);
     }
 
     void ToggleInventory()
@@ -50,7 +68,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void RefreshUI()
+    void RefreshUI(List<InventoryItem> currentItems)
     {
         for (int i = 0; i < slots.Count; i++)
         {
@@ -66,7 +84,7 @@ public class InventoryUI : MonoBehaviour
 
         if (selectedItem != null)
         {
-            if (!PlayerInventory.Instance.items.Contains(selectedItem) || selectedItem.quantity <= 0)
+            if (!currentItems.Contains(selectedItem) || selectedItem.quantity <= 0)
             {
                 selectedItem = null;
             }
@@ -125,21 +143,20 @@ public class InventoryUI : MonoBehaviour
         {
             selectedItem.itemData.Use(PlayerInventory.Instance.gameObject);
             curEquippedWeapon = (WeaponItemSO)selectedItem.itemData;
-            RefreshUI();
-            return;
-        }
 
-        // 포션 -> 퀵슬롯 등록
-        if (selectedItem.itemData.itemType == ItemType.potion)
+            // UI 상태 즉시 갱신
+            RefreshUI(PlayerInventory.Instance.items);
+        }
+        // 2. 포션일 경우
+        else if (selectedItem.itemData.itemType == ItemType.potion)
         {
-            if (QuickSlot.Instance == null)
-            {
-                Debug.LogError("QuickSlot 연결 안됨");
-                return;
-            }
-
-            QuickSlot.Instance.SetItem(selectedItem);
+            // [변경] 직접 QuickSlot 인스턴스를 찾는 대신 이벤트를 발행합니다.
+            // 퀵슬롯 시스템은 이 이벤트를 듣고 있다가 스스로 아이템을 등록할 것입니다.
+            EventBus.Publish(new QuickSlotChangedEvent(selectedItem));
         }
+
+        // 공통: 아이템 사용 요청 이벤트 (로그나 퀘스트 시스템 등에서 활용 가능)
+        EventBus.Publish(new ItemUseRequestedEvent(selectedItem));
     }
 
     public void CloseButton()
@@ -149,13 +166,5 @@ public class InventoryUI : MonoBehaviour
         InputHandler.Instance?.SetInventoryState(false);
 
         ClearDatailUI();
-    }
-
-    private void OnDestroy()
-    {
-        if (PlayerInventory.Instance != null)
-        {
-            PlayerInventory.Instance.OnInventoryChanged -= RefreshUI;
-        }
     }
 }

@@ -23,9 +23,20 @@ public class ItemQueueUI : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        PlayerInventory.Instance.OnItemAdded += AddQueue;
+        EventBus.Subscribe<ItemAddedEvent>(OnItemAddedMsg);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<ItemAddedEvent>(OnItemAddedMsg);
+    }
+
+    // 이벤트 매개변수를 받는 래퍼 함수
+    private void OnItemAddedMsg(ItemAddedEvent evt)
+    {
+        AddQueue(evt.Item, evt.Amount);
     }
 
     void AddQueue(ItemSO item, int amount)
@@ -69,10 +80,5 @@ public class ItemQueueUI : MonoBehaviour
         }
 
         canvasGroup.alpha = end;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerInventory.Instance.OnItemAdded -= AddQueue;
     }
 }
