@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool _isRolling = false; // 구르는 중인지 체크
 
     [Header("Attack Settings")]
+    private WeaponType currentWeaponType = WeaponType.Unarmed; // 현재 무기 타입 (애니메이션 전환용)
     private int _comboStep = 0; // 현재 콤보 단계
     private bool _canCombo = false;
     private bool _isAttacking = false;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
             _velocity.y = -2f;
         }
 
-        _velocity.y += Physics.gravity.y * gravityMultiplier *Time.deltaTime;
+        _velocity.y += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
         _characterController.Move(_velocity * Time.deltaTime);
     }
 
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
         _playerStatus.IsUsingStamina = true;
 
         float staminaCost = _playerStatus.RunCostPerSecond * Time.deltaTime;
-        if(!_playerStatus.UseStamina(staminaCost))
+        if (!_playerStatus.UseStamina(staminaCost))
         {
             Move(direction);
             return;
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
             float jumpPower = _playerStatus.JumpPower;
             _velocity.y = Mathf.Sqrt(jumpPower * -2f * Physics.gravity.y);
 
-            if(_animator != null)
+            if (_animator != null)
             {
                 _animator.SetTrigger("Jump");
             }
@@ -134,7 +135,7 @@ public class PlayerController : MonoBehaviour
             if (_playerStatus.UseStamina(_playerStatus.AttackCost))
             {
                 StartAttack(1);
-            }        
+            }
         }
         else if (_canCombo && _comboStep < 2)
         {
@@ -177,11 +178,11 @@ public class PlayerController : MonoBehaviour
     public void Roll(Vector3 direction)
     {
         if (_isRolling || _isAttacking || _isGuarding || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
-        
+
         if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {
             StartCoroutine(RollRoutine(direction));
-        }         
+        }
     }
 
     private IEnumerator RollRoutine(Vector3 direction)
@@ -201,6 +202,7 @@ public class PlayerController : MonoBehaviour
         _isRolling = false;
     }
 
+    // 충돌 시 Rigidbody에 힘 가하기
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody rb = hit.collider.attachedRigidbody;
@@ -211,6 +213,18 @@ public class PlayerController : MonoBehaviour
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         rb.linearVelocity = pushDir * 2f;
     }
+
+    public void SetWeaponType(WeaponType type)
+    {
+        currentWeaponType = type;
+
+        if (_animator != null)
+        {
+            _animator.SetInteger("WeaponType", (int)type);
+        }
+    }
+
+
 
     // 애니메이션 이벤트 (사운드)
     public void PlayFootStep()

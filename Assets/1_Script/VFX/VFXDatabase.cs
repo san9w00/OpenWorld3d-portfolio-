@@ -22,6 +22,8 @@ public enum VFXSwordType
     Ice,
     Dragon,
     PeaceHeal,
+    Unarmed,
+    Axe,
 }
 
 [CreateAssetMenu(menuName = "VFX/VFX Database")]

@@ -19,6 +19,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 3a23d81a0ee030e44960115c927b3a38, type: 3}
   maxStack: 1
   itemType: 0
-  damage: 3
+  weaponType: 1
+  damage: 13
   swordType: 1
   skill: {fileID: 11400000, guid: c8d5057730f43d840a1865f32cccac1b, type: 2}

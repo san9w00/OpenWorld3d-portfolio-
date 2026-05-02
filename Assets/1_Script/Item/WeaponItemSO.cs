@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Weapon")]
 public class WeaponItemSO : ItemSO
 {
+    [Header("Animation")]
+    public WeaponType weaponType;
+
     [Header("Weapon Settings")]
     public float damage;
     public VFXSwordType swordType;

@@ -16,11 +16,10 @@ MonoBehaviour:
   maxStamina: 100
   gold: 200
   moveSpeed: 3.6
-  atkDamage: 10
+  atkDamage: 0
   jumpPower: 4
   defense: 0
-  attackStaminaCost: 20
-  rollStaminaCost: 20
+  attackStaminaCost: 10
+  rollStaminaCost: 15
   runStaminaCost: 10
-  shieldStaminaCost: 15
   staminaRegenRate: 10

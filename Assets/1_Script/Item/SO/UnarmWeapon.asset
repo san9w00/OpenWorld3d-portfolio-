@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
-  m_Name: PeaceHealSword
+  m_Name: UnarmWeapon
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
-  itemID: PeaceSword
-  itemName: PeaceSword
-  price: 1500
-  itemExplain: Its Great Healing Sword in the world
-  itemIcon: {fileID: 21300000, guid: bcdba771b9ffa8842976a21e3c633d91, type: 3}
+  itemID: Unarm
+  itemName: Unarm
+  price: 0
+  itemExplain: punch
+  itemIcon: {fileID: 21300000, guid: 235dab33b6ca6ef49814c57ea95d3610, type: 3}
   maxStack: 1
   itemType: 0
-  weaponType: 1
-  damage: 23
-  swordType: 5
-  skill: {fileID: 11400000, guid: 9f2c872c787acb6448bd3a4d4430f3b5, type: 2}
+  weaponType: 0
+  damage: 3
+  swordType: 6
+  skill: {fileID: 0}

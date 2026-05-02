@@ -116,7 +116,7 @@ public class InputHandler : MonoBehaviour
 
             if (equipment != null && equipment.CurrentWeapon != null)
             {
-                SwordHitbox hitbox = equipment.CurrentWeapon.GetComponent<SwordHitbox>();
+                WeaponHitbox hitbox = equipment.CurrentWeapon.GetComponent<WeaponHitbox>();
 
                 if (hitbox != null && hitbox.WeaponData != null && hitbox.WeaponData.skill != null)
                 {

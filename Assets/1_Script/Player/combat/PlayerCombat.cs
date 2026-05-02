@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    private SwordHitbox currentHitbox;
+    private WeaponHitbox currentHitbox;
 
-    public void SetWeapon(SwordHitbox newHitbox)
+    public void SetWeapon(WeaponHitbox newHitbox)
     {
         currentHitbox = newHitbox;
     }

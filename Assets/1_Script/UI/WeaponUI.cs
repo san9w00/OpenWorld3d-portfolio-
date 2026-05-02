@@ -12,12 +12,14 @@ public class WeaponUI : MonoBehaviour
     private WeaponSkillSO currentSkill;
     private GameObject player;
 
-    private void Start()
+    private void Awake()
     {
         equipment = FindAnyObjectByType<PlayerEquipment>();
-        player = equipment.gameObject;
 
-        Refresh();
+        if (equipment != null)
+        {
+            player = equipment.gameObject;
+        }
     }
 
     private void Update()

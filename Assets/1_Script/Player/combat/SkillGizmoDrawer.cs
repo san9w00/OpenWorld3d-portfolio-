@@ -14,7 +14,7 @@ public class SkillGizmoDrawer : MonoBehaviour
         if (equipment == null) return;
         if (equipment.CurrentWeapon == null) return;
 
-        SwordHitbox hitbox = equipment.CurrentWeapon.GetComponent<SwordHitbox>();
+        WeaponHitbox hitbox = equipment.CurrentWeapon.GetComponent<WeaponHitbox>();
         if (hitbox == null) return;
 
         WeaponItemSO weaponData = hitbox.WeaponData;
