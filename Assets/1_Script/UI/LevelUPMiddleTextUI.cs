@@ -10,22 +10,45 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
     private Coroutine currentRoutine;
 
+    private PlayerLevelSystem levelSystem;
+
     private void Start()
     {
-        PlayerLevelSystem.Instance.OnLevelStatChanged += OnLevelStatChanged;
+        levelSystem = PlayerLevelSystem.Instance;
+
+        if (levelSystem == null)
+        {
+            Debug.LogError("PlayerLevelSystem 없음!");
+            return;
+        }
+
+        // 새 이벤트 연결
+        levelSystem.OnLevelChanged += OnLevelChanged;
+
+        canvasGroup.alpha = 0;
     }
 
-    private void OnLevelStatChanged(StatType type, float current, float max)
+    private void OnDestroy()
     {
-        if (type != StatType.Level)
-            return;
+        if (levelSystem != null)
+        {
+            levelSystem.OnLevelChanged -= OnLevelChanged;
+        }
+    }
 
+    private void OnLevelChanged(int level)
+    {
         if (currentRoutine != null)
+        {
             StopCoroutine(currentRoutine);
+        }
 
-        levelUpText.text = $"LEVEL UP";
-        lvText.text = $"Lv.{(int)current}";
-        currentRoutine = StartCoroutine(LevelUpAnimation());
+        levelUpText.text = "LEVEL UP";
+
+        lvText.text = $"Lv.{level}";
+
+        currentRoutine =
+            StartCoroutine(LevelUpAnimation());
     }
 
     private IEnumerator LevelUpAnimation()
@@ -34,10 +57,14 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
         // Fade In
         float t = 0;
+
         while (t < 1)
         {
             t += Time.deltaTime * 2f;
-            canvasGroup.alpha = Mathf.Lerp(0, 1, t);
+
+            canvasGroup.alpha =
+                Mathf.Lerp(0, 1, t);
+
             yield return null;
         }
 
@@ -45,16 +72,15 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
         // Fade Out
         t = 0;
+
         while (t < 1)
         {
             t += Time.deltaTime * 2f;
-            canvasGroup.alpha = Mathf.Lerp(1, 0, t);
+
+            canvasGroup.alpha =
+                Mathf.Lerp(1, 0, t);
+
             yield return null;
         }
-    }
-
-    private void OnDestroy()
-    {
-        PlayerLevelSystem.Instance.OnLevelStatChanged -= OnLevelStatChanged;
     }
 }

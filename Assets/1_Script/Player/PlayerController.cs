@@ -22,9 +22,7 @@ public class PlayerController : MonoBehaviour
     private int _comboStep = 0; // 현재 콤보 단계
     private bool _canCombo = false;
     private bool _isAttacking = false;
-
-    [Header("Shield Settings")]
-    private bool _isGuarding = false;
+    private bool _comboQueued = false;
 
     private void Awake()
     {
@@ -55,11 +53,9 @@ public class PlayerController : MonoBehaviour
     // [이동]
     public void Move(Vector3 direction)
     {
-        if (_isRolling || _isAttacking || _isGuarding) return;
+        if (_isRolling || _isAttacking) return;
 
         float speed = 0f;
-        _playerStatus.IsUsingStamina = false;
-
 
         if (direction.magnitude >= 0.1f)
         {
@@ -80,10 +76,16 @@ public class PlayerController : MonoBehaviour
     // 달리기
     public void Run(Vector3 direction)
     {
-        if (_isRolling || _isAttacking || _isGuarding) return;
+        if (_isRolling || _isAttacking) return;
+
+        // 탈진 상태면 달리기 금지
+        if (_playerStatus.IsExhausted)
+        {
+            Move(direction);
+            return;
+        }
 
         float speed = 0f;
-        _playerStatus.IsUsingStamina = true;
 
         float staminaCost = _playerStatus.RunCostPerSecond * Time.deltaTime;
         if (!_playerStatus.UseStamina(staminaCost))
@@ -111,7 +113,7 @@ public class PlayerController : MonoBehaviour
     // [점프]
     public void Jump()
     {
-        if (_isRolling || _isAttacking || _isGuarding) return;
+        if (_isRolling || _isAttacking) return;
 
         if (_characterController.isGrounded)
         {
@@ -128,7 +130,11 @@ public class PlayerController : MonoBehaviour
     // [공격]
     public void Attack()
     {
-        if (_isRolling || _isGuarding) return;
+        // 탈진 상태면 공격 금지
+        if (_playerStatus.IsExhausted)
+            return;
+
+        if (_isRolling ) return;
 
         if (!_isAttacking)
         {
@@ -177,7 +183,11 @@ public class PlayerController : MonoBehaviour
     // [구르기]
     public void Roll(Vector3 direction)
     {
-        if (_isRolling || _isAttacking || _isGuarding || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
+        // 탈진 상태면 회피 금지
+        if (_playerStatus.IsExhausted)
+            return;
+
+        if (_isRolling || _isAttacking || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
 
         if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {

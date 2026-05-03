@@ -15,17 +15,14 @@ public class UpgradeUI : MonoBehaviour
     private int damageUpgradeCount = 0;
     private int defenseUpgradeCount = 0;
 
-    private void OnLevelStatChanged(StatType type, float current, float max)
+    private void OnUpgradePointChanged(int point)
     {
-        if (type == StatType.Level)
-        {
-            RefreshPointText();
-        }
+        RefreshPointText();
     }
 
     private void Start()
     {
-        PlayerLevelSystem.Instance.OnLevelStatChanged += OnLevelStatChanged;
+        PlayerLevelSystem.Instance.OnUpgradePointChanged += OnUpgradePointChanged;
 
         upgradePanel.SetActive(false);
 
@@ -98,6 +95,6 @@ public class UpgradeUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerLevelSystem.Instance.OnLevelStatChanged -= OnLevelStatChanged;
+        PlayerLevelSystem.Instance.OnUpgradePointChanged -= OnUpgradePointChanged;
     }
 }

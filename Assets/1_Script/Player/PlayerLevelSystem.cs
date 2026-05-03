@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static StatData;
 
 public class PlayerLevelSystem : MonoBehaviour
 {
@@ -15,23 +16,27 @@ public class PlayerLevelSystem : MonoBehaviour
     public int RequiredExp => requiredExp;
     public int UpgradePoint => upgradePoint;
 
-    public event Action<StatType, float, float> OnLevelStatChanged;
+    // EXP UI 이벤트
+    public event Action<StatData> OnExpChanged;
+
+    // 레벨 텍스트 UI 이벤트
+    public event Action<LevelUIData> OnLevelUIChanged;
+
+    // 레벨 변경 이벤트
+    public event Action<int> OnLevelChanged;
+
+    // 업그레이드 포인트 변경 이벤트
+    public event Action<int> OnUpgradePointChanged;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
     }
 
     private void Start()
     {
-        OnLevelStatChanged?.Invoke(StatType.Level, currentLevel, currentLevel);
-        OnLevelStatChanged?.Invoke(StatType.Exp, currentExp, requiredExp);
+        OnExpChanged?.Invoke(new StatData(currentExp, requiredExp));
+        OnLevelUIChanged?.Invoke(new LevelUIData(currentLevel, currentExp, requiredExp));
     }
 
     public void AddExp(int amount)
@@ -44,7 +49,9 @@ public class PlayerLevelSystem : MonoBehaviour
             LevelUp();
         }
 
-        OnLevelStatChanged?.Invoke(StatType.Exp, currentExp, requiredExp);
+        // UI 업데이트
+        OnExpChanged?.Invoke(new StatData(currentExp, requiredExp));
+        OnLevelUIChanged?.Invoke(new LevelUIData(currentLevel, currentExp, requiredExp));
     }
 
     private void LevelUp()
@@ -53,7 +60,18 @@ public class PlayerLevelSystem : MonoBehaviour
         upgradePoint++;
         requiredExp *= 2;
 
-        OnLevelStatChanged?.Invoke(StatType.Level, currentLevel, currentLevel);
+        // 레벨 이벤트
+        OnLevelChanged?.Invoke(currentLevel);
+
+        // 업그레이드 포인트 이벤트
+        OnUpgradePointChanged?.Invoke(upgradePoint);
+
+        // Exp UI 이벤트
+        OnExpChanged?.Invoke(
+            new StatData(currentExp, requiredExp));
+
+        // Level UI 이벤트
+        OnLevelUIChanged?.Invoke(new LevelUIData(currentLevel, currentExp, requiredExp));
 
         EventBus.Publish(new VFXEvent(transform.position,
             VFXActionType.LevelUp,
@@ -69,18 +87,9 @@ public class PlayerLevelSystem : MonoBehaviour
             return false;
 
         upgradePoint--;
+
+        // 포인트 변경 이벤트
+        OnUpgradePointChanged?.Invoke(upgradePoint);
         return true;
-    }
-
-
-    // Load
-    public void LoadLevelData(int level, int exp, int upgrade) // 데이터 강제 복원
-    {
-        currentLevel = level;
-        currentExp = exp;
-        upgradePoint = upgrade;
-
-        OnLevelStatChanged?.Invoke(StatType.Level, currentLevel, currentLevel);
-        OnLevelStatChanged?.Invoke(StatType.Exp, currentExp, requiredExp);
     }
 }
