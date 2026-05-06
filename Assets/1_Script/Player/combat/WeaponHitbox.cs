@@ -29,7 +29,18 @@ public class WeaponHitbox : MonoBehaviour
         IDamageable target = other.GetComponent<IDamageable>();
         if (target == null) return;
 
+        ResourceObject resource = other.GetComponent<ResourceObject>();
+
         float damage = playerStatus.AtkDamage + currentWeapon.damage;
+
+        if (resource != null)
+        {
+            if (currentWeapon.weaponType == WeaponType.Axe_TwoHand)
+            {
+                damage *= 2f;
+            }
+        }
+
         target.TakeDamage(damage);
 
         Vector3 hitPoint = other.ClosestPoint(transform.position);
