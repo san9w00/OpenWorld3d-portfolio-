@@ -29,7 +29,7 @@ public class WeaponHitbox : MonoBehaviour
         IDamageable target = other.GetComponent<IDamageable>();
         if (target == null) return;
 
-        ResourceObject resource = other.GetComponent<ResourceObject>();
+        ResourceObject resource = other.GetComponentInChildren<ResourceObject>();
 
         float damage = playerStatus.AtkDamage + currentWeapon.damage;
 

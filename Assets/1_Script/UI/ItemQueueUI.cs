@@ -16,7 +16,7 @@ public class ItemQueueUI : MonoBehaviour
     private bool isPlaying = false;
 
     float fadeTime = 0.3f;
-    float stayTime = 2f;
+    float stayTime = 1f;
 
     void Awake()
     {

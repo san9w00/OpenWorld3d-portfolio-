@@ -14,7 +14,7 @@ public class WorldItem : MonoBehaviour
             if (inventory != null)
             {
                 inventory.AddItem(itemData, amount);
-                Destroy(gameObject);
+                Destroy(transform.root.gameObject);
             }
         }
     }

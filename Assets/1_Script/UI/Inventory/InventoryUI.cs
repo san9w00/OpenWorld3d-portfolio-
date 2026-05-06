@@ -148,7 +148,7 @@ public class InventoryUI : MonoBehaviour
             RefreshUI(PlayerInventory.Instance.items);
         }
         // 2. 포션일 경우
-        else if (selectedItem.itemData.itemType == ItemType.potion)
+        else if (selectedItem.itemData.itemType == ItemType.Potion)
         {
             // [변경] 직접 QuickSlot 인스턴스를 찾는 대신 이벤트를 발행합니다.
             // 퀵슬롯 시스템은 이 이벤트를 듣고 있다가 스스로 아이템을 등록할 것입니다.

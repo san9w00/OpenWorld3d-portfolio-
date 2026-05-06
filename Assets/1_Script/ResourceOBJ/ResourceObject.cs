@@ -7,7 +7,7 @@ public enum ResourceType
     Rock
 }
 
-public class ResourceObject : MonoBehaviour
+public class ResourceObject : MonoBehaviour, IDamageable
 {
     [Header("Resource")]
     [SerializeField] private ResourceType resourceType;

@@ -22176,10 +22176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacc0820cc3580b4090634ef3e5d16f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIStatBar
-  targetType: 1
-  fillImage: {fileID: 835599617}
-  playerStatus: {fileID: 0}
-  levelSystem: {fileID: 0}
 --- !u!114 &835599617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45348,10 +45344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacc0820cc3580b4090634ef3e5d16f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIStatBar
-  targetType: 4
-  fillImage: {fileID: 1676413986}
-  playerStatus: {fileID: 0}
-  levelSystem: {fileID: 0}
 --- !u!114 &1676413986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52981,6 +52973,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1812777713}
     m_Modifications:
+    - target: {fileID: 6531420921225169926, guid: 04edc0bffc5bee54eb107fcc8ce4385a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6983262550692983886, guid: 04edc0bffc5bee54eb107fcc8ce4385a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3
