@@ -18,4 +18,6 @@ MonoBehaviour:
     amount: 3
   - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
     amount: 3
-  description: Usefull for Slice the Trees and Rocks
+  description: 'Need : 3 Branches, 3 Rocks.
+
+    Item : X2 Damage for Trees and Rocks'

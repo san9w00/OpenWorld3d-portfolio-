@@ -9,6 +9,21 @@ public class CraftingSystem : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe<CraftRequestEvent>(OnCraftRequest);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<CraftRequestEvent>(OnCraftRequest);
+    }
+
+    private void OnCraftRequest(CraftRequestEvent evt)
+    {
+        Craft(evt.Recipe);
+    }
+
     public bool CanCraft(CraftRecipeSO recipe)
     {
         foreach (var need in recipe.requiredResources)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,12 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     [Header("Main")]
-    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject inventoryWindow;
     [SerializeField] private List<SlotUI> slots;
+
+    [Header("Tab panels")]
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject CraftPanel;
 
     [Header("Detail UI")]
     [SerializeField] private GameObject detailPanel;
@@ -37,7 +42,7 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
-        inventoryPanel.SetActive(false);
+        inventoryWindow.SetActive(false);
         ClearDatailUI();
     }
 
@@ -57,8 +62,8 @@ public class InventoryUI : MonoBehaviour
 
     void ToggleInventory()
     {
-        bool isOpen = !inventoryPanel.activeSelf;
-        inventoryPanel.SetActive(isOpen);
+        bool isOpen = !inventoryWindow.activeSelf;
+        inventoryWindow.SetActive(isOpen);
 
         InputHandler.Instance?.SetInventoryState(isOpen);
 
@@ -161,10 +166,22 @@ public class InventoryUI : MonoBehaviour
 
     public void CloseButton()
     {
-        inventoryPanel.SetActive(false);
+        inventoryWindow.SetActive(false);
 
         InputHandler.Instance?.SetInventoryState(false);
 
         ClearDatailUI();
+    }
+
+    public void OpenInventoryTab()
+    {
+        inventoryPanel.SetActive(true);
+        CraftPanel.SetActive(false);
+    }
+
+    public void OpenCraftTab()
+    {
+        inventoryPanel.SetActive(false);
+        CraftPanel.SetActive(true);
     }
 }
