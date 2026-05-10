@@ -50,9 +50,17 @@ public class BossAttackState : EnemyState
             {
                 yield return StartCoroutine(TeleportBite(attack));
             }
+            else if (attack.attackType == BossAttackType.FireBreath)
+            {
+                yield return StartCoroutine(FireBreath(attack));
+            }
+            else if (attack.attackType == BossAttackType.Stun)
+            {
+                yield return StartCoroutine(StunState(attack));
+            }
             else
             {
-                // 데미지 설정
+                // 데미지 설정 (기본공격 할퀴기)
                 boss.currentAttackDamage = boss.GetFinalDamage(attack.damage);
 
                 // 애니메이션 실행
@@ -120,6 +128,46 @@ public class BossAttackState : EnemyState
                 damageable.TakeDamage(damage);
             }
         }
+    }
+
+    private IEnumerator FireBreath(BossAttackSO attack)
+    {
+        Vector3 dir = (_enemyAI.target.position - transform.position).normalized;
+        dir.y = 0;
+        transform.forward = dir;
+
+        // 이동 멈춤
+        _enemyAI.agent.isStopped = true;
+
+        // 애니메이션
+        _enemyAI.animator.SetTrigger(attack.animationTrigger);
+
+        yield return new WaitForSeconds(1f);
+
+        // 데미지 설정
+        boss.currentAttackDamage = boss.GetFinalDamage(attack.damage);
+
+        // 브레스 On
+        boss.fireBreathObject.SetActive(true);
+
+        // 3초 유지
+        yield return new WaitForSeconds(3f);
+
+        // 브레스 Off
+        boss.fireBreathObject.SetActive(false);
+    }
+
+    private IEnumerator StunState(BossAttackSO attack)
+    {
+        // 이동 완전 정지
+        _enemyAI.agent.isStopped = true;
+        _enemyAI.agent.ResetPath();
+
+        // 기절 애니메이션
+        _enemyAI.animator.SetTrigger(attack.animationTrigger);
+
+        // 5초 기절
+        yield return new WaitForSeconds(attack.duration);
     }
 
     private void CheckStateAfterPattern()

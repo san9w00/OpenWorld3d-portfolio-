@@ -3,7 +3,9 @@ using UnityEngine;
 public enum BossAttackType
 {
     Normal,
-    TeleportBite
+    TeleportBite,
+    FireBreath,
+    Stun,
 }
 
 [CreateAssetMenu(menuName = "Boss/Attack")]

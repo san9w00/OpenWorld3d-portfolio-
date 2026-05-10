@@ -12,6 +12,7 @@ public enum VFXActionType
     PlayerHit,
     BossAOE,
     EnemyDie,
+    FireBreath,
 }
 
 public enum VFXSwordType

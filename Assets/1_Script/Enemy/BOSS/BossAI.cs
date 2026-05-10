@@ -9,6 +9,9 @@ public class BossAI : EnemyAI
     [Header("Boss Model")]
     [SerializeField] public GameObject bossModel;
 
+    [Header("Breath")]
+    public GameObject fireBreathObject;
+
     [Header("HP UI")]
     [SerializeField] private BossHPUI bossHPUI;
 
