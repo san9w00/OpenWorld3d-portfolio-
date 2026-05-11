@@ -37,7 +37,7 @@ public class WeaponHitbox : MonoBehaviour
         {
             if (currentWeapon.weaponType == WeaponType.Axe_TwoHand)
             {
-                damage *= 2f;
+                damage *= 4f;
             }
         }
 
