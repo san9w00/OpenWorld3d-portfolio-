@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5280275219405176380}
   - component: {fileID: 559121451203468639}
   - component: {fileID: 7432472184953491299}
+  - component: {fileID: 1979015180239408850}
   m_Layer: 0
   m_Name: WillowTree_05_Pink
   m_TagString: Untagged
@@ -104,6 +105,33 @@ MonoBehaviour:
   maxHp: 100
   dropPrefab: {fileID: 7952631473301054624, guid: fc1beed488abe5449971353f60553ff3, type: 3}
   dropPoint: {fileID: 359716473881876041}
+--- !u!54 &1979015180239408850
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312579420878509047}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1058030324529414468
 GameObject:
   m_ObjectHideFlags: 0

@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 4253105195041782570}
   - component: {fileID: 1987649752300711972}
   - component: {fileID: 986259114281747399}
+  - component: {fileID: 4447282147960535494}
   m_Layer: 0
   m_Name: BroadleafTree_04_Green
   m_TagString: Untagged
@@ -405,3 +406,30 @@ MonoBehaviour:
   maxHp: 100
   dropPrefab: {fileID: 7952631473301054624, guid: fc1beed488abe5449971353f60553ff3, type: 3}
   dropPoint: {fileID: 7701441610146571408}
+--- !u!54 &4447282147960535494
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509515907140916961}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
