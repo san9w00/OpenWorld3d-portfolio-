@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class QuesterNPC : MonoBehaviour, IInteractable
 {
-    [SerializeField] private QuestDataSO baseQuest;
+    //[SerializeField] private QuestDataSO baseQuest;
     [SerializeField] private List<int> questIDList;
     [SerializeField] private QuestDatabaseSO questDatabase;
 
@@ -29,44 +29,94 @@ public class QuesterNPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        QuestRuntimeData quest = QuestManager.Instance.GetQuest(this);
         animator.Play("Dialogue");
 
-        // 더이상 줄 퀘스트 없음
+        QuestRuntimeData quest = QuestManager.Instance.GetQuest(this);
+
+        // 더이상 퀘스트 없음
         if (CurrentQuestData == null)
         {
-            DialogueUI.Instance.ShowSimple("No more Quest for You! Thank you for your help!", null);
+            ShowNoQuestDialogue();
             return;
         }
 
-        // 아직 수락 안한 상태
+        // 퀘스트 아직 안받음
         if (quest == null)
         {
-            DialogueUI.Instance.ShowQuestOffer(
-                CurrentQuestData.npcDialogue,
-                AcceptQuest,
-                null);
-
+            ShowQuestOfferDialogue();
             return;
         }
 
-        // 완료함
+        // 완료 상태
         if (quest.isCompleted)
         {
-            DialogueUI.Instance.ShowSimple(
-                baseQuest.completeDialogue,
-                () => QuestManager.Instance.CompleteQuest(quest, FindAnyObjectByType<PlayerStatus>()));
-
+            ShowCompleteDialogue(quest);
             return;
         }
 
-        // 아직 진행중
-        DialogueUI.Instance.ShowSimple(baseQuest.progressDialogue, null);
+        // 진행중
+        ShowProgressDialogue();
+    }
+
+    private void ShowNoQuestDialogue()
+    {
+        DialogueManager.Instance.Show(new DialogueRequest
+        {
+            text = "No more quests for you."
+        });
+    }
+
+    private void ShowQuestOfferDialogue()
+    {
+        DialogueManager.Instance.Show(new DialogueRequest
+        {
+            text = CurrentQuestData.npcDialogue,
+
+            choices = new List<DialogueChoice>
+            {
+                new DialogueChoice
+                {
+                    buttonText = "Accept",
+                    action = AcceptQuest
+                },
+
+                new DialogueChoice
+                {
+                    buttonText = "Decline"
+                }
+            }
+        });
+    }
+
+    private void ShowCompleteDialogue(QuestRuntimeData quest)
+    {
+        DialogueManager.Instance.Show(new DialogueRequest
+        {
+            text = quest.questData.completeDialogue,
+
+            onContinue = () =>
+            {
+                PlayerStatus player =
+                    FindAnyObjectByType<PlayerStatus>();
+
+                QuestManager.Instance.CompleteQuest(
+                    quest,
+                    player);
+            }
+        });
+    }
+
+    private void ShowProgressDialogue()
+    {
+        DialogueManager.Instance.Show(new DialogueRequest
+        {
+            text = CurrentQuestData.progressDialogue
+        });
     }
 
     private void AcceptQuest()
     {
-        var questData = CurrentQuestData;
+        QuestDataSO questData = CurrentQuestData;
 
         QuestManager.Instance.AcceptQuest(this, questData, questData.targetAmount);
     }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -8,14 +9,21 @@ public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance;
 
+    [Header("Panel")]
     [SerializeField] private GameObject panel;
+
+    [Header("Dialogue")]
     [SerializeField] private TMP_Text dialogueText;
 
+    [Header("Choice")]
     [SerializeField] private GameObject choicePanel;
-    [SerializeField] private Button yesButton;
-    [SerializeField] private Button noButton;
+    [SerializeField] private Transform choiceParent;
+    [SerializeField] private Button choiceButtonPrefab;
 
+    [Header("Continue")]
     [SerializeField] private Button continueButton;
+
+    private readonly List<Button> spawnedButtons = new();
 
     private void Awake()
     {
@@ -32,58 +40,76 @@ public class DialogueUI : MonoBehaviour
         panel.SetActive(false);
     }
 
-    private void OnDestroy()
+    public void Show(DialogueRequest request)
     {
-        if (Instance == this)
+        panel.SetActive(true);
+
+        dialogueText.text = request.text;
+
+        ClearChoices();
+
+        bool hasChoices =
+            request.choices != null &&
+            request.choices.Count > 0;
+
+        choicePanel.SetActive(hasChoices);
+        continueButton.gameObject.SetActive(!hasChoices);
+
+        if (hasChoices)
         {
-            Instance = null;
+            CreateChoiceButtons(request.choices);
+        }
+        else
+        {
+            SetupContinueButton(request.onContinue);
         }
     }
 
-    public void ShowQuestOffer(string text, Action onYes, Action onNo)
+    private void CreateChoiceButtons(List<DialogueChoice> choices)
     {
-        panel.SetActive(true);
-        InputHandler.Instance.SetInventoryState(true);
-
-        dialogueText.text = text;
-
-        choicePanel.SetActive(true);
-        continueButton.gameObject.SetActive(false);
-
-        yesButton.onClick.RemoveAllListeners();
-        noButton.onClick.RemoveAllListeners();
-
-        yesButton.onClick.AddListener(() =>
+        foreach (DialogueChoice choice in choices)
         {
-            panel.SetActive(false);
-            InputHandler.Instance.SetInventoryState(false);
-            onYes?.Invoke();
-        });
+            Button button =
+                Instantiate(choiceButtonPrefab, choiceParent);
 
-        noButton.onClick.AddListener(() =>
+            TMP_Text buttonText =
+                button.GetComponentInChildren<TMP_Text>();
+
+            buttonText.text = choice.buttonText;
+
+            button.onClick.AddListener(() =>
+            {
+                choice.action?.Invoke();
+            });
+
+            spawnedButtons.Add(button);
+        }
+    }
+
+    private void SetupContinueButton(System.Action onContinue)
+    {
+        continueButton.onClick.RemoveAllListeners();
+
+        continueButton.onClick.AddListener(() =>
         {
-            panel.SetActive(false);
-            InputHandler.Instance.SetInventoryState(false);
-            onNo?.Invoke();
+            onContinue?.Invoke();
         });
     }
 
-    public void ShowSimple(string text, Action onContinue)
+    public void Hide()
     {
-        panel.SetActive(true);
-        InputHandler.Instance.SetInventoryState(true);
+        panel.SetActive(false);
 
-        dialogueText.text = text;
+        ClearChoices();
+    }
 
-        choicePanel.SetActive(false);
-        continueButton.gameObject.SetActive(true);
-
-        continueButton.onClick.RemoveAllListeners();
-        continueButton.onClick.AddListener(() =>
+    private void ClearChoices()
+    {
+        foreach (Button button in spawnedButtons)
         {
-            panel.SetActive(false);
-            InputHandler.Instance.SetInventoryState(false);
-            onContinue?.Invoke();
-        });
+            Destroy(button.gameObject);
+        }
+
+        spawnedButtons.Clear();
     }
 }
