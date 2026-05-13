@@ -18,6 +18,41 @@ public class TutorialManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe<GamePlayEvent>(HandleGamePlayEvent);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<GamePlayEvent>(HandleGamePlayEvent);
+    }
+
+    private void HandleGamePlayEvent(GamePlayEvent e)
+    {
+        if (currentTutorial == null)
+            return;
+
+        if (currentTutorial.isCompleted)
+            return;
+
+        if (currentTutorial.stepData.goalType != e.eventType)
+            return;
+
+        currentTutorial.currentAmount += e.amount;
+
+        if (currentTutorial.currentAmount >=
+        currentTutorial.stepData.targetAmount)
+        {
+            currentTutorial.currentAmount =
+                currentTutorial.stepData.targetAmount;
+
+            CompleteTutorial();
+        }
+
+        QuestListUI.Instance.RefreshTutorial(currentTutorial);
+    }
+
     private void Start()
     {
         StartTutorial();
@@ -52,7 +87,7 @@ public class TutorialManager : MonoBehaviour
         DialogueUI.Instance.SetPortrait(step.goddessPortrait);
     }
 
-    public void ReportProgress(TutorialGoalType goalType, int amount = 1)
+    public void ReportProgress(GamePlayEventType goalType, int amount = 1)
     {
         if (currentTutorial == null)
             return;

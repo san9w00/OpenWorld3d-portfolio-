@@ -17,6 +17,12 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     public Action OnDeath;
 
+    [Header("Drop")]
+    [SerializeField] private GameObject dropPrefab;
+    [SerializeField] private Transform dropPoint;
+    [SerializeField] private int dropCount = 3;
+    [SerializeField] private float dropForce = 4f;
+
     private void Awake()
     {
         CurHP = Data.maxHP;       
@@ -67,6 +73,33 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         else
         {
             Destroy(gameObject); // 보스는 그냥 삭제
+        }
+    }
+
+    private void DropResources()
+    {
+        if (dropPrefab == null)
+            return;
+
+        for (int i = 0; i < dropCount; i++)
+        {
+            Vector3 spawnPos = dropPoint != null ? dropPoint.position : transform.position;
+            GameObject obj = Instantiate(dropPrefab, spawnPos, Quaternion.identity);
+
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                Vector3 randomDir =
+                    new Vector3(
+                        UnityEngine.Random.Range(-1f, 1f),
+                        1f,
+                        UnityEngine.Random.Range(-1f, 1f));
+
+                rb.AddForce(
+                    randomDir.normalized * dropForce,
+                    ForceMode.Impulse);
+            }
         }
     }
 

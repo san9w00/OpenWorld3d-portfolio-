@@ -4,7 +4,8 @@ using UnityEngine;
 public enum ResourceType
 {
     Tree,
-    Rock
+    Rock,
+    None,
 }
 
 public class ResourceObject : MonoBehaviour, IDamageable
@@ -58,6 +59,23 @@ public class ResourceObject : MonoBehaviour, IDamageable
 
             rb.AddForce(force * 3f, ForceMode.Impulse);
         }
+
+        // GamePlay Event น฿วเ
+        EventBus.Publish(new GamePlayEvent(GetGamePlayEventType()));
+    }
+
+    private GamePlayEventType GetGamePlayEventType()
+    {
+        switch (resourceType)
+        {
+            case ResourceType.Tree:
+                return GamePlayEventType.BranchCollected;
+
+            case ResourceType.Rock:
+                return GamePlayEventType.RockCollected;
+        }
+
+        return GamePlayEventType.BranchCollected;
     }
 
     public ResourceType GetResourceType()

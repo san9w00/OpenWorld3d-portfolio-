@@ -57,5 +57,11 @@ public class CraftingSystem : MonoBehaviour
         PlayerInventory.Instance.AddItem(recipe.resultItem);
 
         Debug.Log(recipe.resultItem.itemName + " 제작 완료");
+
+        // GamePlay Event 발행
+        EventBus.Publish(
+            new GamePlayEvent(
+                GamePlayEventType.WeaponCrafted,
+                craftedItem: recipe.resultItem));
     }
 }

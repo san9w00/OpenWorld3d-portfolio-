@@ -1,15 +1,5 @@
 using UnityEngine;
 
-public enum TutorialGoalType
-{
-    Move,
-    CollectWood,
-    OpenCraft,
-    CraftAxe,
-    EquipWeapon,
-    KillEnemy
-}
-
 [CreateAssetMenu(menuName = "Tutorial/Tutorial Step")]
 public class TutorialStepSO : ScriptableObject
 {
@@ -23,7 +13,7 @@ public class TutorialStepSO : ScriptableObject
     public string objectiveText;
 
     [Header("Goal")]
-    public TutorialGoalType goalType;
+    public GamePlayEventType goalType;
 
     public int targetAmount = 1;
 

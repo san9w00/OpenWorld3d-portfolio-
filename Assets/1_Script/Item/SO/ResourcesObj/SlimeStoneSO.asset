@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3e683dc1cbe764987a566ddf1106a7, type: 3}
+  m_Name: SlimeStoneSO
+  m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
+  itemID: SlimeStone
+  itemName: SlimeStone
+  price: 150
+  itemExplain: It is Original Object Stone
+  itemIcon: {fileID: 21300000, guid: 67d92be28ed43314bbaf848a1d873f6c, type: 3}
+  maxStack: 99
+  itemType: 2
+  resourceType: 2
