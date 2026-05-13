@@ -12,6 +12,10 @@ public class DialogueUI : MonoBehaviour
     [Header("Panel")]
     [SerializeField] private GameObject panel;
 
+    [Header("Portrait")]
+    [SerializeField] private GameObject portraitRoot;
+    [SerializeField] private Image portraitImage; // 초상화이미지
+
     [Header("Dialogue")]
     [SerializeField] private TMP_Text dialogueText;
 
@@ -96,9 +100,23 @@ public class DialogueUI : MonoBehaviour
         });
     }
 
+    public void SetPortrait(Sprite sprite)
+    {
+        if (sprite == null)
+        {
+            portraitRoot.SetActive(false);
+            return;
+        }
+
+        portraitRoot.SetActive(true);
+
+        portraitImage.sprite = sprite;
+    }
+
     public void Hide()
     {
         panel.SetActive(false);
+        portraitRoot.SetActive(false);
 
         ClearChoices();
     }

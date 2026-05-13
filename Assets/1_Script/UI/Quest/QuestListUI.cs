@@ -12,6 +12,9 @@ public class QuestListUI : MonoBehaviour
 
     private List<QuestSlotUI> slots = new();
 
+    [SerializeField]
+    private TutorialSlotUI tutorialSlot;
+
     private void Awake()
     {
         Instance = this;
@@ -50,16 +53,14 @@ public class QuestListUI : MonoBehaviour
         }
     }
 
+    public void RefreshTutorial(TutorialRuntimeData tutorial)
+    {
+        tutorialSlot.Bind(tutorial);
+    }
+
     void ToggleUpgradePanel()
     {
         bool isOpen = !panel.activeSelf;
         panel.SetActive(isOpen);
-        InputHandler.Instance.SetInventoryState(isOpen);
-    }
-
-    public void Close()
-    {
-        panel.SetActive(false);
-        InputHandler.Instance.SetInventoryState(false);
     }
 }
