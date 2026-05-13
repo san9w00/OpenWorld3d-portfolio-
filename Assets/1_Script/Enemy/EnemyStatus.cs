@@ -59,6 +59,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     {
         OnDeath?.Invoke();
 
+        DropResources();
+
         PlayerLevelSystem levelSystem = FindAnyObjectByType<PlayerLevelSystem>();
         levelSystem.AddExp((int)Data.rewardExp);
 

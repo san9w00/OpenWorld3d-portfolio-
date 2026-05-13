@@ -1503,6 +1503,37 @@ Transform:
   - {fileID: 8898963455556960818}
   m_Father: {fileID: 809616900988083664}
   m_LocalEulerAnglesHint: {x: -0.5283228, y: -0.056874566, z: 62.75529}
+--- !u!1 &6027186092110196076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4755710345532416797}
+  m_Layer: 10
+  m_Name: DP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4755710345532416797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027186092110196076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.906, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3618320274727067843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6043147814506004098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1672,7 @@ Transform:
   - {fileID: 3958564669284502735}
   - {fileID: 612539372723502394}
   - {fileID: 1519310432488829365}
+  - {fileID: 4755710345532416797}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -164.955, z: 0}
 --- !u!95 &5681512679601128562
@@ -1678,6 +1710,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   Data: {fileID: 11400000, guid: 0c247767d65b9664b96aca2e28fe3b93, type: 2}
+  dropPrefab: {fileID: 8849228905525302564, guid: 55061f365a31d3b49ac8f8ff31f417c3, type: 3}
+  dropPoint: {fileID: 4755710345532416797}
+  dropCount: 1
+  dropForce: 4
 --- !u!65 &854522907523548755
 BoxCollider:
   m_ObjectHideFlags: 0

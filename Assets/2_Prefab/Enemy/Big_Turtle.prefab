@@ -453,6 +453,7 @@ Transform:
   - {fileID: 4604865697971440299}
   - {fileID: 2252971686740424417}
   - {fileID: 428151560441723076}
+  - {fileID: 2973837675439426250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -130.614, z: 0}
 --- !u!95 &1582033354066753448
@@ -562,6 +563,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   Data: {fileID: 11400000, guid: 613a39de7f109624d8086135df6eee2d, type: 2}
+  dropPrefab: {fileID: 156574735444257197, guid: dba2394f7bfbf2247ba8781211f8fe85, type: 3}
+  dropPoint: {fileID: 2973837675439426250}
+  dropCount: 4
+  dropForce: 4
 --- !u!114 &5742610844326464923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +667,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3996631833466659799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4440087369954058704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2973837675439426250}
+  m_Layer: 10
+  m_Name: DP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2973837675439426250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440087369954058704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2020019949124703567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4664220185142763643
 GameObject:

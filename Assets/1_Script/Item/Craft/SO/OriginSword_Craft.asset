@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98a3bb4d56d5a09419ca6fd016243680, type: 3}
-  m_Name: Sword_basic_Craft
+  m_Name: OriginSword_Craft
   m_EditorClassIdentifier: Assembly-CSharp::CraftRecipeSO
-  resultItem: {fileID: 0}
+  resultItem: {fileID: 11400000, guid: 16997c9ecf86eeb4b83c3061f8af6004, type: 2}
   requiredResources:
   - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-    amount: 4
+    amount: 5
   - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
-    amount: 4
-  description: 
+    amount: 10
+  - item: {fileID: 11400000, guid: f6bb68abb9e07b74ab90196111b43f32, type: 2}
+    amount: 20
+  description: 'Skill : Get Damage 50% Down for 5 Seconds'
