@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
@@ -13,8 +14,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject panel;
 
     [Header("Portrait")]
-    [SerializeField] private GameObject portraitRoot;
-    [SerializeField] private Image portraitImage; // 초상화이미지
+    [SerializeField] private Transform portraitRoot;
+    private GameObject currentPortrait;
 
     [Header("Dialogue")]
     [SerializeField] private TMP_Text dialogueText;
@@ -26,6 +27,10 @@ public class DialogueUI : MonoBehaviour
 
     [Header("Continue")]
     [SerializeField] private Button continueButton;
+
+    [Header("Fade")]
+    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private float fadeDuration = 0.3f;
 
     private readonly List<Button> spawnedButtons = new();
 
@@ -47,6 +52,9 @@ public class DialogueUI : MonoBehaviour
     public void Show(DialogueRequest request)
     {
         panel.SetActive(true);
+
+        StopAllCoroutines();
+        StartCoroutine(FadeIn());
 
         dialogueText.text = request.text;
 
@@ -100,23 +108,36 @@ public class DialogueUI : MonoBehaviour
         });
     }
 
-    public void SetPortrait(Sprite sprite)
+    public void SetPortrait(GameObject portraitPrefab)
     {
-        if (sprite == null)
+        ClearPortrait();
+
+        if (portraitPrefab == null)
         {
-            portraitRoot.SetActive(false);
+            portraitRoot.gameObject.SetActive(false);
             return;
         }
 
-        portraitRoot.SetActive(true);
+        portraitRoot.gameObject.SetActive(true);
 
-        portraitImage.sprite = sprite;
+        currentPortrait =
+            Instantiate(
+                portraitPrefab,
+                portraitRoot);
+    }
+
+    private void ClearPortrait()
+    {
+        if (currentPortrait != null)
+        {
+            Destroy(currentPortrait);
+        }
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
-        portraitRoot.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(FadeOut());
 
         ClearChoices();
     }
@@ -129,5 +150,62 @@ public class DialogueUI : MonoBehaviour
         }
 
         spawnedButtons.Clear();
+    }
+
+    private IEnumerator FadeIn()
+    {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+
+        canvasGroup.alpha = 0f;
+
+        float time = 0f;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+
+            canvasGroup.alpha =
+                Mathf.Lerp(
+                    0f,
+                    1f,
+                    time / fadeDuration);
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    private IEnumerator FadeOut()
+    {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+
+        float time = 0f;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+
+            canvasGroup.alpha =
+                Mathf.Lerp(
+                    1f,
+                    0f,
+                    time / fadeDuration);
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+
+        panel.SetActive(false);
+
+        ClearPortrait();
+
+        portraitRoot.gameObject.SetActive(false);
     }
 }

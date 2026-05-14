@@ -33,6 +33,9 @@ public class TutorialManager : MonoBehaviour
         if (currentTutorial == null)
             return;
 
+        if (!currentTutorial.isStarted)
+            return;
+
         if (currentTutorial.isCompleted)
             return;
 
@@ -51,6 +54,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         QuestListUI.Instance.RefreshTutorial(currentTutorial);
+        Debug.Log(e.eventType);
     }
 
     private void Start()
@@ -67,24 +71,34 @@ public class TutorialManager : MonoBehaviour
         {
             stepData = tutorialSteps[currentIndex],
             currentAmount = 0,
+            isStarted = false,
             isCompleted = false
         };
 
         ShowTutorialDialogue();
-
-        QuestListUI.Instance.RefreshTutorial(currentTutorial);
     }
 
     private void ShowTutorialDialogue()
     {
         TutorialStepSO step = currentTutorial.stepData;
 
+        DialogueUI.Instance.SetPortrait(step.portraitPrefab);
+
         DialogueManager.Instance.Show(new DialogueRequest
         {
-            text = step.dialogue
-        });
+            text = step.dialogue,
 
-        DialogueUI.Instance.SetPortrait(step.goddessPortrait);
+            onContinue = () =>
+            {
+                BeginTutorialMission();
+            }
+        });     
+    }
+
+    private void BeginTutorialMission()
+    {
+        currentTutorial.isStarted = true;
+        QuestListUI.Instance.RefreshTutorial(currentTutorial);
     }
 
     public void ReportProgress(GamePlayEventType goalType, int amount = 1)

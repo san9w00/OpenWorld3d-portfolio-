@@ -20,4 +20,4 @@ MonoBehaviour:
   objectiveText: Craft Bat.
   goalType: 4
   targetAmount: 1
-  goddessPortrait: {fileID: 21300000, guid: c93168c1fa286dc429e17172d490261b, type: 3}
+  portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}

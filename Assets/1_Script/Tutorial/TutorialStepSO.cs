@@ -18,7 +18,7 @@ public class TutorialStepSO : ScriptableObject
     public int targetAmount = 1;
 
     [Header("Visual")]
-    public Sprite goddessPortrait;
+    public GameObject portraitPrefab;
 }
 
 [System.Serializable]
@@ -27,6 +27,8 @@ public class TutorialRuntimeData
     public TutorialStepSO stepData;
 
     public int currentAmount;
+
+    public bool isStarted;
 
     public bool isCompleted;
 }

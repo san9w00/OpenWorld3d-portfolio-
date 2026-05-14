@@ -11,7 +11,7 @@ public enum GamePlayEventType
     EnemyKilled
 }
 
-public class GamePlayEvent : MonoBehaviour
+public class GamePlayEvent
 {
     public GamePlayEventType eventType;
 
