@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8918aa46f0de24045a53f353239f6122, type: 3}
-  m_Name: 3_5BranchCollect
+  m_Name: 3_TryTeleport
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
-  title: 5BranchCollect
-  dialogue: 'Now, Go to the tree,
+  title: Try Teleport
+  dialogue: 'Well done.  Now, You can Teleport to campfire.
 
-    and Collect the ''5 Branchs'' from the Trees.'
-  objectiveText: Collect 5 Branchs
+    Open the map(M)
+    and click icon and try to Teleport
+
+'
+  objectiveText: '3. Try Teleport
+
+'
   goalType: 2
-  targetAmount: 5
+  targetAmount: 1
   portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}

@@ -25,6 +25,7 @@ public class TeleportUI : MonoBehaviour
         panel.SetActive(false);
         if (target == null) return;
 
+        EventBus.Publish(new GamePlayEvent(GamePlayEventType.Teleport));
         TeleportSystem.Instance.Teleport(target.transform.position);
     }
 

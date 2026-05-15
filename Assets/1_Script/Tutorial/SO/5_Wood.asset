@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8918aa46f0de24045a53f353239f6122, type: 3}
-  m_Name: 2_Attack
+  m_Name: 5_Wood
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
-  title: Attack Tutorial
-  dialogue: "Also, Try to Click 'Mouse Left'. \nYou can Hit the Trees, Rocks and
-    Enemies."
-  objectiveText: Try Attack
-  goalType: 1
-  targetAmount: 1
+  title: 3 Wood
+  dialogue: 'Now, Go to the Trees and hit them.
+
+    Collect ''3 woods'' from the
+    Trees.'
+  objectiveText: 5. Three Wood
+  goalType: 4
+  targetAmount: 3
   portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}

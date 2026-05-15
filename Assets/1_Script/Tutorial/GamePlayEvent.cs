@@ -3,6 +3,8 @@ using UnityEngine;
 public enum GamePlayEventType
 {
     PlayerMoved,
+    InteractCampfire,
+    Teleport,
     PlayerAttacked,
     BranchCollected,
     RockCollected,

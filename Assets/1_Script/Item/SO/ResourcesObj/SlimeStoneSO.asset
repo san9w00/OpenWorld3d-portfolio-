@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeStoneSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
   itemID: SlimeStone
-  itemName: SlimeStone
+  itemName: S stone
   price: 150
   itemExplain: It is Original Object Stone
   itemIcon: {fileID: 21300000, guid: 67d92be28ed43314bbaf848a1d873f6c, type: 3}

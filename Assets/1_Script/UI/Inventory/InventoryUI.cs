@@ -77,9 +77,9 @@ public class InventoryUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            if (i < PlayerInventory.Instance.items.Count)
+            if (i < currentItems.Count)
             {
-                slots[i].SetItem(PlayerInventory.Instance.items[i]);
+                slots[i].SetItem(currentItems[i]);
             }
             else
             {
@@ -144,7 +144,7 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
-        if (selectedItem.itemData.itemType == ItemType.Weapon)
+        if (selectedItem.itemData.itemType == ItemType.Weapon) // 무기
         {
             selectedItem.itemData.Use(PlayerInventory.Instance.gameObject);
             curEquippedWeapon = (WeaponItemSO)selectedItem.itemData;
@@ -152,8 +152,7 @@ public class InventoryUI : MonoBehaviour
             // UI 상태 즉시 갱신
             RefreshUI(PlayerInventory.Instance.items);
         }
-        // 2. 포션일 경우
-        else if (selectedItem.itemData.itemType == ItemType.Potion)
+        else if (selectedItem.itemData.itemType == ItemType.Potion) // 포션
         {
             // [변경] 직접 QuickSlot 인스턴스를 찾는 대신 이벤트를 발행합니다.
             // 퀵슬롯 시스템은 이 이벤트를 듣고 있다가 스스로 아이템을 등록할 것입니다.

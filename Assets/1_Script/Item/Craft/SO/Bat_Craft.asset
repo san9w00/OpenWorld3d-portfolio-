@@ -15,5 +15,5 @@ MonoBehaviour:
   resultItem: {fileID: 11400000, guid: 94b25b3af39644e40be5886854db3117, type: 2}
   requiredResources:
   - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-    amount: 5
+    amount: 3
   description: Trees Gift. It easy to make.

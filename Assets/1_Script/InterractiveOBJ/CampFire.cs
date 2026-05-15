@@ -41,6 +41,8 @@ public class CampFire : MonoBehaviour, IInteractable
     {
         if (!isActivated)
         {
+            EventBus.Publish(new GamePlayEvent(GamePlayEventType.InteractCampfire)); // Æ©Åä¸®¾ó
+
             Activate();
             return;
         }
