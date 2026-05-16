@@ -32,6 +32,14 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private float fadeDuration = 0.3f;
 
+    [Header("Typing")]
+    [SerializeField]
+    private float typingSpeed = 0.03f;
+
+    private Coroutine typingCoroutine;
+    private bool isTyping;
+    private string currentFullText;
+
     private readonly List<Button> spawnedButtons = new();
 
     private void Awake()
@@ -56,7 +64,14 @@ public class DialogueUI : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(FadeIn());
 
-        dialogueText.text = request.text;
+        currentFullText = request.text;
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeText(currentFullText));
 
         ClearChoices();
 
@@ -75,6 +90,22 @@ public class DialogueUI : MonoBehaviour
         {
             SetupContinueButton(request.onContinue);
         }
+    }
+
+    private IEnumerator TypeText(string text)
+    {
+        isTyping = true;
+
+        dialogueText.text = "";
+
+        foreach (char c in text)
+        {
+            dialogueText.text += c;
+
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTyping = false;
     }
 
     private void CreateChoiceButtons(List<DialogueChoice> choices)
@@ -104,8 +135,26 @@ public class DialogueUI : MonoBehaviour
 
         continueButton.onClick.AddListener(() =>
         {
+            if (isTyping)
+            {
+                FinishTyping();
+                return;
+            }
+
             onContinue?.Invoke();
         });
+    }
+
+    private void FinishTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        dialogueText.text = currentFullText;
+
+        isTyping = false;
     }
 
     public void SetPortrait(GameObject portraitPrefab)
