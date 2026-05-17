@@ -21,4 +21,4 @@ MonoBehaviour:
   goalType: 0
   targetEnemyType: 1
   targetAmount: 4
-  goldReward: 150
+  goldReward: 400

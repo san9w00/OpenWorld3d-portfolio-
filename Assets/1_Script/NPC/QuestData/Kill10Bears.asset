@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e0040847a18fc42a496f72cc76f7c3, type: 3}
-  m_Name: Kill4SlimeQuest
+  m_Name: Kill10Bears
   m_EditorClassIdentifier: Assembly-CSharp::QuestDataSO
-  questID: 1
-  questName: Kill Slimes
-  npcDialogue: Can you Kill the 5 Slime out of the castle..? If you Kills there slimes,
-    I' ll give you 300 golds. comeback to me
-  progressDialogue: Quest is Progressing now..
-  completeDialogue: Good job. Here your Reward.
+  questID: 3
+  questName: Kill Bears
+  npcDialogue: 'I Think the Bears are Perfect food.
+
+    I want to analyze the Bears.
+    Pleaze kill 10 Bears.'
+  progressDialogue: Quest is Progressing now.. Kill 10 Bears!
+  completeDialogue: 'Good job. Here your Reward.
+
+    (Gold 1600)'
   goalType: 0
-  targetEnemyType: 0
-  targetAmount: 4
-  goldReward: 300
+  targetEnemyType: 2
+  targetAmount: 10
+  goldReward: 1600
