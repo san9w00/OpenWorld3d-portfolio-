@@ -6,7 +6,9 @@ using System.Data.SqlTypes;
 public enum SFXType
 {
     FootStep, Jump, Hit, Rolling,
-    DoorOpen, DoorClose,
+    DoorOpen, DoorClose, QuestUnLcok, QuestComplete, CampfireUnlock,
+    AddItem,
+
 }
 
 public class SoundManager : MonoBehaviour

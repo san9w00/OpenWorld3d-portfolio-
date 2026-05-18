@@ -63,6 +63,7 @@ public class CampFire : MonoBehaviour, IInteractable
         fireVFX?.SetActive(true);
 
         CampFireManager.Instance.ActivateCampfire(ID);
+        SoundManager.Instance.PlaySFX(SFXType.CampfireUnlock);
 
         Debug.Log("캠프파이어 활성화!");
     }

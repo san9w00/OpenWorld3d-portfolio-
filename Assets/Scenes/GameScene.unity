@@ -4791,6 +4791,12 @@ MonoBehaviour:
   sfxList:
   - type: 0
     clip: {fileID: 8300000, guid: 6a0b4267ac8ee8448b619bc9a3bca6d9, type: 3}
+  - type: 6
+    clip: {fileID: 8300000, guid: a65e44e8c694a3a4891eef0db109e331, type: 3}
+  - type: 8
+    clip: {fileID: 8300000, guid: a1c48dd39207ece46a29b8796640661e, type: 3}
+  - type: 9
+    clip: {fileID: 8300000, guid: 568470e29bef88c4aaa027db357be957, type: 3}
 --- !u!82 &187705216
 AudioSource:
   m_ObjectHideFlags: 0

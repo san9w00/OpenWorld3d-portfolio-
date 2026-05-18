@@ -44,6 +44,8 @@ public class PlayerInventory : MonoBehaviour
 
         EventBus.Publish(new ItemAddedEvent(item, amount)); // 획득 연출용
         EventBus.Publish(new InventoryChangedEvent(items)); // 전체 UI 갱신용
+
+        SoundManager.Instance.PlaySFX(SFXType.AddItem);
     }
 
     public int GetItemCount(ItemSO item)

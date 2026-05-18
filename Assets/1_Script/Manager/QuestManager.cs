@@ -56,6 +56,8 @@ public class QuestManager : MonoBehaviour
         acceptedQuests.Add(runtime);
 
         QuestListUI.Instance.AddQuest(runtime);
+
+        SoundManager.Instance.PlaySFX(SFXType.QuestUnLcok);
     }
 
     public void OnEnemyKilled(EnemyType deadEnemyType)
