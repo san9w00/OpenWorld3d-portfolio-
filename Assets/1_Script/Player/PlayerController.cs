@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private int _comboStep = 0; // 현재 콤보 단계
     private bool _canCombo = false;
     private bool _isAttacking = false;
-    private bool _comboQueued = false;
 
     private void Awake()
     {
@@ -146,12 +145,9 @@ public class PlayerController : MonoBehaviour
         else if (_canCombo && _comboStep < 2)
         {
             if (_playerStatus.UseStamina(_playerStatus.AttackCost))
-            {
+            {                
+                StartAttack(2);
                 _canCombo = false;
-                _comboStep = 2;
-
-                _animator.SetInteger("ComboStep", _comboStep);
-                _animator.SetTrigger("Attack");
             }
         }
     }
@@ -176,6 +172,7 @@ public class PlayerController : MonoBehaviour
     {
         _isAttacking = false;
         _canCombo = false;
+
         _comboStep = 0;
         _animator.SetInteger("ComboStep", 0);
     }

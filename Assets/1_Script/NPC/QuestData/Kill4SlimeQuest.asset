@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestDataSO
   questID: 1
   questName: Kill Slimes
-  npcDialogue: Can you Kill the 5 Slime out of the castle..? If you Kills there slimes,
+  npcDialogue: Can you Kill the 4 Slime out of the castle..? If you Kills there slimes,
     I' ll give you 300 golds. comeback to me
   progressDialogue: Quest is Progressing now..
   completeDialogue: Good job. Here your Reward.
