@@ -65,10 +65,13 @@ public class InventoryUI : MonoBehaviour
         bool isOpen = !inventoryWindow.activeSelf;
         inventoryWindow.SetActive(isOpen);
 
-        InputHandler.Instance?.SetInventoryState(isOpen);
-
-        if (!isOpen)
+        if (isOpen)
         {
+            UIManager.Instance.OpenUI(inventoryWindow);
+        }
+        else
+        {
+            UIManager.Instance.CloseUI(inventoryWindow);
             ClearDatailUI();
         }
     }
@@ -167,7 +170,7 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryWindow.SetActive(false);
 
-        InputHandler.Instance?.SetInventoryState(false);
+        UIManager.Instance.CloseUI(inventoryWindow);
 
         ClearDatailUI();
     }

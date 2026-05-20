@@ -48,12 +48,21 @@ public class MapUI : MonoBehaviour
     {
         bool isOpen = !mapPanel.activeSelf;
         mapPanel.SetActive(isOpen);
-        InputHandler.Instance.SetInventoryState(isOpen);
+
+        if (isOpen)
+        {
+            UIManager.Instance.OpenUI(mapPanel);
+        }
+        else
+        {
+            UIManager.Instance.CloseUI(mapPanel);
+        }
     }
 
     public void Close()
     {
         mapPanel.SetActive(false);
-        InputHandler.Instance.SetInventoryState(false);
+
+        UIManager.Instance.CloseUI(mapPanel);
     }
 }

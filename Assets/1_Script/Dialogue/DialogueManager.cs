@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
 
         isDialogueOpen = true;
 
-        InputHandler.Instance.SetInventoryState(true);
+        UIManager.Instance.OpenUI(DialogueUI.Instance.gameObject);
 
         WrapRequest(request);
     }
@@ -62,6 +62,6 @@ public class DialogueManager : MonoBehaviour
 
         DialogueUI.Instance.Hide();
 
-        InputHandler.Instance.SetInventoryState(false);
+        UIManager.Instance.CloseUI(DialogueUI.Instance.gameObject);
     }
 }

@@ -58,12 +58,21 @@ public class ShopUI : MonoBehaviour
     {
         bool isOpen = !shopPanel.activeSelf;
         shopPanel.SetActive(isOpen);
-        InputHandler.Instance.SetInventoryState(isOpen);
+
+        if (isOpen)
+        {
+            UIManager.Instance.OpenUI(shopPanel);
+        }
+        else
+        {
+            UIManager.Instance.CloseUI(shopPanel);
+        }
     }
 
     public void Close()
     {
         shopPanel.SetActive(false);
-        InputHandler.Instance.SetInventoryState(false);
+
+        UIManager.Instance.CloseUI(shopPanel);
     }
 }

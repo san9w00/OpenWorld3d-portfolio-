@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private int _comboStep = 0; // 현재 콤보 단계
     private bool _canCombo = false;
     private bool _isAttacking = false;
+    private bool _comboQueued = false;
 
     private void Awake()
     {
@@ -142,13 +143,10 @@ public class PlayerController : MonoBehaviour
                 StartAttack(1);
             }
         }
+        // 입력 저장만
         else if (_canCombo && _comboStep < 2)
         {
-            if (_playerStatus.UseStamina(_playerStatus.AttackCost))
-            {                
-                StartAttack(2);
-                _canCombo = false;
-            }
+            TryComboAttack();
         }
     }
 
@@ -158,7 +156,27 @@ public class PlayerController : MonoBehaviour
         _comboStep = step;
 
         _animator.SetInteger("ComboStep", _comboStep);
-        _animator.SetTrigger("Attack");
+
+        if (step == 1)
+        {
+            _animator.SetTrigger("Attack");
+        }
+    }
+
+    private void TryComboAttack()
+    {
+        if (!_canCombo)
+            return;
+
+        if (!_playerStatus.UseStamina(_playerStatus.AttackCost))
+            return;
+
+        _comboQueued = false;
+        _canCombo = false;
+
+        _comboStep = 2;
+
+        _animator.SetInteger("ComboStep", 2);
     }
 
     // 애니메이션 이벤트

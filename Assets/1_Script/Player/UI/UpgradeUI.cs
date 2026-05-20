@@ -45,7 +45,15 @@ public class UpgradeUI : MonoBehaviour
     {
         bool isOpen = !upgradePanel.activeSelf;
         upgradePanel.SetActive(isOpen);
-        InputHandler.Instance?.SetInventoryState(isOpen);
+
+        if (isOpen)
+        {
+            UIManager.Instance.OpenUI(upgradePanel);
+        }
+        else
+        {
+            UIManager.Instance.CloseUI(upgradePanel);
+        }
     }
 
     public void UpgradeHP()
@@ -90,7 +98,8 @@ public class UpgradeUI : MonoBehaviour
     public void CloseButton()
     {
         upgradePanel.SetActive(false);
-        InputHandler.Instance?.SetInventoryState(false);
+
+        UIManager.Instance.CloseUI(upgradePanel);
     }
 
     private void OnDestroy()

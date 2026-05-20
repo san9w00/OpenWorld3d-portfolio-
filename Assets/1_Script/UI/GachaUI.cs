@@ -33,13 +33,22 @@ public class GachaUI : MonoBehaviour
     {
         bool isOpen = !panel.activeSelf;
         panel.SetActive(isOpen);
-        InputHandler.Instance.SetInventoryState(isOpen);
+
+        if (isOpen)
+        {
+            UIManager.Instance.OpenUI(panel);
+        }
+        else
+        {
+            UIManager.Instance.CloseUI(panel);
+        }
     }
 
     public void Close()
     {
         panel.SetActive(false);
-        InputHandler.Instance.SetInventoryState(false);
+
+        UIManager.Instance.CloseUI(panel);
     }
 
     public void Roll()
