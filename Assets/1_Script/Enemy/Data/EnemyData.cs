@@ -12,4 +12,10 @@ public class EnemyData : ScriptableObject
     public float defense;
     public float rewardExp;
     public int rewardGold;
+
+    [Header("Skill")]
+    [Range(0, 100)]
+    public float skillChance = 20f;
+
+    public EnemySkillSO[] skills;
 }

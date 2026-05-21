@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public class EnemyAttackState : EnemyState
 {
     private float timer;
     private bool firstAttackDone;
+
+    private bool isUsingSkill;
 
     private void OnEnable()
     {
@@ -14,6 +17,14 @@ public class EnemyAttackState : EnemyState
 
     protected override void Action()
     {
+        if (isUsingSkill)
+        {
+            _enemyAI.agent.isStopped = true;
+            _enemyAI.agent.ResetPath();
+            _enemyAI.animator.SetBool("IsMoving", false);
+            return;
+        }
+
         _enemyAI.agent.isStopped = true;
         _enemyAI.agent.ResetPath();
         _enemyAI.animator.SetBool("IsMoving", false);
@@ -41,6 +52,9 @@ public class EnemyAttackState : EnemyState
 
     protected override void Decision()
     {
+        if (isUsingSkill)
+            return;
+
         float distance = _enemyAI.DistanceToTarget();
 
         if(distance > _enemyAI.attackRange && distance <= _enemyAI.pursueRange)
@@ -55,7 +69,46 @@ public class EnemyAttackState : EnemyState
 
     private void Attack()
     {
-        Debug.Log("적 공격!");
+        float roll = Random.Range(0f, 100f);
+
+        bool canUseSkill = _enemyStatus.Data.skills != null && _enemyStatus.Data.skills.Length > 0;
+
+        if (canUseSkill && roll <= _enemyStatus.Data.skillChance)
+        {
+            UseSkill();
+        }
+        else
+        {
+            NormalAttack();
+        }
+    }
+
+    private void UseSkill()
+    {
+        EnemySkillSO skill = _enemyStatus.Data.skills[Random.Range(0, _enemyStatus.Data.skills.Length)];
+
+        StartCoroutine(SkillRoutine(skill));
+    }
+
+    private IEnumerator SkillRoutine(EnemySkillSO skill)
+    {
+        isUsingSkill = true;
+
+        _enemyAI.animator.SetTrigger(skill.animationTrigger);
+
+        skill.Use(_enemyAI, _enemyStatus);
+
+        yield return new WaitForSeconds(skill.duration);
+
+        _enemyAI.animator.ResetTrigger(skill.animationTrigger);
+        _enemyAI.animator.Play("Idle");
+
+        isUsingSkill = false;
+    }
+
+    private void NormalAttack()
+    {
+        Debug.Log("일반 공격!");
         _enemyAI.animator.SetTrigger("Attack");
     }
 }

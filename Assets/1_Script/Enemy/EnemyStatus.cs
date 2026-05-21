@@ -8,6 +8,8 @@ public class EnemyStatus : MonoBehaviour, IDamageable
     private float CurHP;
     private float Defense => Data.defense;
 
+    private float damageMultiplier = 1f;
+
     private EnemySpawner spawner;
 
     public Action<float, float> OnHPChanged;
@@ -35,7 +37,7 @@ public class EnemyStatus : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        float finalAttack = Mathf.Max(1, damage - Defense);
+        float finalAttack = Mathf.Max(1, (damage - Defense) * damageMultiplier);
 
         CurHP -= finalAttack;
 
@@ -53,6 +55,11 @@ public class EnemyStatus : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+
+    public void SetDamageMultiplier(float multiplier)
+    {
+        damageMultiplier = multiplier;
     }
 
     private void Die()

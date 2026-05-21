@@ -6397,7 +6397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8589755302950010421, guid: c420001fcfd49a146a531cbf4de75a99, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8970924564828431503, guid: c420001fcfd49a146a531cbf4de75a99, type: 3}
       propertyPath: m_LocalScale.x
@@ -7434,7 +7434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689515951906905501, guid: 8abd62a2eceffa44da7fb651f5762284, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4069032608350865191, guid: 8abd62a2eceffa44da7fb651f5762284, type: 3}
       propertyPath: m_LocalScale.x
@@ -7658,7 +7658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013990982369288243, guid: 0029002b2fada3d4497680a36b12ae3e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6358568393392945801, guid: 0029002b2fada3d4497680a36b12ae3e, type: 3}
       propertyPath: m_LocalScale.x
@@ -28449,7 +28449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3004864123894120851, guid: 103991a4cea9ec247851053c49e3eb4a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29265,7 +29265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4334720229974137441, guid: 1bc417e2afe2e834fad5253a6b601f5b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31135,7 +31135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013990982369288243, guid: 5ffa21eac0be47c409e0bab4eea08790, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6358568393392945801, guid: 5ffa21eac0be47c409e0bab4eea08790, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42358,7 +42358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013990982369288243, guid: 446537a5e4bab814fb6203cbd4680b71, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6358568393392945801, guid: 446537a5e4bab814fb6203cbd4680b71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50278,7 +50278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16146da1fcbd6fd42ad1e079814986c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonTeleporter
-  deongeonSceneName: DungeonScene
+  deongeonSceneName: BossScene
 --- !u!65 &1612646552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50336,7 +50336,7 @@ Transform:
   m_GameObject: {fileID: 1612646550}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.94230455, z: -0, w: 0.33475688}
-  m_LocalPosition: {x: 143.755, y: 26.18, z: 207.389}
+  m_LocalPosition: {x: 79.81, y: 8.038, z: 93.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58382,7 +58382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887224701790690321, guid: 3a078232abb58e049ac7e99e15aa5575, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

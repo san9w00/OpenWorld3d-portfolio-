@@ -20,3 +20,6 @@ MonoBehaviour:
   defense: 2
   rewardExp: 60
   rewardGold: 250
+  skillChance: 12
+  skills:
+  - {fileID: 11400000, guid: 0108da3fcf488404c8786d639de5ba0f, type: 2}
