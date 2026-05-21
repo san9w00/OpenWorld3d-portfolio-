@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a3bb4d56d5a09419ca6fd016243680, type: 3}
+  m_Name: FlameSword_craft
+  m_EditorClassIdentifier: Assembly-CSharp::CraftRecipeSO
+  resultItem: {fileID: 11400000, guid: 395e035d88ae0094298651295bfd640a, type: 2}
+  requiredResources:
+  - item: {fileID: 11400000, guid: c4307d4c352be4c4fad8033b99be36b2, type: 2}
+    amount: 100
+  - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
+    amount: 20
+  - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
+    amount: 10
+  description: 'Slime Stone can make Fire.
+
+    This Sword will be useful for kiting.'
