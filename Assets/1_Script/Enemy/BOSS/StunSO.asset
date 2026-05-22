@@ -15,7 +15,7 @@ MonoBehaviour:
   attackType: 3
   animationTrigger: Stun
   damage: 0
-  duration: 5
+  duration: 4.5
   teleportDelay: 1
   aoeDamage: 5
   aoeRadius: 3

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8918aa46f0de24045a53f353239f6122, type: 3}
-  m_Name: 6_CraftBat
+  m_Name: 6_CraftWeapon
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
-  title: Craft Bat
-  dialogue: 'Good Player. Now, You can make a ''Bat''.
+  title: Craft Weapon
+  dialogue: 'Now, You can make a ''Bat''.
 
-    Input ''E'' to open Inventory,
-    and ''Craft Bat''.'
+    Input ''E'' to open Inventory, and
+    ''Craft Bat''.'
   objectiveText: 6. Craft Weapon
   goalType: 6
   targetAmount: 1
