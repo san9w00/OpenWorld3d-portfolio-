@@ -215,7 +215,10 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // UI 이벤트
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
-        
+
+        // 피격 이벤트 발행 (Vignette 강도 전달)
+        EventBus.Publish(new PlayerHitEvent(0.15f));
+
         EventBus.Publish(new VFXEvent(
             transform.position + Vector3.up * 1,
             VFXActionType.PlayerHit,

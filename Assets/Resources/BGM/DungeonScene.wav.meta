@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 347359f76440991488260e96c801a834
+guid: c5dae4c684c9db44daf1a5d967ee58e1
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -26,5 +26,5 @@ AssetOrigin:
   productId: 310781
   packageName: Free 10 Medieval Ambient Fantasy Tracks Music Pack
   packageVersion: 1.0
-  assetPath: Assets/10 Fantasy Medieval Ambient Tracks/Loops/3. Darkwood Path.wav
+  assetPath: Assets/10 Fantasy Medieval Ambient Tracks/Loops/2. Winds of Valor.wav
   uploadId: 731920

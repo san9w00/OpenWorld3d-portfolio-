@@ -1,6 +1,17 @@
 using System;
 using UnityEngine;
 
+// 플레이어 피격 이벤트
+public struct PlayerHitEvent
+{
+    public float Intensity;
+
+    public PlayerHitEvent(float intensity)
+    {
+        Intensity = intensity;
+    }
+}
+
 // --- 전투 및 효과 관련 이벤트 ---
 public struct VFXEvent
 {
