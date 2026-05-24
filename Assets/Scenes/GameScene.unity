@@ -9191,6 +9191,8 @@ MonoBehaviour:
   campFireID: 3
   fireVFX: {fileID: 1570187071}
   healPerSecond: 10
+  coalItem: {fileID: 11400000, guid: 14a5e306b554281458f7cb83719f2d2f, type: 2}
+  coalAmount: 3
 --- !u!54 &245834825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17536,6 +17538,8 @@ MonoBehaviour:
   campFireID: 1
   fireVFX: {fileID: 1000835267}
   healPerSecond: 10
+  coalItem: {fileID: 11400000, guid: 14a5e306b554281458f7cb83719f2d2f, type: 2}
+  coalAmount: 3
 --- !u!54 &552022525
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23775,7 +23779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -24}
+  m_AnchoredPosition: {x: -85, y: -39}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771785972
@@ -26645,8 +26649,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 955b552f3d646514da87c880813d91ea, type: 2}
-  m_sharedMaterial: {fileID: -1022368184911120757, guid: 955b552f3d646514da87c880813d91ea, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af557d9e8c3b795499fdfb7631add81c, type: 2}
+  m_sharedMaterial: {fileID: -2438949726390407166, guid: af557d9e8c3b795499fdfb7631add81c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26676,7 +26680,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -39462,6 +39466,8 @@ MonoBehaviour:
   campFireID: 4
   fireVFX: {fileID: 12862501}
   healPerSecond: 10
+  coalItem: {fileID: 11400000, guid: 14a5e306b554281458f7cb83719f2d2f, type: 2}
+  coalAmount: 3
 --- !u!54 &1112931487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65560,15 +65566,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af557d9e8c3b795499fdfb7631add81c, type: 2}
+  m_sharedMaterial: {fileID: -2438949726390407166, guid: af557d9e8c3b795499fdfb7631add81c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294959095
-  m_fontColor: {r: 0.9682139, g: 0.8726415, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -65591,7 +65597,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -76736,6 +76742,8 @@ MonoBehaviour:
   campFireID: 2
   fireVFX: {fileID: 1386879593}
   healPerSecond: 10
+  coalItem: {fileID: 11400000, guid: 14a5e306b554281458f7cb83719f2d2f, type: 2}
+  coalAmount: 3
 --- !u!54 &2102793192
 Rigidbody:
   m_ObjectHideFlags: 0

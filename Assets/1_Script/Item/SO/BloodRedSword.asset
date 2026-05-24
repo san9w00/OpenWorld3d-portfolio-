@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemID: BloodSword
   itemName: Snake
-  price: 300
-  itemExplain: SWORD / + '12' Damage, "Feel good"
+  price: 1500
+  itemExplain: "+15 \uB370\uBBF8\uC9C0 / \uD3C9\uBC94\uD55C \uAE34 \uAC80\uC774\uB2E4."
   itemIcon: {fileID: 21300000, guid: 0e1ab67eb67874542b1606233616c377, type: 3}
   maxStack: 1
   itemType: 0
   weaponType: 1
   damage: 15
   swordType: 0
+  swingSFX: {fileID: 0}
   skill: {fileID: 0}

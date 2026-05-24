@@ -6,6 +6,10 @@ public class CampFire : MonoBehaviour, IInteractable
     [SerializeField] private GameObject fireVFX;
     [SerializeField] private float healPerSecond = 10f;
 
+    [Header("Reward")]
+    [SerializeField] private ItemSO coalItem;
+    [SerializeField] private int coalAmount = 3;
+
     private PlayerStatus playerStatus;
     private InputHandler inputHandler;
 
@@ -63,6 +67,12 @@ public class CampFire : MonoBehaviour, IInteractable
         fireVFX?.SetActive(true);
 
         CampFireManager.Instance.ActivateCampfire(ID);
+
+        if (coalItem != null)
+        {
+            PlayerInventory.Instance.AddItem(coalItem, coalAmount);
+        }
+
         SoundManager.Instance.PlaySFX(SFXType.CampfireUnlock);
 
         Debug.Log("캠프파이어 활성화!");

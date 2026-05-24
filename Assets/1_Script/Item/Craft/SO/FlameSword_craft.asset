@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CraftRecipeSO
   resultItem: {fileID: 11400000, guid: 395e035d88ae0094298651295bfd640a, type: 2}
   requiredResources:
-  - item: {fileID: 11400000, guid: c4307d4c352be4c4fad8033b99be36b2, type: 2}
-    amount: 100
+  - item: {fileID: 11400000, guid: 14a5e306b554281458f7cb83719f2d2f, type: 2}
+    amount: 10
   - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
     amount: 20
   - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-    amount: 10
-  description: 'Slime Stone can make Fire.
-
-    This Sword will be useful for kiting.'
+    amount: 20
+  description: "\uD654\uC5FC\uC758 \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD560\uC218 \uC788\uB294
+    \uAC80\uC774\uB2E4. \uC8FC\uC704\uC758 \uC801\uC5D0\uAC8C \uD654\uC5FC\uC744
+    \uBFCC\uB9AC\uBA70, \uC9C0\uC18D \uD654\uC0C1\uC744 \uC785\uD78C\uB2E4."

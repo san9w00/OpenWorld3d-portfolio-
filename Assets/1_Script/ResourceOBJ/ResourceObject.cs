@@ -6,6 +6,7 @@ public enum ResourceType
     Tree,
     Rock,
     None,
+    Coal,
 }
 
 public class ResourceObject : MonoBehaviour, IDamageable

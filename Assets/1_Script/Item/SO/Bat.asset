@@ -15,11 +15,13 @@ MonoBehaviour:
   itemID: Bat
   itemName: Bat
   price: 1000
-  itemExplain: Made from Trees (Trees Present)
+  itemExplain: "\uB098\uBB34\uB85C\uB9CC \uB9CC\uB4E4\uC218 \uC788\uB294 \uBB34\uAE30.
+    \uC57D\uD558\uC9C0\uB9CC \uCD08\uBC18\uC5D4 \uC720\uC6A9\uD558\uB2E4."
   itemIcon: {fileID: 21300000, guid: e5ae71054316343489054c3d3ba02600, type: 3}
   maxStack: 1
   itemType: 0
   weaponType: 1
   damage: 7
   swordType: 8
+  swingSFX: {fileID: 0}
   skill: {fileID: 0}
