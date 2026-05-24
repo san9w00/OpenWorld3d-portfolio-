@@ -11,8 +11,8 @@ public class GachaUI : MonoBehaviour
     [SerializeField] private Image resultImg;
 
     [Header("settings")]
-    [SerializeField] private int gachaCost = 100;
-    [SerializeField] private int coinRewardAmount = 150;
+    [SerializeField] private int gachaCost = 300;
+    [SerializeField] private int coinRewardAmount = 350;
 
     [Header("Items")]
     [SerializeField] private ItemSO firstItem;
@@ -66,7 +66,7 @@ public class GachaUI : MonoBehaviour
             PlayerInventory.Instance.AddItem(firstItem, 1);
             StartCoroutine(ShowResult(firstItem.itemIcon));
         }
-        else if (random < 80)
+        else if (random < 95)
         {
             PlayerStatus.Instance.AddGold(coinRewardAmount);
             StartCoroutine(ShowResult(coinSprite));

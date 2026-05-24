@@ -19,6 +19,24 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
         ClearSlot();
     }
 
+    private void OnEnable()
+    {
+        EventBus.Subscribe<WeaponChangedEvent>(OnWeaponChanged);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<WeaponChangedEvent>(OnWeaponChanged);
+    }
+
+    private void OnWeaponChanged(WeaponChangedEvent evt)
+    {
+        if (currentItem == null)
+            return;
+
+        UpdateEquipMark(currentItem);
+    }
+
     public void ClearSlot()
     {
         currentItem = null;
@@ -48,8 +66,32 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
         // 무기 장착 표시 업데이트
         if (inventoryUI != null)
         {
-            equipMark.SetActive(inventoryUI.IsEquipped(item.itemData));
+            // 무기 장착 표시 업데이트
+            UpdateEquipMark(item);
         }
+    }
+
+    private void UpdateEquipMark(InventoryItem item)
+    {
+        if (equipMark == null)
+            return;
+
+        equipMark.SetActive(false);
+
+        if (item.itemData.itemType != ItemType.Weapon)
+            return;
+
+        PlayerEquipment equipment = FindAnyObjectByType<PlayerEquipment>();
+
+        if (equipment == null)
+            return;
+
+        WeaponItemSO currentWeapon = equipment.GetCurrentWeaponData();
+
+        if (currentWeapon == null)
+            return;
+
+        equipMark.SetActive(currentWeapon == item.itemData);
     }
 
     public void OnPointerClick(PointerEventData eventData)

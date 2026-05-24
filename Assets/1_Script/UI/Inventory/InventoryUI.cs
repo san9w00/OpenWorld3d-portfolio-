@@ -21,12 +21,16 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI detailName;
     [SerializeField] private TextMeshProUGUI detailDescription;
 
+    [Header("Action Button")]
+    [SerializeField] private Button actionButton;
+    [SerializeField] private TextMeshProUGUI actionButtonText;
+
     private InventoryItem selectedItem;
-    private WeaponItemSO curEquippedWeapon; // 현재 장착 무기;
 
     private void OnEnable()
     {
         EventBus.Subscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+        EventBus.Subscribe<InventoryActionStateChangedEvent>(OnActionStateChanged);
 
         // 인벤토리가 켜질 때마다 최신화된 상태로 보여주기 위해 초기화
         if (PlayerInventory.Instance != null)
@@ -38,6 +42,7 @@ public class InventoryUI : MonoBehaviour
     private void OnDisable()
     {
         EventBus.UnSubscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+        EventBus.UnSubscribe<InventoryActionStateChangedEvent>(OnActionStateChanged);
     }
 
     void Start()
@@ -104,7 +109,16 @@ public class InventoryUI : MonoBehaviour
         selectedItem = item;
 
         ShowDetailUI(item);
+
+        EventBus.Publish(new InventorySelectionChangedEvent(item));
         Debug.Log("선택됨: " + item.itemData.itemName);
+    }
+
+    private void OnActionStateChanged(InventoryActionStateChangedEvent evt)
+    {
+        actionButton.gameObject.SetActive(evt.ShowButton);
+
+        actionButtonText.text = evt.ButtonText;
     }
 
     void ShowDetailUI(InventoryItem item)
@@ -123,47 +137,60 @@ public class InventoryUI : MonoBehaviour
         detailDescription.text = "";
     }
 
-    public bool IsEquipped(ItemSO item)
-    {
-        if (curEquippedWeapon == null)
-            return false;
-
-        return curEquippedWeapon == item;
-    }
-
     // 버튼용 메서드
     public void OnUseButton()
     {
         if (selectedItem == null)
-        {
-            Debug.Log("선택된 아이템이 없다.");
             return;
-        }
 
-        if (selectedItem.quantity <= 0)
+        ItemSO item = selectedItem.itemData;
+
+        // 무기
+        if (item.itemType == ItemType.Weapon)
         {
-            Debug.Log("아이템 수량이 없다!");
-            selectedItem = null;
-            return;
+            WeaponItemSO weapon = item as WeaponItemSO;
+
+            PlayerEquipment equipment =
+                PlayerInventory.Instance.GetComponent<PlayerEquipment>();
+
+            bool equipped =
+                equipment.GetCurrentWeaponData() == weapon;
+
+            // 장착 해제
+            if (equipped)
+            {
+                equipment.EquipWeapon(equipment.DefaultWeapon);
+            }
+            // 장착
+            else
+            {
+                equipment.EquipWeapon(weapon);
+            }
         }
 
-        if (selectedItem.itemData.itemType == ItemType.Weapon) // 무기
+        // 포션
+        else if (item.itemType == ItemType.Potion)
         {
-            selectedItem.itemData.Use(PlayerInventory.Instance.gameObject);
-            curEquippedWeapon = (WeaponItemSO)selectedItem.itemData;
+            bool registered =
+                QuickSlot.Instance.currentItem != null &&
+                QuickSlot.Instance.currentItem.itemData == item;
 
-            // UI 상태 즉시 갱신
-            RefreshUI(PlayerInventory.Instance.items);
-        }
-        else if (selectedItem.itemData.itemType == ItemType.Potion) // 포션
-        {
-            // [변경] 직접 QuickSlot 인스턴스를 찾는 대신 이벤트를 발행합니다.
-            // 퀵슬롯 시스템은 이 이벤트를 듣고 있다가 스스로 아이템을 등록할 것입니다.
-            EventBus.Publish(new QuickSlotChangedEvent(selectedItem));
+            // 해제
+            if (registered)
+            {
+                QuickSlot.Instance.Clear();
+            }
+            // 등록
+            else
+            {
+                QuickSlot.Instance.SetItem(selectedItem);
+            }
         }
 
-        // 공통: 아이템 사용 요청 이벤트 (로그나 퀘스트 시스템 등에서 활용 가능)
-        EventBus.Publish(new ItemUseRequestedEvent(selectedItem));
+        // 버튼 상태 다시 갱신
+        EventBus.Publish(
+            new InventorySelectionChangedEvent(selectedItem)
+        );
     }
 
     public void CloseButton()

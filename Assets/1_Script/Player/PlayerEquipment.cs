@@ -22,6 +22,8 @@ public class PlayerEquipment : MonoBehaviour
     private PlayerController playerController;
 
     public GameObject CurrentWeapon => currentWeapon;
+    public WeaponItemSO CurrentWeaponData { get; private set; }
+    public WeaponItemSO DefaultWeapon => defaultWeapon;
 
     private void Awake()
     {
@@ -36,6 +38,8 @@ public class PlayerEquipment : MonoBehaviour
 
     public void EquipWeapon(WeaponItemSO weaponData)
     {
+        CurrentWeaponData = weaponData;
+
         // 전부 비활성화
         foreach (var slot in weaponSlots)
         {
@@ -68,6 +72,8 @@ public class PlayerEquipment : MonoBehaviour
                 Debug.Log("무기 장착" + weaponData.itemName);
 
                 FindAnyObjectByType<WeaponUI>()?.Refresh();
+
+                EventBus.Publish(new WeaponChangedEvent(CurrentWeaponData));
 
                 return;
             }

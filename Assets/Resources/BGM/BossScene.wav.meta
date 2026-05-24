@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 41be7e6a265b9c247957c6632719ae69
+guid: 31848ead40e04064aa9999b550c2bd2e
 AudioImporter:
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 8
   defaultSettings:
     serializedVersion: 2
     loadType: 0
@@ -23,8 +23,9 @@ AudioImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 363414
-  packageName: Path of Adventure - Free Music Pack for JRPG
+  productId: 307295
+  packageName: Music For Your RPG
   packageVersion: 1.0
-  assetPath: Assets/PathOfAdventure/Loop/BossBattle_Loop.wav
-  uploadId: 867734
+  assetPath: Assets/The_Sound_Guild_FREE_PACK_Rpg_Music/WAV - 44100 Hz - 16 Bit/Theme_Decisive
+    Battle_Loop.wav
+  uploadId: 872618

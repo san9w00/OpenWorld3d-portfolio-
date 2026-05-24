@@ -251,9 +251,25 @@ public class PlayerController : MonoBehaviour
 
 
 
-    // 애니메이션 이벤트 (사운드)
+    // ----------애니메이션 이벤트 (사운드)------------
+
+    // (발소리)
     public void PlayFootStep()
     {
         SoundManager.Instance.PlaySFX(SFXType.FootStep);
+    }
+
+    // (공격 휙소리)
+    public void PlayAttackSwingSFX()
+    {
+        PlayerEquipment equipment = GetComponent<PlayerEquipment>();
+
+        if (equipment == null) return;
+
+        WeaponItemSO weapon = equipment.CurrentWeaponData;
+
+        if (weapon == null) return;
+
+        SoundManager.Instance.PlaySFX(weapon.swingSFX);
     }
 }

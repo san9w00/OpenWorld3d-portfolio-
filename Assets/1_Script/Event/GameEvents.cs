@@ -79,6 +79,40 @@ public struct InventoryChangedEvent
     public InventoryChangedEvent(System.Collections.Generic.List<InventoryItem> items) => Items = items;
 }
 
+public struct InventorySelectionChangedEvent    // 아이템 선택 변경 이벤트
+{
+    public InventoryItem Item;
+
+    public InventorySelectionChangedEvent(InventoryItem item)
+    {
+        Item = item;
+    }
+}
+
+public struct InventoryActionStateChangedEvent
+{
+    public bool ShowButton;
+    public string ButtonText;
+
+    public InventoryActionStateChangedEvent(
+        bool showButton,
+        string buttonText)
+    {
+        ShowButton = showButton;
+        ButtonText = buttonText;
+    }
+}
+
+public struct WeaponChangedEvent
+{
+    public WeaponItemSO Weapon;
+
+    public WeaponChangedEvent(WeaponItemSO weapon)
+    {
+        Weapon = weapon;
+    }
+}
+
 public struct ItemAddedEvent
 {
     public readonly ItemSO Item;

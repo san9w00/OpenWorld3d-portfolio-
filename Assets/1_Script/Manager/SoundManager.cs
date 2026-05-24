@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
         bgmSource.Play();
     }
 
-    // SFX 재생
+    // SFX 재생 (enum 기반)
     public void PlaySFX(SFXType type)
     {
         if (!sfxDict.ContainsKey(type))
@@ -93,6 +93,16 @@ public class SoundManager : MonoBehaviour
 
         AudioSource source = GetAvailableSFXSource();
         source.PlayOneShot(sfxDict[type]);
+    }
+
+    // SFX 재생 (AudioClip 기반)
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip == null)
+            return;
+
+        AudioSource source = GetAvailableSFXSource();
+        source.PlayOneShot(clip);
     }
 
     private AudioSource GetAvailableSFXSource()

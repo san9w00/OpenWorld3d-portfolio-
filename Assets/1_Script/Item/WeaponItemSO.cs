@@ -10,6 +10,9 @@ public class WeaponItemSO : ItemSO
     public float damage;
     public VFXSwordType swordType;
 
+    [Header("Audio")]
+    public AudioClip swingSFX;
+
     [Header("Skills")]
     public WeaponSkillSO skill;
 
