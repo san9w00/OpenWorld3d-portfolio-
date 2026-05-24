@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 3_TryTeleport
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
   title: Try Teleport
-  dialogue: 'Well done.  Now, You can Teleport to campfire.
-
-    Open the map(M)
-    and click icon and try to Teleport
-
-'
+  dialogue: "\uD65C\uC131\uD654\uB41C \uCEA0\uD504\uD30C\uC774\uC5B4\uB294 \uB2E4\uC2DC
+    \uC0C1\uD638\uC791\uC6A9\uC2DC '\uCCB4\uB825'\uC744 \uD68C\uBCF5\uD558\uAC70\uB098
+    '\uC801'\uC744\n\uCD08\uAE30\uD654 \uC2DC\uD0AC\uC218 \uC788\uC5B4. \uB3C4\uB9DD\uCE58\uB294\uB370
+    \uC720\uC6A9\uD558\uC9C0. \uB610\uD55C \uAC00\uC7A5 \uC911\uC694\uD55C \uC6CC\uD504\uB97C
+    \uD560\uC218\uC788\uC5B4. \"Tab\"\uD0A4\uB97C \uB20C\uB7EC \uB9F5\uC744 \uC5F4\uACE0
+    \uC544\uC774\uCF58\uC744 \uD074\uB9AD\uD574 \uC6CC\uD504\uD574\uBD10."
   objectiveText: '3. Try Teleport
 
 '

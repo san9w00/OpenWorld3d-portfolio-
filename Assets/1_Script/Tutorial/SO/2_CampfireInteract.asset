@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: 2_CampfireInteract
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
   title: Campfire Interact First
-  dialogue: 'You have a Force to walk yet,,  good.
-
-    Try to Find the ''Campfire''
-    and Active it with ''F key''.'
+  dialogue: "\uC544\uC9C1 \uC6C0\uC9C1\uC77C \uD798\uC740 \uC788\uAD6C\uB098.. \uB2E4\uD589\uC774\uB124.\n\uC55E\uC73C\uB85C
+    \uAC00\uB2E4\uBCF4\uBA74 \uCEA0\uD504\uD30C\uC774\uC5B4\uAC00 \uC788\uC744\uAC70\uC57C.
+    \n\"F\"\uD0A4\uB97C \uB20C\uB7EC \uD65C\uC131\uD654 \uC2DC\uCF1C\uBD10."
   objectiveText: 2. Active Campfire
   goalType: 1
   targetAmount: 1

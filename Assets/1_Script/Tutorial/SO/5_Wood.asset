@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: 5_Wood
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
   title: 3 Wood
-  dialogue: 'Now, Go to the Trees and hit them.
-
-    Collect ''3 woods'' from the
-    Trees.'
+  dialogue: "\uADF8 \uD798\uC73C\uB85C \uB098\uBB47\uAC00\uC9C0\uB97C \uC5BB\uC73C\uB7EC
+    \uAC00\uBCF4\uC790.\n\uB098\uBB34\uB97C \uB54C\uB824\uC11C \uB098\uBB47\uAC00\uC9C0
+    3\uAC1C\uB97C \uBAA8\uC544\uBCFC\uB798?"
   objectiveText: 5. Three Wood
   goalType: 4
   targetAmount: 3

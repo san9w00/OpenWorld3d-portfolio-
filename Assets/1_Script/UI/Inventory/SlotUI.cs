@@ -81,7 +81,7 @@ public class SlotUI : MonoBehaviour, IPointerClickHandler
         if (item.itemData.itemType != ItemType.Weapon)
             return;
 
-        PlayerEquipment equipment = FindAnyObjectByType<PlayerEquipment>();
+        PlayerEquipment equipment = FindAnyObjectByType<PlayerEquipment>(); 
 
         if (equipment == null)
             return;
