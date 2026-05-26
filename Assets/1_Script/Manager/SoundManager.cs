@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("BGM")]
     private AudioSource bgmSource;
+    private bool blockAutoBGM = false;
 
     [Header("SFX")]
     [SerializeField] private int poolSize = 10;
@@ -65,7 +66,20 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (blockAutoBGM)
+            return;
+
         PlayBGM(scene.name);
+    }
+
+    public void SetAutoBGMBlocked(bool blocked)
+    {
+        blockAutoBGM = blocked;
+    }
+
+    public void PlayBGMByName(string bgmName)
+    {
+        PlayBGM(bgmName);
     }
 
     private void PlayBGM(string sceneName)
@@ -103,6 +117,11 @@ public class SoundManager : MonoBehaviour
 
         AudioSource source = GetAvailableSFXSource();
         source.PlayOneShot(clip);
+    }
+
+    public void StopBGM()
+    {
+        bgmSource.Stop();
     }
 
     private AudioSource GetAvailableSFXSource()

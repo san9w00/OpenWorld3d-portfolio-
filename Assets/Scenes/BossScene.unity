@@ -731,6 +731,10 @@ PlayableDirector:
     value: {fileID: 1081110732}
   - key: {fileID: 3380310140164175036, guid: 873486a6bbfbf3b418902d082fa0dedf, type: 2}
     value: {fileID: 203924200}
+  - key: {fileID: -5742904930695502520, guid: 873486a6bbfbf3b418902d082fa0dedf, type: 2}
+    value: {fileID: 203924200}
+  - key: {fileID: -3783433491650100981, guid: 873486a6bbfbf3b418902d082fa0dedf, type: 2}
+    value: {fileID: 1237526432}
   m_ExposedReferences:
     m_References:
     - 034fe2ca821740a4fa61f85579aec95b: {fileID: 327349965}
@@ -6020,6 +6024,82 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0000005, y: 2.9990404, z: 0.40000007}
   m_Center: {x: 0.00000029802328, y: 1.5004798, z: 0}
+--- !u!1 &1237526431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237526434}
+  - component: {fileID: 1237526433}
+  - component: {fileID: 1237526432}
+  m_Layer: 0
+  m_Name: BossTimeLineController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1237526432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237526431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 05dfd0e7962afe3459977f29291dc4cf, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1237526433}
+          m_TargetAssemblyTypeName: BossTimelineController, Assembly-CSharp
+          m_MethodName: StartBossBGM
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1237526433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237526431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5109f929d683fe14e9360c2cb1946292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossTimelineController
+  bossBGMName: BossScene
+--- !u!4 &1237526434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237526431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.25425, y: 1.09387, z: 11.81614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1248237558
 GameObject:
   m_ObjectHideFlags: 0
@@ -10124,3 +10204,4 @@ SceneRoots:
   - {fileID: 1797587888}
   - {fileID: 1020123883}
   - {fileID: 297068104}
+  - {fileID: 1237526434}
