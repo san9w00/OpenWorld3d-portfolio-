@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b5e5715b7d11046b8df3756a0dd17f, type: 3}
   m_Name: BloodRedSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
-  itemID: BloodSword
-  itemName: Snake
+  itemID: Karim
+  itemName: Karim
   price: 1500
-  itemExplain: "+15 \uB370\uBBF8\uC9C0 / \uD3C9\uBC94\uD55C \uAE34 \uAC80\uC774\uB2E4."
+  itemExplain: "+17 \uB370\uBBF8\uC9C0 / \uCD08\uC911\uBC18\uC5D0 \uC720\uC6A9\uD55C
+    \uAE34 \uAC80\uC774\uB2E4."
   itemIcon: {fileID: 21300000, guid: 0e1ab67eb67874542b1606233616c377, type: 3}
   maxStack: 1
   itemType: 0
   weaponType: 1
-  damage: 15
+  damage: 17
   swordType: 0
   swingSFX: {fileID: 0}
   skill: {fileID: 0}
