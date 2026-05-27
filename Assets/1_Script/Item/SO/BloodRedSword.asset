@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BloodRedSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemID: Karim
-  itemName: Karim
+  itemName: "\uCE74\uB9AC\uBBF8"
   price: 1500
   itemExplain: "+17 \uB370\uBBF8\uC9C0 / \uCD08\uC911\uBC18\uC5D0 \uC720\uC6A9\uD55C
     \uAE34 \uAC80\uC774\uB2E4."

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OriginalSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemID: OriginSword
-  itemName: Origin
+  itemName: "\uC624\uB9AC\uC9C4"
   price: 5000
   itemExplain: "+13 \uB370\uBBF8\uC9C0 / \uC2A4\uD0AC : 4\uCD08\uB3D9\uC548 \uC801\uC73C\uB85C\uBD80\uD130
     \uBC1B\uB294 \uB370\uBBF8\uC9C0\uC758 \uC808\uBC18\uB9CC \uBC1B\uB294\uB2E4."

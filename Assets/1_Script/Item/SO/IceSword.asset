@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceSword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemID: IceSword
-  itemName: Icer
+  itemName: "\uC544\uC774\uC11C"
   price: 1300
   itemExplain: "+20 \uB370\uBBF8\uC9C0 / \uC2A4\uD0AC : \uC804\uBC29\uC5D0 \uC5BC\uC74C\uB369\uC5B4\uB9AC\uB97C
     \uB5A8\uC5B4\uD2B8\uB9AC\uACE0 \uC8FC\uC704 \uC801\uC5D0\uAC8C \uC2AC\uB85C\uC6B0

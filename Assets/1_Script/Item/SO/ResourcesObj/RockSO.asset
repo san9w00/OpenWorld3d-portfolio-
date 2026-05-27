@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
   itemID: Rock
-  itemName: Rock
+  itemName: "\uB3CC"
   price: 20
   itemExplain: "\uC554\uC11D\uC5D0\uC11C \uCE98\uC218 \uC788\uB294 \uC790\uC6D0\uC774\uB2E4.
     \uD754\uD788 \uBCFC\uC218 \uC788\uB2E4."

@@ -16,10 +16,10 @@ MonoBehaviour:
   requiredResources:
   - item: {fileID: 11400000, guid: 1e883d4a5cb7afc4994a7fb98e8341c4, type: 2}
     amount: 7
+  - item: {fileID: 11400000, guid: 2a7d9b4d82421ff4599a4676ac619913, type: 2}
+    amount: 5
   - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
-    amount: 20
-  - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-    amount: 20
+    amount: 15
   description: "\uC601\uC5ED \uD790 \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD560\uC218 \uC788\uB294
     \uAC80\uC774\uB2E4. \uC9C0\uC18D\uC801\uC778 \uC804\uD22C\uC5D0 \uC720\uC6A9\uD55C
     \uAC80\uC774\uB2E4."

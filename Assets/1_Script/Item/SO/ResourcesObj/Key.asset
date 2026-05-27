@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
   itemID: Key
-  itemName: Key
+  itemName: "\uC5F4\uC1E0"
   price: 99999
   itemExplain: "\uBCF4\uC2A4\uB97C \uBCFC\uC218 \uC788\uB294 \uC720\uC77C\uD55C \uC5F4\uC1E0\uC774\uB2E4.
     \uC5B4\uB518\uAC00\uC5D0 \uC5F4\uC1E0\uB97C \uC4F8\uC218 \uC788\uC744\uAC83\uC774\uB2E4."

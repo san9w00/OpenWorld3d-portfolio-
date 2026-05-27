@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CraftRecipeSO
   resultItem: {fileID: 11400000, guid: 16997c9ecf86eeb4b83c3061f8af6004, type: 2}
   requiredResources:
-  - item: {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-    amount: 5
+  - item: {fileID: 11400000, guid: 2a7d9b4d82421ff4599a4676ac619913, type: 2}
+    amount: 4
   - item: {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
     amount: 10
   - item: {fileID: 11400000, guid: f6bb68abb9e07b74ab90196111b43f32, type: 2}

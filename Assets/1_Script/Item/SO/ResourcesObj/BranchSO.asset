@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BranchSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
   itemID: Branch
-  itemName: Branch
+  itemName: "\uB098\uBB47\uAC00\uC9C0"
   price: 20
   itemExplain: "\uB098\uBB34\uC5D0\uC11C \uC5BB\uC744\uC218 \uC788\uB294 \uC790\uC6D0\uC774\uB2E4.
     \uD754\uD788 \uBCFC\uC218 \uC788\uB2E4."
