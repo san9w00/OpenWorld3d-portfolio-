@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            speed = _playerStatus.MoveSpeed * 2.3f; // 달리기 배율
+            speed = _playerStatus.MoveSpeed * 2f; // 달리기 배율
 
             _characterController.Move(direction * speed * Time.deltaTime);
 
