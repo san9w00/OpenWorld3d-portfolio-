@@ -294,12 +294,22 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         return true;
     }
 
+    public void FullHeal() // 최대체력 회복
+    {
+        curHP = MaxHP;
+
+        // UI 갱신
+        OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
+
+        Debug.Log("체력 전체 회복!");
+    }
+
 
     // -- 업그레이드 증가 메서드 --
     public void IncreaseMaxHP(float amount)
     {
         bonusMaxHP += amount;
-        curHP = MaxHP;
+        curHP += amount;
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
     }
 

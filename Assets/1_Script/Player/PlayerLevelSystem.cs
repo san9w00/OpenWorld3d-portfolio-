@@ -60,6 +60,9 @@ public class PlayerLevelSystem : MonoBehaviour
         upgradePoint++;
         requiredExp *= 2;
 
+        // 레벨업 시 체력 전체 회복
+        PlayerStatus.Instance.FullHeal();
+
         // 레벨 이벤트
         OnLevelChanged?.Invoke(currentLevel);
 
