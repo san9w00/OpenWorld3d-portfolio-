@@ -27,6 +27,6 @@ public class SceneTeleport : MonoBehaviour, IInteractable
             SoundManager.Instance.StopBGM();
         }
 
-        SceneManager.LoadScene(deongeonSceneName);
+        SceneLoader.Instance.LoadScene(deongeonSceneName);
     }
 }

@@ -5,6 +5,6 @@ public class MenuT : MonoBehaviour
 {
     public void Start_BTN()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneLoader.Instance.LoadScene("GameScene");
     }
 }
