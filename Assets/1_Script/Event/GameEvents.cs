@@ -132,3 +132,9 @@ public struct QuickSlotChangedEvent
     public readonly InventoryItem CurrentItem;
     public QuickSlotChangedEvent(InventoryItem item) => CurrentItem = item;
 }
+
+// 플레이어 죽음
+public struct PlayerDeadEvent
+{
+
+}

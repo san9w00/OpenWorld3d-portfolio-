@@ -247,6 +247,12 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log("플레이어 사망!");
+
+        // 플레이어 조작 비활.
+        GetComponent<PlayerController>().enabled = false;
+
+        // 플레이어 사망 이벤트 전달
+        EventBus.Publish(new PlayerDeadEvent());
     }
 
     public void ApplyDamageMultiplier(float multiplier, float duration, MonoBehaviour runner)

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 944231491293657378}
   - component: {fileID: 5422485824543723091}
-  - component: {fileID: 1989789512661951742}
   - component: {fileID: 9023679524942004728}
   - component: {fileID: 4792029388176116892}
+  - component: {fileID: 7814451852540922396}
   m_Layer: 0
   m_Name: Rock_Small_02
   m_TagString: Untagged
@@ -66,28 +66,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6918581448124085559}
   m_Enabled: 1
---- !u!64 &1989789512661951742
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455221064620565400}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1176880994766535865, guid: de0deb1e9bf77484fa596b38a4de13ab, type: 3}
 --- !u!54 &9023679524942004728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,6 +109,27 @@ MonoBehaviour:
   maxHp: 200
   dropPrefab: {fileID: 1055022842215460182, guid: 532217a856dbab64ab8d9bdb743876dc, type: 3}
   dropPoint: {fileID: 8992543489213746930}
+--- !u!65 &7814451852540922396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455221064620565400}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.3, y: 1.6, z: 2.12}
+  m_Center: {x: 0, y: 0.21, z: 0}
 --- !u!1 &1040527448841530035
 GameObject:
   m_ObjectHideFlags: 0
