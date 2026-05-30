@@ -24,5 +24,5 @@ MonoBehaviour:
   weaponType: 1
   damage: 24
   swordType: 2
-  swingSFX: {fileID: 0}
+  swingSFX: {fileID: 8300000, guid: da396a16a7f24f64cbb0054f5a56b46a, type: 3}
   skill: {fileID: 11400000, guid: 259bfe9020e5d1942b5a8db2a6105cbe, type: 2}

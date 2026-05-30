@@ -29,6 +29,8 @@ public class IceSkillSO : WeaponSkillSO
              VFXSwordType.Ice
         ));
 
+        SoundManager.Instance.PlaySFX(SFXType.IcerSkill);
+
         Collider[] enemies = Physics.OverlapSphere(targetPos, radius, enemyLayer);
 
         Debug.Log($"IceSkill 적 {enemies.Length}명 감지");

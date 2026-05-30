@@ -7,7 +7,7 @@ public enum SFXType
 {
     FootStep, Jump, Hit, Rolling,
     DoorOpen, DoorClose, QuestUnLcok, QuestComplete, CampfireUnlock,
-    AddItem,
+    AddItem, OriginSkill, IcerSkill, FireSkill, PeacerSkill, 
 
 }
 
