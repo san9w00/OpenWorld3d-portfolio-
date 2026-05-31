@@ -186,4 +186,31 @@ public class BossAttackState : EnemyState
         dir.y = 0;
         transform.forward = dir;
     }
+
+
+    // 애니메이션 이벤트
+    public void BossWalkSound()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.BossWalk);
+    }
+
+    public void BossAttackSFX()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.BossAttack);
+    }
+
+    public void BossBiteSFX()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.BossBite);
+    }
+
+    public void BossFireBreathSFX()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.BossFireBreath);
+    }
+
+    public void BossNoiseSFX()
+    {
+        SoundManager.Instance.PlaySFX(SFXType.BossNoise);
+    }
 }

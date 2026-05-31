@@ -8574,6 +8574,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5e7bc695c1adcf0489162823f2f1c7a9, type: 3}
   - type: 19
     clip: {fileID: 8300000, guid: 668620113e9d6dc4483ba3d8dbae9fcf, type: 3}
+  - type: 20
+    clip: {fileID: 8300000, guid: 2de8329adc6f9b944a5ab0875fb59924, type: 3}
+  - type: 21
+    clip: {fileID: 8300000, guid: 482611fe6bc559142a00be6e726b4862, type: 3}
+  - type: 22
+    clip: {fileID: 8300000, guid: 8ebcb6234d419344daa712ba65bb3798, type: 3}
+  - type: 23
+    clip: {fileID: 8300000, guid: 7d156b8a5b340cd46bcf0a76557dd2dd, type: 3}
+  - type: 24
+    clip: {fileID: 8300000, guid: d5799252a63954428bb39f05951b9ee0, type: 3}
 --- !u!82 &187705216
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8587,7 +8597,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.787
+  m_Volume: 0.725
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -39545,8 +39555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16146da1fcbd6fd42ad1e079814986c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonTeleporter
-  deongeonSceneName: DungeonScene
-  isBossScene: 0
+  deongeonSceneName: BossScene
+  isBossScene: 1
 --- !u!65 &1050174451
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public enum SFXType
     DoorOpen, DoorClose, QuestUnLcok, QuestComplete, CampfireUnlock,
     AddItem, OriginSkill, IcerSkill, FireSkill, PeacerSkill, UIClick, UISmallClick, 
     DialogueType, InventorySFX, MapSFX, LevelUP,
+    BossWalk, BossAttack, BossBite, BossFireBreath, BossNoise,
 
 }
 
