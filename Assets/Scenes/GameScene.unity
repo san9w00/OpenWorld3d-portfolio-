@@ -8557,11 +8557,23 @@ MonoBehaviour:
   - type: 6
     clip: {fileID: 8300000, guid: a65e44e8c694a3a4891eef0db109e331, type: 3}
   - type: 8
-    clip: {fileID: 8300000, guid: a1c48dd39207ece46a29b8796640661e, type: 3}
+    clip: {fileID: 8300000, guid: e7d5139a2d2df3f40b2fd91b5c4a0217, type: 3}
   - type: 9
-    clip: {fileID: 8300000, guid: 568470e29bef88c4aaa027db357be957, type: 3}
+    clip: {fileID: 8300000, guid: 0f9d58f70cb60b84b815780e9968f746, type: 3}
   - type: 11
     clip: {fileID: 8300000, guid: 11b863097ffe397488a720d45e30e83c, type: 3}
+  - type: 15
+    clip: {fileID: 8300000, guid: 997cbcea68fab404e8f652b4815e7423, type: 3}
+  - type: 16
+    clip: {fileID: 8300000, guid: a70a2ba457f3aac47b09c7b29fb8c7a0, type: 3}
+  - type: 17
+    clip: {fileID: 8300000, guid: a634ee6fcac89124f92b1910dacfb922, type: 3}
+  - type: 18
+    clip: {fileID: 8300000, guid: 5e7bc695c1adcf0489162823f2f1c7a9, type: 3}
+  - type: 18
+    clip: {fileID: 8300000, guid: 5e7bc695c1adcf0489162823f2f1c7a9, type: 3}
+  - type: 19
+    clip: {fileID: 8300000, guid: 668620113e9d6dc4483ba3d8dbae9fcf, type: 3}
 --- !u!82 &187705216
 AudioSource:
   m_ObjectHideFlags: 0
@@ -39533,8 +39545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16146da1fcbd6fd42ad1e079814986c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonTeleporter
-  deongeonSceneName: BossScene
-  isBossScene: 1
+  deongeonSceneName: DungeonScene
+  isBossScene: 0
 --- !u!65 &1050174451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59744,7 +59756,7 @@ MonoBehaviour:
   continueButton: {fileID: 610453611}
   canvasGroup: {fileID: 1566893488}
   fadeDuration: 0.6
-  typingSpeed: 0.03
+  typingSpeed: 0.08
 --- !u!225 &1566893488
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -81123,6 +81135,7 @@ SceneRoots:
   - {fileID: 670761743}
   - {fileID: 1165738518}
   - {fileID: 1406052116}
+  - {fileID: 37023302}
   - {fileID: 977332896}
   - {fileID: 1387233440}
   - {fileID: 276806139}
@@ -81151,4 +81164,3 @@ SceneRoots:
   - {fileID: 1535594658}
   - {fileID: 23982797}
   - {fileID: 193401045}
-  - {fileID: 37023302}

@@ -6,5 +6,6 @@ public class MenuT : MonoBehaviour
     public void Start_BTN()
     {
         SceneLoader.Instance.LoadScene("GameScene");
+        SoundManager.Instance.PlaySFX(SFXType.UIClick);
     }
 }

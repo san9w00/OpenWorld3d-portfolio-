@@ -52,10 +52,12 @@ public class MapUI : MonoBehaviour
         if (isOpen)
         {
             UIManager.Instance.OpenUI(mapPanel);
+            SoundManager.Instance.PlaySFX(SFXType.MapSFX);
         }
         else
         {
             UIManager.Instance.CloseUI(mapPanel);
+            SoundManager.Instance.PlaySFX(SFXType.MapSFX);
         }
     }
 

@@ -73,10 +73,12 @@ public class InventoryUI : MonoBehaviour
         if (isOpen)
         {
             UIManager.Instance.OpenUI(inventoryWindow);
+            SoundManager.Instance.PlaySFX(SFXType.InventorySFX);
         }
         else
         {
             UIManager.Instance.CloseUI(inventoryWindow);
+            SoundManager.Instance.PlaySFX(SFXType.InventorySFX);
             ClearDatailUI();
         }
     }

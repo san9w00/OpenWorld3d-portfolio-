@@ -63,5 +63,6 @@ public class DialogueManager : MonoBehaviour
         DialogueUI.Instance.Hide();
 
         UIManager.Instance.CloseUI(DialogueUI.Instance.gameObject);
+        SoundManager.Instance.PlaySFX(SFXType.UISmallClick);
     }
 }

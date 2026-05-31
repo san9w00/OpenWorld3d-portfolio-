@@ -7,7 +7,8 @@ public enum SFXType
 {
     FootStep, Jump, Hit, Rolling,
     DoorOpen, DoorClose, QuestUnLcok, QuestComplete, CampfireUnlock,
-    AddItem, OriginSkill, IcerSkill, FireSkill, PeacerSkill, 
+    AddItem, OriginSkill, IcerSkill, FireSkill, PeacerSkill, UIClick, UISmallClick, 
+    DialogueType, InventorySFX, MapSFX, LevelUP,
 
 }
 

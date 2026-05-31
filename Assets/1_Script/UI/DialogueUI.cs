@@ -101,6 +101,7 @@ public class DialogueUI : MonoBehaviour
         foreach (char c in text)
         {
             dialogueText.text += c;
+            SoundManager.Instance.PlaySFX(SFXType.DialogueType);
 
             yield return new WaitForSeconds(typingSpeed);
         }
