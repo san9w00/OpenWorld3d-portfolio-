@@ -5,18 +5,10 @@ public class LevelTextPresenter : MonoBehaviour
 {
     [SerializeField] private UILevelTextView view;
 
-    private PlayerLevelSystem levelSystem;
+    [SerializeField] private PlayerLevelSystem levelSystem;
 
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-
-        if (levelSystem == null)
-        {
-            Debug.LogError("PlayerLevelSystem 없음!");
-            return;
-        }
-
         // 이벤트 연결
         levelSystem.OnLevelUIChanged += UpdateView;
 

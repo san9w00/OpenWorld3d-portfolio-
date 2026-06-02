@@ -17524,6 +17524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExpBarPresenter
   view: {fileID: 495662787}
+  levelSystem: {fileID: 980223091}
 --- !u!114 &495662787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17550,6 +17551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTextPresenter
   view: {fileID: 495662789}
+  levelSystem: {fileID: 980223091}
 --- !u!114 &495662789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18794,6 +18796,7 @@ MonoBehaviour:
   hpText: {fileID: 1781050588}
   damageText: {fileID: 2012454125}
   defenseText: {fileID: 2023714621}
+  levelSystem: {fileID: 980223091}
 --- !u!114 &526422643
 MonoBehaviour:
   m_ObjectHideFlags: 0

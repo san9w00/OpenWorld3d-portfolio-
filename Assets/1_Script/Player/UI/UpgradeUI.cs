@@ -11,26 +11,34 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI defenseText;
 
+    [SerializeField] private PlayerLevelSystem levelSystem;
+    private int currentPoint;
+
     private int hpUpgradeCount = 0;
     private int damageUpgradeCount = 0;
     private int defenseUpgradeCount = 0;
 
-    private void OnUpgradePointChanged(int point)
+    private void OnEnable()
     {
-        RefreshPointText();
+        EventBus.Subscribe<UpgradePointChangedEvent>(
+            OnUpgradePointChanged);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<UpgradePointChangedEvent>(
+            OnUpgradePointChanged);
     }
 
     private void Start()
     {
-        PlayerLevelSystem.Instance.OnUpgradePointChanged += OnUpgradePointChanged;
-
         upgradePanel.SetActive(false);
 
         hpText.text = "+0";
         damageText.text = "+0";
         defenseText.text = "+0";
 
-        RefreshPointText();
+        upgradePointText.text = "0";
     }
 
     void Update()
@@ -56,9 +64,17 @@ public class UpgradeUI : MonoBehaviour
         }
     }
 
+    private void OnUpgradePointChanged(UpgradePointChangedEvent evt)
+    {
+        currentPoint = evt.Point;
+
+        upgradePointText.text =
+            currentPoint.ToString();
+    }
+
     public void UpgradeHP()
     {
-        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
+        if (!levelSystem.UseUpgradePoint()) return;
 
         hpUpgradeCount++;
         PlayerStatus.Instance.IncreaseMaxHP(10);
@@ -68,7 +84,7 @@ public class UpgradeUI : MonoBehaviour
     }
     public void UpgradeDamage()
     {
-        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
+        if (!levelSystem.UseUpgradePoint()) return;
 
         damageUpgradeCount++;
         PlayerStatus.Instance.IncreaseAttack(5);
@@ -80,7 +96,7 @@ public class UpgradeUI : MonoBehaviour
 
     public void UpgradeDefense()
     {
-        if (!PlayerLevelSystem.Instance.UseUpgradePoint()) return;
+        if (!levelSystem.UseUpgradePoint()) return;
 
         defenseUpgradeCount++;
         PlayerStatus.Instance.IncreaseDefense(3);
@@ -92,7 +108,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void RefreshPointText()
     {
-        upgradePointText.text = PlayerLevelSystem.Instance.UpgradePoint.ToString();
+        upgradePointText.text = currentPoint.ToString();
     }
 
     public void CloseButton()
@@ -100,10 +116,5 @@ public class UpgradeUI : MonoBehaviour
         upgradePanel.SetActive(false);
 
         UIManager.Instance.CloseUI(upgradePanel);
-    }
-
-    private void OnDestroy()
-    {
-        PlayerLevelSystem.Instance.OnUpgradePointChanged -= OnUpgradePointChanged;
     }
 }

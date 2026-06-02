@@ -89,6 +89,13 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         EventBus.Subscribe<GoldRewardEvent>(OnGoldReward);
+        EventBus.Subscribe<LevelUpEvent>(OnLevelUp);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<GoldRewardEvent>(OnGoldReward);
+        EventBus.UnSubscribe<LevelUpEvent>(OnLevelUp);
     }
 
     private void Start()
@@ -272,6 +279,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         damageMultiplier = 1f;
 
         Debug.Log("피해 감소 종료!");
+    }
+
+    private void OnLevelUp(LevelUpEvent evt)
+    {
+        FullHeal();
     }
 
     // =========================

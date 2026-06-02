@@ -4,8 +4,6 @@ using static StatData;
 
 public class PlayerLevelSystem : MonoBehaviour
 {
-    public static PlayerLevelSystem Instance;
-
     private int currentLevel = 1;
     private int currentExp = 0;
     private int requiredExp = 20;
@@ -21,17 +19,6 @@ public class PlayerLevelSystem : MonoBehaviour
 
     // 레벨 텍스트 UI 이벤트
     public event Action<LevelUIData> OnLevelUIChanged;
-
-    // 레벨 변경 이벤트
-    public event Action<int> OnLevelChanged;
-
-    // 업그레이드 포인트 변경 이벤트
-    public event Action<int> OnUpgradePointChanged;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     private void Start()
     {
@@ -60,22 +47,19 @@ public class PlayerLevelSystem : MonoBehaviour
         upgradePoint++;
         requiredExp *= 2;
 
-        // 레벨업 시 체력 전체 회복
-        PlayerStatus.Instance.FullHeal();
         SoundManager.Instance.PlaySFX(SFXType.LevelUP);
 
-        // 레벨 이벤트
-        OnLevelChanged?.Invoke(currentLevel);
-
-        // 업그레이드 포인트 이벤트
-        OnUpgradePointChanged?.Invoke(upgradePoint);
+        // 업그레이드 포인트 변경 이벤트 발행
+        EventBus.Publish(new UpgradePointChangedEvent(upgradePoint));
 
         // Exp UI 이벤트
-        OnExpChanged?.Invoke(
-            new StatData(currentExp, requiredExp));
+        OnExpChanged?.Invoke(new StatData(currentExp, requiredExp));
 
         // Level UI 이벤트
         OnLevelUIChanged?.Invoke(new LevelUIData(currentLevel, currentExp, requiredExp));
+
+        // 레벨업 이벤트 발행
+        EventBus.Publish(new LevelUpEvent(currentLevel));
 
         EventBus.Publish(new VFXEvent(transform.position,
             VFXActionType.LevelUp,
@@ -92,8 +76,9 @@ public class PlayerLevelSystem : MonoBehaviour
 
         upgradePoint--;
 
-        // 포인트 변경 이벤트
-        OnUpgradePointChanged?.Invoke(upgradePoint);
+        // 포인트 변경 이벤트 발행
+        EventBus.Publish(new UpgradePointChangedEvent(upgradePoint));
+
         return true;
     }
 }

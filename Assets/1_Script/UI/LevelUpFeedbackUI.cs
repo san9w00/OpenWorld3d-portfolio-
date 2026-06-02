@@ -9,6 +9,18 @@ public class LevelUpFeedbackUI : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float fadeSpeed = 2f;
 
+    private int currentUpgradePoint;
+
+    private void OnEnable()
+    {
+        EventBus.Subscribe<UpgradePointChangedEvent>(OnUpgradePointChanged);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<UpgradePointChangedEvent>(OnUpgradePointChanged);
+    }
+
     private void Start()
     {
         exclamationUI.alpha = 0f;
@@ -19,9 +31,14 @@ public class LevelUpFeedbackUI : MonoBehaviour
         HandleExclamation();
     }
 
+    private void OnUpgradePointChanged(UpgradePointChangedEvent evt)
+    {
+        currentUpgradePoint = evt.Point;
+    }
+
     private void HandleExclamation()
     {
-        if(PlayerLevelSystem.Instance.UpgradePoint > 0)
+        if (currentUpgradePoint > 0)
         {
             float alpha = Mathf.PingPong(Time.time * fadeSpeed, 1f);
             exclamationUI.alpha = alpha;

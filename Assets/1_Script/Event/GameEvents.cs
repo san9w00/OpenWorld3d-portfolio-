@@ -12,6 +12,27 @@ public struct PlayerHitEvent
     }
 }
 
+// 플레이어 레벨업 이벤트 -> 레벨업 ui / 플레이어 체력회복
+public struct LevelUpEvent
+{
+    public int NewLevel;
+
+    public LevelUpEvent(int newLevel)
+    {
+        NewLevel = newLevel;
+    }
+}
+
+public struct UpgradePointChangedEvent // 업그레이드 포인트 변경 이벤트
+{
+    public int Point;
+
+    public UpgradePointChangedEvent(int point)
+    {
+        Point = point;
+    }
+}
+
 // --- 전투 및 효과 관련 이벤트 ---
 public struct VFXEvent
 {

@@ -10,33 +10,22 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
     private Coroutine currentRoutine;
 
-    private PlayerLevelSystem levelSystem;
+    private void OnEnable()
+    {
+        EventBus.Subscribe<LevelUpEvent>(OnLevelChanged);
+    }
+
+    private void OnDisable()
+    {
+        EventBus.UnSubscribe<LevelUpEvent>(OnLevelChanged);
+    }
 
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-
-        if (levelSystem == null)
-        {
-            Debug.LogError("PlayerLevelSystem 없음!");
-            return;
-        }
-
-        // 새 이벤트 연결
-        levelSystem.OnLevelChanged += OnLevelChanged;
-
         canvasGroup.alpha = 0;
     }
 
-    private void OnDestroy()
-    {
-        if (levelSystem != null)
-        {
-            levelSystem.OnLevelChanged -= OnLevelChanged;
-        }
-    }
-
-    private void OnLevelChanged(int level)
+    private void OnLevelChanged(LevelUpEvent evt)
     {
         if (currentRoutine != null)
         {
@@ -45,7 +34,7 @@ public class LevelUPMiddleTextUI : MonoBehaviour
 
         levelUpText.text = "LEVEL UP";
 
-        lvText.text = $"Lv.{level}";
+        lvText.text = $"Lv.{evt.NewLevel}";
 
         currentRoutine =
             StartCoroutine(LevelUpAnimation());

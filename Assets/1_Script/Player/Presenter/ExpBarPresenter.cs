@@ -4,18 +4,10 @@ public class ExpBarPresenter : MonoBehaviour
 {
     [SerializeField] private UIBarView view;
 
-    private PlayerLevelSystem levelSystem;
+    [SerializeField] private PlayerLevelSystem levelSystem;
 
     private void Start()
     {
-        levelSystem = PlayerLevelSystem.Instance;
-
-        if (levelSystem == null)
-        {
-            Debug.LogError("PlayerLevelSystem Instance ¾øÀ½!");
-            return;
-        }
-
         levelSystem.OnExpChanged += UpdateView;
     }
 
