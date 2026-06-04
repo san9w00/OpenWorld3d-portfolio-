@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DarkStoneSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceItemSO
   itemID: DarkStone
-  itemName: "\uC5B4\uB460 \uC218\uC815"
+  itemName: "\uC554\uD751 \uC218\uC815"
   price: 99999
   itemExplain: "\uC774 \uC218\uC815\uC740 \uB358\uC804\uC73C\uB85C \uAC00\uAE30 \uC704\uD55C
     \uC7AC\uB8CC\uAC00 \uB420\uAC83\uC774\uB2E4."

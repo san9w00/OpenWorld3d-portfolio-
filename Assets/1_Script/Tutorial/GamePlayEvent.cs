@@ -5,12 +5,11 @@ public enum GamePlayEventType
     PlayerMoved,
     InteractCampfire,
     Teleport,
-    PlayerAttacked,
+    PlayerRolled,
     BranchCollected,
     RockCollected,
     WeaponCrafted,
-    PlayerRolled,
-    EnemyKilled
+    EnterDungeon,
 }
 
 public class GamePlayEvent

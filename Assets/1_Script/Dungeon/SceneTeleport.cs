@@ -27,6 +27,8 @@ public class SceneTeleport : MonoBehaviour, IInteractable
             SoundManager.Instance.StopBGM();
         }
 
+        EventBus.Publish(new GamePlayEvent(GamePlayEventType.EnterDungeon));
+
         SceneLoader.Instance.LoadScene(deongeonSceneName);
     }
 }

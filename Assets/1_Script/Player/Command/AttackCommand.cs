@@ -12,9 +12,5 @@ public class AttackCommand : ICommand
     public void Execute()
     {
         _player.Attack();
-
-        EventBus.Publish(
-                new GamePlayEvent(
-                GamePlayEventType.PlayerAttacked));
     }
 }

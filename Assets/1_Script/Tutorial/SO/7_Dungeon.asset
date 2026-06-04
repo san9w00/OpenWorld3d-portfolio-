@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8918aa46f0de24045a53f353239f6122, type: 3}
-  m_Name: 4_Attack
+  m_Name: 7_Dungeon
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
-  title: Attack Tutorial
-  dialogue: "\uC544\uC9C1 \uD798\uC774 \uB0A8\uC544\uB3C4\uB294\uAD6C\uB098. \uB2E4\uD589\uC778\uAC78..\n\uC774
-    \uC138\uACC4\uB294 \uBA78\uB9DD\uD588\uC5B4. \uBC16\uC740 \uC801\uC73C\uB85C
-    \uAC00\uB4DD\uCC28\uC788\uACE0.. \uC790\uC138\uD55C \uB0B4\uC6A9\uC740 \uB098\uC911\uC5D0
-    \uC54C\uB824\uC8FC\uC9C0. \uC77C\uB2E8 \"\uC88C\uD074\uB9AD\"\uC73C\uB85C \uACF5\uACA9\uD574\uBD10."
-  objectiveText: 4. Try Attack
-  goalType: 3
+  title: EnterDungeon
+  dialogue: "'\uC6B0\uB974\uC2A4'\uB97C \uC7A1\uAE30\uC5D0\uB294 \uC544\uC9C1 \uB9CE\uC774
+    \uC57D\uD560\uAC70\uC57C.\n\uC8FD\uC74C\uC758 \uB545\uC774\uB77C\uB294\uACF3\uC5D0
+    \uB358\uC804\uC774 \uC788\uACE0 \uC5F4\uC1E0\uB97C \uD1B5\uD574 \uB4E4\uC5B4\uAC08\uC218
+    \uC788\uC5B4.\n'\uC554\uD751 \uC218\uC815' 4\uAC1C\uB85C \uC5F4\uC1E0\uB97C \uC81C\uC791\uD574
+    \uB358\uC804\uC5D0 \uB4E4\uC5B4\uAC00 \uBCF4\uC790."
+  objectiveText: 7. EnterDungeon
+  goalType: 7
   targetAmount: 1
   portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}

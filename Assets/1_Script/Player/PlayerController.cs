@@ -207,6 +207,7 @@ public class PlayerController : MonoBehaviour
         if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {
             StartCoroutine(RollRoutine(direction));
+            EventBus.Publish(new GamePlayEvent(GamePlayEventType.PlayerRolled));
         }
     }
 

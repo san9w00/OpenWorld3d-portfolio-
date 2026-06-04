@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: 5_Wood
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
   title: 3 Wood
-  dialogue: "\uADF8 \uD798\uC73C\uB85C \uB098\uBB47\uAC00\uC9C0\uB97C \uC5BB\uC73C\uB7EC
-    \uAC00\uBCF4\uC790.\n\uB098\uBB34\uB97C \uB54C\uB824\uC11C \uB098\uBB47\uAC00\uC9C0
-    3\uAC1C\uB97C \uBAA8\uC544\uBCFC\uB798?"
-  objectiveText: 5. Three Wood
+  dialogue: "\"\uC6B0\uB974\uC2A4\"\uB77C\uB294 \uC874\uC7AC\uB97C \uD30C\uAD34\uD558\uB824\uBA74
+    \uB10C \uC131\uC7A5\uD560 \uD544\uC694\uAC00 \uC788\uC5B4.\n\uB098\uBB34 3\uAC1C\uB77C\uB3C4
+    \uBAA8\uC544\uBD10. \uADF8\uB9AC\uACE0 \uC815\uB9D0 \uC911\uC694\uD55C \uB9D0\uC744
+    \uD560\uAC74\uB370 \uC798\uB4E4\uC5B4.\n'\uADF8'\uB97C \uBCF4\uB824\uBA74 \uC5F4\uC1E0\uB97C
+    \uC81C\uC791\uD574\uC57C\uB9CC\uD574. \uD544\uB4DC\uC5D0 '\uC554\uD751 \uC218\uC815'\uC744
+    \uCC3E\uC544\uBD10."
+  objectiveText: 5. 3 wood
   goalType: 4
   targetAmount: 3
   portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}

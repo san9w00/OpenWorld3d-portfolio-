@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8918aa46f0de24045a53f353239f6122, type: 3}
+  m_Name: 4_Roll
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStepSO
+  title: Roll Tutorial
+  dialogue: "\uC798\uD588\uC5B4. \uCC38\uACE0\uB85C \uCEA0\uD504\uD30C\uC774\uC5B4\uB97C
+    \uCC98\uC74C \uBC1C\uACAC\uC2DC \uD76C\uADC0\uD55C \uC11D\uD0C4\uC774 \uB098\uC640.\n\uC9C0\uAE08
+    \uC138\uC0C1\uC740 '\uC6B0\uB974\uC2A4'\uB77C\uB294 \uC874\uC7AC\uC5D0 \uC758\uD574
+    \uB9C8\uC744\uC740 \uBD09\uC778\uB418\uC5C8\uC5B4..\n\uBC16\uC740 \uC801\uB4E4\uB85C
+    \uAC00\uB4DD\uD558\uB2C8 \uAC70\uB9AC\uC870\uC808\uC744 \uD574\uC57C\uD574. \"Ctrl\"
+    \uB20C\uB7EC\uBD10."
+  objectiveText: 4. Roll (Ctrl)
+  goalType: 3
+  targetAmount: 1
+  portraitPrefab: {fileID: 6919438615315446531, guid: 88ccd6b7314a1fe4bbf19e83db411b7e, type: 3}
