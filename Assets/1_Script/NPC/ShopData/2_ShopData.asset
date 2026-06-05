@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 167ae606b2e02b742bd4affcdf7802e0, type: 3}
-  m_Name: 1_ShopData
+  m_Name: 2_ShopData
   m_EditorClassIdentifier: Assembly-CSharp::ShopData
   items:
-  - {fileID: 11400000, guid: 1e883d4a5cb7afc4994a7fb98e8341c4, type: 2}
-  - {fileID: 11400000, guid: f06c2638e41fc6d42946533370116e06, type: 2}
-  - {fileID: 11400000, guid: 88e22009a691be849ae0d21817ffd1dd, type: 2}
+  - {fileID: 11400000, guid: 1f69976a4b0b3c048ae5de6a88872c47, type: 2}
+  - {fileID: 11400000, guid: ad7f55a6395d71f46aa5aa93cadc1513, type: 2}
+  - {fileID: 11400000, guid: 67c002c6ce5db8541b17414fc116119f, type: 2}

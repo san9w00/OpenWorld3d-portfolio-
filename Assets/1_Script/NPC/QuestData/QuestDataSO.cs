@@ -6,7 +6,9 @@ public enum EnemyType
     Turtle,
     Bear,
     Skeleton,
-    Boss
+    Boss,
+    Yeti,
+    Magma,
 }
 
 public enum QuestGoalType

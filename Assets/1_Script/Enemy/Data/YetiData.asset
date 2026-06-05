@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b638f6ee93f5cb24cb549c1c9456b90e, type: 3}
-  m_Name: BossData
+  m_Name: YetiData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  EnemyId: 4
-  enemyType: 4
-  maxHP: 1000
-  atkDamage: 15
-  atkCooldown: 2
-  defense: 5
-  rewardExp: 500
-  rewardGold: 3000
+  EnemyId: 6
+  enemyType: 5
+  maxHP: 300
+  atkDamage: 32
+  atkCooldown: 4
+  defense: 1
+  rewardExp: 200
+  rewardGold: 220
   skillChance: 20
   skills: []
