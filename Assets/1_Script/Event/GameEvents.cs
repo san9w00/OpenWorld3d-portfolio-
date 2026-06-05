@@ -12,6 +12,12 @@ public struct PlayerHitEvent
     }
 }
 
+
+// 플레이어 죽음
+public struct PlayerDeadEvent
+{
+}
+
 // 플레이어 레벨업 이벤트 -> 레벨업 ui / 플레이어 체력회복
 public struct LevelUpEvent
 {
@@ -148,14 +154,41 @@ public struct ItemUseRequestedEvent
 }
 
 // --- 시스템 및 UI 관련 이벤트 ---
-public struct QuickSlotChangedEvent
+public struct QuickSlotChangedEvent // 퀵슬롯 변경 이벤트
 {
     public readonly InventoryItem CurrentItem;
     public QuickSlotChangedEvent(InventoryItem item) => CurrentItem = item;
 }
 
-// 플레이어 죽음
-public struct PlayerDeadEvent
+public enum HintType // 알림 종류
 {
-
+    Info,
+    warning,
+    Danger,
+    Achievement
 }
+
+public struct HintEvent // ui에 텍스트 형태로 알림을 보여주기 위한 이벤트
+{
+    public readonly string Message;
+    public readonly HintType Type;
+
+    public HintEvent(string message, HintType type)
+    {
+        Message = message;
+        Type = type;
+    }
+}
+
+public struct HintData
+{
+    public string Message;
+    public HintType Type;
+
+    public HintData(string message, HintType type)
+    {
+        Message = message;
+        Type = type;
+    }
+}
+
