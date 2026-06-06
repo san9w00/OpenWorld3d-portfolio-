@@ -10,6 +10,7 @@ public enum SFXType
     AddItem, OriginSkill, IcerSkill, FireSkill, PeacerSkill, UIClick, UISmallClick, 
     DialogueType, InventorySFX, MapSFX, LevelUP,
     BossWalk, BossAttack, BossBite, BossFireBreath, BossNoise,
+    AchievementUnlock,
 
 }
 

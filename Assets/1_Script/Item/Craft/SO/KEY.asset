@@ -15,8 +15,8 @@ MonoBehaviour:
   resultItem: {fileID: 11400000, guid: 6b5e84a7456520942b31cae776ca719f, type: 2}
   requiredResources:
   - item: {fileID: 11400000, guid: 0c9022338b790b041b4272ffe8426255, type: 2}
-    amount: 4
-  description: "\uC554\uD751 \uC218\uC815 4\uAC1C\uB97C \uBAA8\uC73C\uBA74 \uB358\uC804\uC73C\uB85C
+    amount: 5
+  description: "\uC554\uD751 \uC218\uC815 5\uAC1C\uB97C \uBAA8\uC73C\uBA74 \uB358\uC804\uC73C\uB85C
     \uAC08\uC218 \uC788\uB294 \uC5F4\uC1E0\uB97C \uC81C\uC791\uD560\uC218 \uC788\uB2E4.
     \uB358\uC804\uC744 \uD074\uB9AC\uC5B4 \uD558\uBA74 \uBCF4\uC2A4\uB97C \uB9CC\uB0A0\uC218
     \uC788\uB2E4."

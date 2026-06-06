@@ -165,7 +165,8 @@ public enum HintType // 알림 종류
     Info,
     Warning,
     Danger,
-    Achievement
+    Achievement,
+    Discovery
 }
 
 public struct HintEvent // ui에 텍스트 형태로 알림을 보여주기 위한 이벤트
@@ -180,15 +181,17 @@ public struct HintEvent // ui에 텍스트 형태로 알림을 보여주기 위한 이벤트
     }
 }
 
-public struct HintData
+public struct AchievementUnlockedEvent // 업적 이벤트
 {
-    public string Message;
-    public HintType Type;
+    public AchievementType Type;
+    public string Title;
 
-    public HintData(string message, HintType type)
+    public AchievementUnlockedEvent(
+        AchievementType type,
+        string title)
     {
-        Message = message;
         Type = type;
+        Title = title;
     }
 }
 
