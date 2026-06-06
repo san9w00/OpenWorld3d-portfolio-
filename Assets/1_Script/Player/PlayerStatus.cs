@@ -19,6 +19,11 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [Header("Stamina Settings")]
     [SerializeField] private float staminaRegenDelay = 0.5f;
 
+    // Hint 상태
+    private bool staminaWarningShown;
+    private bool lowHealthWarningShown;
+    private bool exhaustedHintShown;
+
     // 현재 스탯
     public float curHP { get; private set; } 
     public float curStamina { get; private set; }
@@ -140,6 +145,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
             IsExhausted = false;
 
+            exhaustedHintShown = false;
+
             // Presenter에게 탈진 해제 알림
             OnExhaustedChanged?.Invoke(false);
         }
@@ -183,6 +190,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         // 정상 사용
         curStamina -= amount;
 
+        CheckStaminaHint();
+
         // 마지막 사용 시간 저장
         lastStaminaUseTime = Time.time;
 
@@ -208,6 +217,13 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         IsExhausted = true;
 
+        if (!exhaustedHintShown)
+        {
+            exhaustedHintShown = true;
+
+            EventBus.Publish(new HintEvent("스테미나를 사용할수 없다!", HintType.Danger));
+        }
+
         // UI 색상 변경
         OnExhaustedChanged?.Invoke(true);
 
@@ -222,6 +238,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // UI 이벤트
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
+
+        CheckHealthHint();
 
         // 피격 이벤트 발행 (Vignette 강도 전달)
         EventBus.Publish(new PlayerHitEvent(0.15f));
@@ -247,6 +265,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // UI 이벤트
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
+
+        CheckHealthHint();
 
         Debug.Log("플레이어 회복! / 현재 체력" + curHP);
     }
@@ -319,7 +339,44 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         // UI 갱신
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
 
+        CheckHealthHint();
+
         Debug.Log("체력 전체 회복!");
+    }
+
+    // -- 플레이어 상태 힌트 체크 --
+    private void CheckHealthHint()
+    {
+        float hpPercent = curHP / MaxHP;
+
+        if (hpPercent <= 0.25f && !lowHealthWarningShown)
+        {
+            lowHealthWarningShown = true;
+
+            EventBus.Publish(new HintEvent("체력이 매우 낮다!", HintType.Danger));
+        }
+
+        if (hpPercent > 0.25f)
+        {
+            lowHealthWarningShown = false;
+        }
+    }
+
+    private void CheckStaminaHint()
+    {
+        float staminaPercent = curStamina / MaxStamina;
+
+        if (staminaPercent <= 0.3f && !staminaWarningShown)
+        {
+            staminaWarningShown = true;
+
+            EventBus.Publish(new HintEvent("스태미나가 곧 바닥난다!", HintType.Warning));
+        }
+        
+        if (staminaPercent > 0.3f)
+        {
+            staminaWarningShown = false;
+        }
     }
 
 

@@ -163,7 +163,7 @@ public struct QuickSlotChangedEvent // 퀵슬롯 변경 이벤트
 public enum HintType // 알림 종류
 {
     Info,
-    warning,
+    Warning,
     Danger,
     Achievement
 }
