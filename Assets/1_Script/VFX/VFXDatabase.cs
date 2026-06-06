@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
 
 public enum VFXActionType
 {

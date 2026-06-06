@@ -833,9 +833,6 @@ namespace Unity.VisualScripting.Generated.Aot
 	// PlayerCombat.op_Implicit
 	// PlayerCombat.op_Equality
 	// PlayerCombat.op_Inequality
-	// SkillGizmoDrawer.op_Implicit
-	// SkillGizmoDrawer.op_Equality
-	// SkillGizmoDrawer.op_Inequality
 	// WeaponHitbox.op_Implicit
 	// WeaponHitbox.op_Equality
 	// WeaponHitbox.op_Inequality
@@ -10939,41 +10936,6 @@ namespace Unity.VisualScripting.Generated.Aot
 		// PlayerCombat.op_Inequality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void PlayerCombat_op_Inequality()
-		{
-			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
-			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
-			bool @operator = (arg0 != arg1);
-			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
-			optimized.Invoke(null, arg0, arg1);
-			optimized.Invoke(default(object[]));
-		}
-		
-		// SkillGizmoDrawer.op_Implicit
-		[global::UnityEngine.Scripting.PreserveAttribute()]
-		public static void SkillGizmoDrawer_op_Implicit()
-		{
-			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
-			bool conversion = ((bool)(arg0));
-			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
-			optimized.Invoke(null, arg0);
-			optimized.Invoke(default(object[]));
-		}
-		
-		// SkillGizmoDrawer.op_Equality
-		[global::UnityEngine.Scripting.PreserveAttribute()]
-		public static void SkillGizmoDrawer_op_Equality()
-		{
-			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
-			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
-			bool @operator = (arg0 == arg1);
-			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
-			optimized.Invoke(null, arg0, arg1);
-			optimized.Invoke(default(object[]));
-		}
-		
-		// SkillGizmoDrawer.op_Inequality
-		[global::UnityEngine.Scripting.PreserveAttribute()]
-		public static void SkillGizmoDrawer_op_Inequality()
 		{
 			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
 			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
