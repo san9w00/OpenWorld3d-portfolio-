@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 2
   enemyType: 3
-  maxHP: 250
+  maxHP: 400
   atkDamage: 15
   atkCooldown: 4
   defense: 0

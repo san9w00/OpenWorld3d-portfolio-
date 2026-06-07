@@ -1,8 +1,8 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GachaUI : MonoBehaviour
 {
@@ -12,12 +12,14 @@ public class GachaUI : MonoBehaviour
 
     [Header("settings")]
     [SerializeField] private int gachaCost = 300;
-    [SerializeField] private int coinRewardAmount = 350;
 
     [Header("Items")]
     [SerializeField] private ItemSO firstItem;
     [SerializeField] private ItemSO secondItem;
+    [SerializeField] private ItemSO thirdItem;
     [SerializeField] private Sprite coinSprite;
+
+    private bool isRolling;
 
     private void Start()
     {
@@ -53,41 +55,67 @@ public class GachaUI : MonoBehaviour
 
     public void Roll()
     {
+        if (isRolling)
+            return;
+
         if (!PlayerStatus.Instance.TrySpendGold(gachaCost))
         {
             Debug.Log("골드가 부족하다!");
             return;
         }
 
+        isRolling = true;
+
         int random = Random.Range(0, 100);
 
-        if (random < 40)
+        if (random < 60)
         {
             PlayerInventory.Instance.AddItem(firstItem, 1);
             StartCoroutine(ShowResult(firstItem.itemIcon));
         }
         else if (random < 95)
         {
-            PlayerStatus.Instance.AddGold(coinRewardAmount);
-            StartCoroutine(ShowResult(coinSprite));
+            PlayerInventory.Instance.AddItem(secondItem, 1);
+            StartCoroutine(ShowResult(secondItem.itemIcon));
         }
         else
         {
-            PlayerInventory.Instance.AddItem(secondItem, 1);
-            StartCoroutine(ShowResult(secondItem.itemIcon));
+            PlayerInventory.Instance.AddItem(thirdItem, 1);
+            StartCoroutine(ShowResult(thirdItem.itemIcon));
         }
     }
 
     private IEnumerator ShowResult(Sprite icon)
     {
         resultImg.sprite = icon;
-
         resultImg.gameObject.SetActive(true);
 
-        resultImg.transform.localScale = Vector3.one;
+        // 초기 상태
+        resultImg.color = new Color(1, 1, 1, 1);
+        resultImg.transform.localScale = Vector3.zero;
 
-        yield return new WaitForSeconds(3f);
+        // 뿅! 등장
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(resultImg.transform.DOScale(1.4f, 0.25f).SetEase(Ease.OutBack));
+
+        seq.Append(resultImg.transform.DOScale(1f, 0.15f).SetEase(Ease.OutQuad));
+
+        yield return seq.WaitForCompletion();
+
+        yield return new WaitForSeconds(2f);
+
+        // 사라질 때
+        Sequence hideSeq = DOTween.Sequence();
+
+        hideSeq.Join(resultImg.transform.DOScale(1.3f, 0.3f));
+
+        hideSeq.Join(resultImg.DOFade(0f, 0.3f));
+
+        yield return hideSeq.WaitForCompletion();
 
         resultImg.gameObject.SetActive(false);
+
+        isRolling = false;
     }
 }

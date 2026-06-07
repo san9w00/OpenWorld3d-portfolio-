@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyType: 5
   maxHP: 300
   atkDamage: 32
-  atkCooldown: 4
+  atkCooldown: 3.6
   defense: 1
   rewardExp: 200
   rewardGold: 220

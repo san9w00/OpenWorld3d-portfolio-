@@ -43,13 +43,6 @@ public class HintManager : MonoBehaviour
 
                 break;
 
-            case HintType.Achievement:
-
-                StartCoroutine(
-                    ShowAchievement(evt));
-
-                break;
-
             default:
 
                 queue.Enqueue(evt);
@@ -90,63 +83,7 @@ public class HintManager : MonoBehaviour
 
         yield return AnimateText(text);
     }
-
-    //private IEnumerator ShowAchievement(HintEvent evt)
-    //{
-    //    TextMeshProUGUI text = view.AchivementText;
-
-    //    SetupText(text, evt);
-
-    //    SoundManager.Instance.PlaySFX(SFXType.AchievementUnlock);
-
-    //    yield return AnimateText(text);
-    //}
-
-    private IEnumerator ShowAchievement(HintEvent evt)
-    {
-        TextMeshProUGUI text = view.AchivementText;
-
-        SetupText(text, evt);
-
-        SoundManager.Instance.PlaySFX(SFXType.AchievementUnlock);
-
-        RectTransform rect = text.rectTransform;
-
-        Vector2 endPos = rect.anchoredPosition;
-        Vector2 startPos = endPos + new Vector2(-600f, 0f);
-
-        rect.anchoredPosition = startPos;
-
-        text.gameObject.SetActive(true);
-
-        Color c = text.color;
-        c.a = 0;
-        text.color = c;
-
-        Sequence seq = DOTween.Sequence();
-
-        seq.Append(
-            rect.DOAnchorPos(
-                endPos,
-                0.4f)
-            .SetEase(Ease.OutCubic));
-
-        seq.Join(
-            text.DOFade(
-                1f,
-                0.3f));
-
-        yield return seq.WaitForCompletion();
-
-        yield return new WaitForSeconds(3f);
-
-        yield return text
-            .DOFade(0f, 0.3f)
-            .WaitForCompletion();
-
-        text.gameObject.SetActive(false);
-    }
-
+   
     private IEnumerator AnimateText(TextMeshProUGUI text)
     {
         text.gameObject.SetActive(true);
@@ -182,10 +119,6 @@ public class HintManager : MonoBehaviour
 
             case HintType.Danger:
                 text.color = Color.red;
-                break;
-
-            case HintType.Achievement:
-                text.color = new Color32(85, 154, 255, 255);
                 break;
 
             case HintType.Discovery:
