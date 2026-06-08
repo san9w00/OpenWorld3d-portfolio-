@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BossBreathDamage : MonoBehaviour
 {
-    [SerializeField] private float damage = 4f;
+    [SerializeField] private float damage = 6f;
     [SerializeField] private float tickRate = 0.2f;
 
     private float timer;

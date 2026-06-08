@@ -4,7 +4,10 @@ using UnityEngine;
 public class IceSkillSO : WeaponSkillSO
 {
     [Header("Damage")]
-    public float damage = 130f;
+    public float baseDamage = 80f;
+
+    [Header("Scaling")]
+    public float scaling = 1.0f;
 
     [Header("Slow")]
     public float slowPercent = 0.5f; // 50% °¨¼Ò
@@ -41,6 +44,11 @@ public class IceSkillSO : WeaponSkillSO
 
             if (damageable != null)
             {
+
+                PlayerStatus status = user.GetComponent<PlayerStatus>();
+
+                float damage = baseDamage + status.AtkDamage * scaling;
+
                 damageable.TakeDamage(damage);
 
                 if (enemy.gameObject.activeInHierarchy)

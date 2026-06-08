@@ -19,7 +19,7 @@ MonoBehaviour:
   atkCooldown: 2
   defense: 3
   rewardExp: 10
-  rewardGold: 40
+  rewardGold: 43
   skillChance: 12
   skills:
   - {fileID: 11400000, guid: 0108da3fcf488404c8786d639de5ba0f, type: 2}

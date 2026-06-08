@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 4
   enemyType: 4
-  maxHP: 1000
-  atkDamage: 15
+  maxHP: 1300
+  atkDamage: 20
   atkCooldown: 2
   defense: 5
-  rewardExp: 500
+  rewardExp: 1000
   rewardGold: 3000
   skillChance: 20
   skills: []

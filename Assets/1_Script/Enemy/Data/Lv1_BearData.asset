@@ -18,5 +18,7 @@ MonoBehaviour:
   atkDamage: 20
   atkCooldown: 2.3
   defense: 1
-  rewardExp: 45
-  rewardGold: 150
+  rewardExp: 50
+  rewardGold: 160
+  skillChance: 20
+  skills: []

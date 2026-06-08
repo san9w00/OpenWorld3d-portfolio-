@@ -19,7 +19,7 @@ MonoBehaviour:
     poolSize: 2
   - actionType: 3
     swordType: 0
-    prefab: {fileID: 9017484664307500583, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
+    prefab: {fileID: 1374770465800164, guid: d0e33492ce1ba064291b3ff95ce32e4e, type: 3}
     poolSize: 2
   - actionType: 0
     swordType: 2

@@ -3,8 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Items/Skills/FireSkill")]
 public class FireSkillSO : WeaponSkillSO
 {
+    public float baseTickDamage = 3f;
+    public float scaling = 0.3f;
+
     public float radius = 4f; 
-    public float tickDamage = 7f;
     public float duration = 4f;
     public float tickInterval = 1f;
 
@@ -22,6 +24,8 @@ public class FireSkillSO : WeaponSkillSO
 
         Debug.Log($"FireSkill 적 {enemies.Length}명 감지");
 
+        PlayerStatus status = user.GetComponent<PlayerStatus>();
+
         foreach (var enemy in enemies)
         {
             IDamageable damageable = enemy.GetComponent<IDamageable>();
@@ -29,12 +33,12 @@ public class FireSkillSO : WeaponSkillSO
             if (damageable != null)
             {
                 MonoBehaviour runner = user.GetComponent<InputHandler>();
-                runner.StartCoroutine(BurnCoroutine(damageable));
+                runner.StartCoroutine(BurnCoroutine(damageable, status));
             }
         }
     }
 
-    private System.Collections.IEnumerator BurnCoroutine(IDamageable target)
+    private System.Collections.IEnumerator BurnCoroutine(IDamageable target, PlayerStatus status)
     {
         float elapsed = 0f;
 
@@ -44,6 +48,8 @@ public class FireSkillSO : WeaponSkillSO
         {
             if (mb == null || !mb.gameObject.activeInHierarchy)
                 yield break;
+
+            float tickDamage = baseTickDamage + status.AtkDamage * scaling;
 
             target.TakeDamage(tickDamage);
 

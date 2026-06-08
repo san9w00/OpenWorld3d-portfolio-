@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CraftingDatabaseSO
   recipes:
   - {fileID: 11400000, guid: 910d34c0a7cb3564b946a76e3e52bcf4, type: 2}
+  - {fileID: 11400000, guid: 033726aa85a4bbb4f8427c7c63513382, type: 2}
   - {fileID: 11400000, guid: 841f1a372f2cdc04ca4e126f0c5a7bab, type: 2}
   - {fileID: 11400000, guid: 689ac3f6801802940aec062970d02a0d, type: 2}
   - {fileID: 11400000, guid: 09269321bcaf06045a5b12a3e20f0d16, type: 2}
   - {fileID: 11400000, guid: eecbe2fe6cbea6041b9ec860bf3ada1c, type: 2}
-  - {fileID: 11400000, guid: a228c2dec28ceb946affa78afe82bdc1, type: 2}
   - {fileID: 11400000, guid: 8a88997390af9ef4e9efc35b4b32e375, type: 2}
+  - {fileID: 11400000, guid: bc20f784cbcfab24dbeed48bba38f7af, type: 2}
+  - {fileID: 11400000, guid: a228c2dec28ceb946affa78afe82bdc1, type: 2}
   - {fileID: 11400000, guid: fd66bf08a99dde54eb7b8887bbb7699f, type: 2}

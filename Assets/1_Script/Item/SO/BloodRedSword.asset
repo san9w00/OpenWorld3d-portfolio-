@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponItemSO
   itemID: Karim
   itemName: "\uCE74\uB9AC\uBBF8"
-  price: 1500
-  itemExplain: "+17 \uB370\uBBF8\uC9C0 / \uCD08\uC911\uBC18\uC5D0 \uC720\uC6A9\uD55C
+  price: 800
+  itemExplain: "\uB370\uBBF8\uC9C0 + 8 / \uCD08\uC911\uBC18\uC5D0 \uC720\uC6A9\uD55C
     \uAE34 \uAC80\uC774\uB2E4."
   itemIcon: {fileID: 21300000, guid: 0e1ab67eb67874542b1606233616c377, type: 3}
   maxStack: 1
   itemType: 0
   weaponType: 1
-  damage: 17
+  damage: 8
   swordType: 0
   swingSFX: {fileID: 8300000, guid: 28406bf68add30e4e89d6cd063fb84e6, type: 3}
   skill: {fileID: 0}
