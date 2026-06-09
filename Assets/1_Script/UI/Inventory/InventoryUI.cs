@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +13,7 @@ public class InventoryUI : MonoBehaviour
     [Header("Tab panels")]
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject CraftPanel;
+    [SerializeField] private GameObject OptionPanel;
 
     [Header("Detail UI")]
     [SerializeField] private GameObject detailPanel;
@@ -208,11 +208,20 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryPanel.SetActive(true);
         CraftPanel.SetActive(false);
+        OptionPanel.SetActive(false);
     }
 
     public void OpenCraftTab()
     {
         inventoryPanel.SetActive(false);
+        OptionPanel.SetActive(false);
         CraftPanel.SetActive(true);
+    }
+
+    public void OpenOptionTab()
+    {
+        inventoryPanel.SetActive(false);
+        CraftPanel.SetActive(false);
+        OptionPanel.SetActive(true);
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 
 public enum SFXType
 {
@@ -22,6 +21,10 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmSource;
     private bool blockAutoBGM = false;
 
+    [Header("Volume")]
+    [SerializeField] private float masterVolume = 1f;
+    [SerializeField] private float sfxVolume = 1f;
+
     [Header("SFX")]
     [SerializeField] private int poolSize = 10;
     private List<AudioSource> sfxSources = new List<AudioSource>();
@@ -40,9 +43,17 @@ public class SoundManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // 저장된 볼륨 불러오기
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        // 전체 오브젝트 사운드까지 제어
+        AudioListener.volume = masterVolume;
+
         // BGM
         bgmSource = gameObject.AddComponent<AudioSource>();
         bgmSource.loop = true;
+        bgmSource.volume = masterVolume;
 
         // SFX 풀 생성
         for (int i = 0; i < poolSize; i++)
@@ -96,6 +107,9 @@ public class SoundManager : MonoBehaviour
         }
 
         bgmSource.clip = clip;
+
+        bgmSource.volume = masterVolume;
+
         bgmSource.Play();
     }
 
@@ -109,7 +123,9 @@ public class SoundManager : MonoBehaviour
         }
 
         AudioSource source = GetAvailableSFXSource();
-        source.PlayOneShot(sfxDict[type]);
+
+        // Master * SFX 적용
+        source.PlayOneShot(sfxDict[type], masterVolume * sfxVolume);
     }
 
     // SFX 재생 (AudioClip 기반)
@@ -119,7 +135,31 @@ public class SoundManager : MonoBehaviour
             return;
 
         AudioSource source = GetAvailableSFXSource();
-        source.PlayOneShot(clip);
+
+        // Master * SFX 적용
+        source.PlayOneShot(clip, masterVolume * sfxVolume);
+    }
+
+    public void SetSFXVolume(float volume) // SFX 볼륨 조절
+    {
+        sfxVolume = volume;
+
+        // 저장
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+    }
+
+    public void SetMasterVolume(float volume) // Master 볼륨 조정
+    {
+        masterVolume = volume;
+
+
+        AudioListener.volume = masterVolume;
+
+        // BGM도 같이 변경
+        bgmSource.volume = masterVolume;
+
+        // 저장
+        PlayerPrefs.SetFloat("MasterVolume", volume);
     }
 
     public void StopBGM()
@@ -137,6 +177,11 @@ public class SoundManager : MonoBehaviour
 
         return sfxSources[0]; // 부족하면 덮어쓰기
     }
+
+
+    // 슬라이더 초기화용
+    public float MasterVolume => masterVolume;
+    public float SFXVolume => sfxVolume;
 }
 
 [System.Serializable]

@@ -20,6 +20,7 @@ MonoBehaviour:
   defense: 1
   rewardExp: 200
   rewardGold: 220
+  attackSFX: {fileID: 8300000, guid: 482611fe6bc559142a00be6e726b4862, type: 3}
   skillChance: 40
   skills:
   - {fileID: 11400000, guid: 28afbe4f4630e5a42ac58f70ed746efc, type: 2}

@@ -13,6 +13,9 @@ public class EnemyData : ScriptableObject
     public float rewardExp;
     public int rewardGold;
 
+    [Header("Audio")]
+    public AudioClip attackSFX;
+
     [Header("Skill")]
     [Range(0, 100)]
     public float skillChance = 20f;

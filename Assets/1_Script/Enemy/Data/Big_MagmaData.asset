@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   EnemyId: 9
   enemyType: 6
-  maxHP: 600
-  atkDamage: 40
-  atkCooldown: 3.3
+  maxHP: 400
+  atkDamage: 22
+  atkCooldown: 2
   defense: 1
   rewardExp: 800
   rewardGold: 1000
+  attackSFX: {fileID: 8300000, guid: 482611fe6bc559142a00be6e726b4862, type: 3}
   skillChance: 20
   skills: []

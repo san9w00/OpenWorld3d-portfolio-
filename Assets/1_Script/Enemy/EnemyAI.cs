@@ -90,4 +90,14 @@ public class EnemyAI : MonoBehaviour
         Gizmos.matrix = Matrix4x4.TRS(center, transform.rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, hitBoxSize);
     }
+
+
+    // ----- 애니메이션 이벤트 (SFX)  ------
+    public void PlayAttackSound() // 공격 사운드
+    {
+        if (_enemyStatus.Data.attackSFX == null)
+            return;
+
+        SoundManager.Instance.PlaySFX(_enemyStatus.Data.attackSFX);
+    }
 }
