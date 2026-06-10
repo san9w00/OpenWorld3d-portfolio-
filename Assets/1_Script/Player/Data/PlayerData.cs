@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Base Stats")]
-    public float maxHP;
-    public float maxStamina;
-    public float gold;
-    public float moveSpeed;
-    public float atkDamage;
-    public float jumpPower;
-    public float defense;
+    public float maxHP;      // 최대 체력
+    public float maxStamina; // 최대 스테미나
+    public float gold;       // 골드
+    public float moveSpeed;  // 이동속도
+    public float atkDamage;  // 공격력
+    public float jumpPower;  // 점프력
+    public float defense;    // 방어력
 
     [Header("Stamina Costs")]
     public float attackStaminaCost = 10f; // 공격 소모량
