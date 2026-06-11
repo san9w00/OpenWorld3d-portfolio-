@@ -159,54 +159,36 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         if (IsExhausted)
         {
             Debug.Log("탈진 상태!");
-
             return false;
         }
 
         // 스테미나 부족
         if (curStamina < amount)
         {
-            // 완전 소진 처리
-            curStamina = 0;
-
-            // 마지막 사용 시간 갱신
+            curStamina = 0; // 완전 소진 처리
             lastStaminaUseTime = Time.time;
 
-            // UI 갱신
-            OnStaminaChanged?.Invoke(
-            new StatData(curStamina, MaxStamina));
+            OnStaminaChanged?.Invoke(new StatData(curStamina, MaxStamina)); // UI 갱신
+            OnStaminaVisibleChanged?.Invoke(true); // UI 표시
 
-            // UI 표시
-            OnStaminaVisibleChanged?.Invoke(true);
-
-            // 탈진 상태 진입
-            EnterExhaustedState();
+            EnterExhaustedState(); // 탈진 상태 진입
 
             Debug.Log("스태미나 완전 소진!");
-
             return false;
         }
 
-        // 정상 사용
         curStamina -= amount;
 
         CheckStaminaHint();
-
-        // 마지막 사용 시간 저장
         lastStaminaUseTime = Time.time;
 
-        // UI 이벤트
         OnStaminaChanged?.Invoke(new StatData(curStamina, MaxStamina));
-
-        // UI 표시 (스테미나 사용)
         OnStaminaVisibleChanged?.Invoke(true);
 
-        // 정확히 0 도달 시 탈진
         if (curStamina <= 0.01f)
         {
             curStamina = 0;
-
-            EnterExhaustedState();
+            EnterExhaustedState(); // 탈진
         }
 
         return true;
@@ -266,6 +248,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
         // UI 이벤트
         OnHPChanged?.Invoke(new StatData(curHP, MaxHP));
 
+        // 플레이어의 체력 검사 함수
         CheckHealthHint();
 
         Debug.Log("플레이어 회복! / 현재 체력" + curHP);
