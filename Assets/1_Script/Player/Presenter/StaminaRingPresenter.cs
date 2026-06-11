@@ -24,9 +24,7 @@ public class StaminaRingPresenter : MonoBehaviour
 
         // 이벤트 연결
         playerStatus.OnStaminaChanged += UpdateStamina;
-
         playerStatus.OnStaminaVisibleChanged += ShowUI;
-
         playerStatus.OnExhaustedChanged += SetExhausted;
     }
 
@@ -42,10 +40,7 @@ public class StaminaRingPresenter : MonoBehaviour
         }
     }
 
-    // =========================
-    // 스태미나 갱신
-    // =========================
-
+    // 스테미나 갱신
     private void UpdateStamina(StatData data)
     {
         view.SetFill(data.Normalized);
@@ -53,10 +48,7 @@ public class StaminaRingPresenter : MonoBehaviour
         RestartHideTimer();
     }
 
-    // =========================
     // UI 표시
-    // =========================
-
     private void ShowUI(bool visible)
     {
         if (visible)
@@ -67,10 +59,7 @@ public class StaminaRingPresenter : MonoBehaviour
         }
     }
 
-    // =========================
     // 탈진 상태
-    // =========================
-
     private void SetExhausted(bool exhausted)
     {
         view.SetExhausted(exhausted);
@@ -82,10 +71,7 @@ public class StaminaRingPresenter : MonoBehaviour
         }
     }
 
-    // =========================
     // 자동 숨김 타이머
-    // =========================
-
     private void RestartHideTimer()
     {
         if (hideCoroutine != null)

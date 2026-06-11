@@ -134,7 +134,6 @@ public class PlayerStatus : MonoBehaviour, IDamageable
 
         // UI 갱신
         OnStaminaChanged?.Invoke(new StatData(curStamina, MaxStamina));
-
         // 회복중에도 UI 표시
         OnStaminaVisibleChanged?.Invoke(true);
 
