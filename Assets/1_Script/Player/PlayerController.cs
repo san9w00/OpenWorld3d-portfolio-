@@ -202,7 +202,8 @@ public class PlayerController : MonoBehaviour
         if (_playerStatus.IsExhausted)
             return;
 
-        if (_isRolling || _isAttacking || direction.magnitude < 0.1f || !_characterController.isGrounded) return;
+        if (_isRolling || _isAttacking || 
+            direction.magnitude < 0.1f || !_characterController.isGrounded) return;
 
         if (_playerStatus.UseStamina(_playerStatus.RollCost))
         {
