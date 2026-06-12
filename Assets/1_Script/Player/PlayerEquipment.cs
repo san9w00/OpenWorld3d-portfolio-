@@ -21,6 +21,8 @@ public class PlayerEquipment : MonoBehaviour
     private PlayerCombat playerCombat;
     private PlayerController playerController;
 
+    private static WeaponItemSO savedWeapon;
+
     public GameObject CurrentWeapon => currentWeapon;
     public WeaponItemSO CurrentWeaponData { get; private set; }
     public WeaponItemSO DefaultWeapon => defaultWeapon;
@@ -33,12 +35,18 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start()
     {
-        EquipWeapon(defaultWeapon);
+        // 저장된 무기가 있으면 해당 무기 장착.
+        // 없을시 기본 무기(주먹) 장착.
+        EquipWeapon(savedWeapon != null ? savedWeapon : defaultWeapon);
     }
 
     public void EquipWeapon(WeaponItemSO weaponData)
     {
-        CurrentWeaponData = weaponData;
+        if (weaponData == null)
+            weaponData = defaultWeapon;
+
+        CurrentWeaponData = weaponData; // 현재 장착 무기 갱신
+        savedWeapon = weaponData;       // 씬 전환 후에도 복원할수 있도록 저장
 
         // 전부 비활성화
         foreach (var slot in weaponSlots)
