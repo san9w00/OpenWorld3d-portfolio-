@@ -2463,6 +2463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HpBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2896222227383171957, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3631834176100968397, guid: 17aa7678596c4bc4d9b17bb6af77e32b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
