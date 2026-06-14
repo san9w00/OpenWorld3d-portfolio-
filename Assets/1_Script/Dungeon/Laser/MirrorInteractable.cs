@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MirrorInteractable : MonoBehaviour, IInteractable
@@ -18,7 +19,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         StartCoroutine(Rotate());
     }
 
-    private System.Collections.IEnumerator Rotate()
+    private IEnumerator Rotate()
     {
         rotating = true;
 
