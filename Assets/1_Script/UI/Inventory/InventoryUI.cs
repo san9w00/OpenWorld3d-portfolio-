@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBus.Subscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+        EventBus.Subscribe<InventoryChangedEvent>(OnInventoryChanged);
         EventBus.Subscribe<InventoryActionStateChangedEvent>(OnActionStateChanged);
 
         // 인벤토리가 켜질 때마다 최신화된 상태로 보여주기 위해 초기화
@@ -41,7 +41,7 @@ public class InventoryUI : MonoBehaviour
 
     private void OnDisable()
     {
-        EventBus.UnSubscribe<InventoryChangedEvent>(OnInventoryChangedMsg);
+        EventBus.UnSubscribe<InventoryChangedEvent>(OnInventoryChanged);
         EventBus.UnSubscribe<InventoryActionStateChangedEvent>(OnActionStateChanged);
     }
 
@@ -60,7 +60,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     // 이벤트 매개변수를 처리하는 래퍼
-    private void OnInventoryChangedMsg(InventoryChangedEvent evt)
+    private void OnInventoryChanged(InventoryChangedEvent evt)
     {
         RefreshUI(evt.Items);
     }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class QuesterNPC : MonoBehaviour, IInteractable
 {
-    //[SerializeField] private QuestDataSO baseQuest;
     [SerializeField] private List<int> questIDList;
     [SerializeField] private QuestDatabaseSO questDatabase;
 

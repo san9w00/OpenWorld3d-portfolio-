@@ -14,25 +14,20 @@ public class InventoryViewModel : MonoBehaviour
     private void OnEnable()
     {
         EventBus.Subscribe<InventorySelectionChangedEvent>(OnSelectionChanged);
-
         EventBus.Subscribe<QuickSlotChangedEvent>(OnQuickSlotChanged);
-
         EventBus.Subscribe<WeaponChangedEvent>(OnWeaponChanged);
     }
 
     private void OnDisable()
     {
         EventBus.UnSubscribe<InventorySelectionChangedEvent>(OnSelectionChanged);
-
         EventBus.UnSubscribe<QuickSlotChangedEvent>(OnQuickSlotChanged);
-
         EventBus.UnSubscribe<WeaponChangedEvent>(OnWeaponChanged);
     }
 
     private void OnSelectionChanged(InventorySelectionChangedEvent evt)
     {
         selectedItem = evt.Item;
-
         RefreshActionState();
     }
 

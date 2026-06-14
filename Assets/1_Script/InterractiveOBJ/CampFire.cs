@@ -52,13 +52,9 @@ public class CampFire : MonoBehaviour, IInteractable
         }
         
         if (!isResting)
-        {
             StartRest();
-        }
         else
-        {
             StopRest();
-        }
     }
 
     void Activate()
@@ -74,7 +70,6 @@ public class CampFire : MonoBehaviour, IInteractable
         }
 
         SoundManager.Instance.PlaySFX(SFXType.CampfireUnlock);
-
         Debug.Log("캠프파이어 활성화!");
     }
 
@@ -86,7 +81,6 @@ public class CampFire : MonoBehaviour, IInteractable
 
         Debug.Log("휴식 시작");        
     }
-
     void StopRest()
     {
         isResting = false;

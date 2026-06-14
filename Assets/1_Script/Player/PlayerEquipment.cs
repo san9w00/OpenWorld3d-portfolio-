@@ -51,7 +51,7 @@ public class PlayerEquipment : MonoBehaviour
         // 전부 비활성화
         foreach (var slot in weaponSlots)
         {
-            if (slot.weaponObject != null) // 맨손 대응
+            if (slot.weaponObject != null) // 맨손 무기 대응
             {
                 slot.weaponObject.SetActive(false);
             }
@@ -61,7 +61,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             if (slot.weaponData == weaponData)
             {
-                if (slot.weaponObject != null) // 맨손 대응
+                if (slot.weaponObject != null) // 맨손 무기 대응
                 {
                     slot.weaponObject.SetActive(true);
                 }
